@@ -25,12 +25,10 @@ class AdminController extends Controller {
   public function index() {
     $today = (date('Y-m-d'));
     $today = date('Y-m-d', strtotime($today . ' +1 day'));
-    $data['upcoming'] = Training::withCount('members_count')->withCount('members')->where('start_date', '>', $today)->with('institute', 'members', 'user')->where('institute_id', '=', auth()->user()->institute_id)->get();
-    $data['complete'] = Training::withCount('members_count')->withCount('members')->where('end_date', '<=', $today)->with('institute', 'members', 'user')->where('institute_id', '=', auth()->user()->institute_id)->get();
 
     // $data['name'] = User::with('institute')->where('id', auth()->id())->get();
     //  $data['name'][0]->institute->name;
-    return view('admin.index', $data);
+    return view('admin.index');
   }
 
   public function profile() {

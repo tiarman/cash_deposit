@@ -79,7 +79,7 @@
     <div class="topbar-left">
       <div class="text-center" style="padding-right: 35px">
         <a href="{{ route('home') }}" class="logo">
-          <x-admin-sidebar-logo/>
+{{--          <x-admin-sidebar-logo/>--}}
         </a>
       </div>
     </div>
@@ -168,7 +168,6 @@
             </li>
           @endif
             {{--end event manage module --}}
-
 
           @if(\App\Helper\CustomHelper::canView('Create District|Manage District|Delete District|View District|List Of District', 'Super Admin'))
             <li class="has_sub">
@@ -261,9 +260,9 @@
           <ul class="list-inline float-left mb-0">
             <li class="list-inline-item dropdown notification-list hidden-xs-down">
               <a class="nav-link waves-effect text-start" href="#" id="btn-fullscreen">
-               @if (isset(auth()->user()->institute->name))
-               {{auth()->user()->institute->name}}
-               @endif
+{{--               @if (isset(auth()->user()->institute->name))--}}
+{{--               {{auth()->user()->institute->name}}--}}
+{{--               @endif--}}
               </a>
             </li>
           </ul>

@@ -16,74 +16,19 @@ class RoleSeeder extends Seeder {
     $superAdmin = Role::create([
       'name' => 'Super Admin'
     ]);
-    $admin = Role::create([
-      'name' => 'Admin'
-    ]);
-    $admin = Role::create([
-      'name' => 'Pmu'
-    ]);
-    $client = Role::create([
-      'name' => 'Client'
-    ]);
-    $trainee = Role::create([
-      'name' => 'Trainee'
-    ]);
-    $instituteHead = Role::create([
-      'name' => 'Institute Head'
-    ]);
-
-    $student = Role::create([
-      'name' => 'Student'
-    ]);
-    $teacher = Role::create([
-      'name' => 'Teacher'
-    ]);
-    $moi = Role::create([
-      'name' => 'Moi'
-    ]);
-    $bmet = Role::create([
-      'name' => 'Bmet'
-    ]);
-    $tmed = Role::create([
-      'name' => 'Tmed'
-    ]);
-    $industry = Role::create([
-      'name' => 'Industry'
-    ]);
+      $agent = Role::create([
+          'name' => 'Agent'
+      ]);
+      $subagent = Role::create([
+          'name' => 'Sub Agent'
+      ]);
 
 
-    Role::create(['name' => 'Batch Creator']);
 
-    Role::create(['name' => 'Batch Approver']);
-    Role::create(['name' => 'Officer']);
-    Role::create(['name' => 'Staff']);
-    Role::create(['name' => 'Mentor']);
 
     $superAdmin->givePermissionTo(Permission::all());
-    $superAdmin->revokePermissionTo([
-      'List Of Institute User',
-      'Create Institute User',
-      'Manage Institute User',
-      'Delete Institute User',
-      'View Institute User',
-    ]);
-    $admin->givePermissionTo(Permission::all());
-    $instituteHead->givePermissionTo([
-      'List Of Voucher',
-      'Create Voucher',
-      'Manage Voucher',
-      'Delete Voucher',
-      'View Voucher',
-      'List Of Training',
-      'Create Training',
-      'Manage Training',
-      'Delete Training',
-      'View Training',
-      'List Of Institute User',
-      'Create Institute User',
-      'Manage Institute User',
-      'Delete Institute User',
-      'View Institute User',
-    ]);
+    $agent->givePermissionTo(Permission::all());
+    $subagent->givePermissionTo(Permission::all());
+
   }
 }
