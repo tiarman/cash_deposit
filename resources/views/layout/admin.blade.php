@@ -207,13 +207,6 @@
                 <span>Login Background Slider</span>
               </a></li>
           @endif
-
-          @if(\App\Helper\CustomHelper::canView('', 'Institute Head'))
-            <li><a href="{{ route('admin.technology.create') }}" class="waves-effect">
-                <i class="mdi mdi-memory"></i>
-                <span>Technology</span>
-              </a></li>
-          @endif
           @if(\App\Helper\CustomHelper::canView('Create Voucher|Manage Voucher|Delete Voucher|View Voucher|List Of Voucher', 'Super Admin'))
             <li class="has_sub">
               <a class="waves-effect"><i aria-hidden="true">
