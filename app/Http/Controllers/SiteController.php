@@ -119,17 +119,9 @@ class SiteController extends Controller
 
   public function home()
   {
-    $data['core'] = CoreModule::where('status', '=', CoreModule::$statusArrays[0])->get();
-      $data['numberofstudents'] = User::with('roles')->whereHas('roles', function ($q){
-          $q->where('name', 'Student');
-      })->get()->count();
-      $data['numberofindustries'] = User::with('roles')->whereHas('roles', function ($q){
-          $q->where('name', 'Industry');
-      })->get()->count();
-      $data['numberoffair'] = JobEvent::get()->count();
-      $data['numberofjobs'] = IndustryPost::get()->count();
+
 //      return $datas;
-    return view('site.index', $data);
+    return view('site.index');
   }
 
   public function indexJobEvent()

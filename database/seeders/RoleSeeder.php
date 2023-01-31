@@ -16,9 +16,6 @@ class RoleSeeder extends Seeder {
     $superAdmin = Role::create([
       'name' => 'Super Admin'
     ]);
-    $admin = Role::create([
-      'name' => 'Admin'
-    ]);
       $agent = Role::create([
           'name' => 'Agent'
       ]);
@@ -30,7 +27,6 @@ class RoleSeeder extends Seeder {
 
 
     $superAdmin->givePermissionTo(Permission::all());
-    $admin->givePermissionTo(Permission::all());
     $agent->givePermissionTo(Permission::all());
     $subagent->givePermissionTo(Permission::all());
 

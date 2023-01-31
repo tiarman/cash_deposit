@@ -79,7 +79,7 @@
     <div class="topbar-left">
       <div class="text-center" style="padding-right: 35px">
         <a href="{{ route('home') }}" class="logo">
-          <x-admin-sidebar-logo/>
+{{--          <x-admin-sidebar-logo/>--}}
         </a>
       </div>
     </div>
@@ -170,20 +170,6 @@
             {{--end event manage module --}}
 
 
-          @if(\App\Helper\CustomHelper::canView('Create District|Manage District|Delete District|View District|List Of District', 'Super Admin'))
-            <li class="has_sub">
-              <a class="waves-effect"><i class="mdi mdi-houzz"></i><span> Core Module <span
-                    class="pull-right"><i class="mdi mdi-chevron-right"></i></span> </span></a>
-              <ul class="list-unstyled">
-                {{--                        @if(\App\Helper\CustomHelper::canView('Create District', 'Super Admin'))--}}
-                {{--                            <li><a href="{{ route('admin.coremodule.create') }}">Create new</a></li>--}}
-                {{--                        @endif--}}
-                @if(\App\Helper\CustomHelper::canView('Manage District|Delete District|View District|List Of District', 'Super Admin'))
-                  <li><a href="{{ route('admin.coremodule.list') }}">List of Core Module</a></li>
-                @endif
-              </ul>
-            </li>
-          @endif
 
 
 
@@ -800,9 +786,9 @@
           <ul class="list-inline float-left mb-0">
             <li class="list-inline-item dropdown notification-list hidden-xs-down">
               <a class="nav-link waves-effect text-start" href="#" id="btn-fullscreen">
-               @if (isset(auth()->user()->institute->name))
-               {{auth()->user()->institute->name}}
-               @endif
+{{--               @if (isset(auth()->user()->institute->name))--}}
+{{--               {{auth()->user()->institute->name}}--}}
+{{--               @endif--}}
               </a>
             </li>
           </ul>
