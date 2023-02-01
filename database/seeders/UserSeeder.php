@@ -19,7 +19,6 @@ class UserSeeder extends Seeder
         'name_en' => 'RAST Admin',
         'username' => 'RASTAdmin',
         'phone' => '01797325129',
-        'institute_id' => 1,
         'email' => 'admin@rast.com',
         'email_verified_at' => now(),
         'password' => bcrypt('12345600'),
