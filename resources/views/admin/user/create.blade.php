@@ -11,7 +11,7 @@
         <div class="card-body">
           <section class="panel">
             <header class="panel-heading">
-              <h2 class="panel-title">Create new user</h2>
+              <h2 class="panel-title">Create new Agent</h2>
             </header>
 
 
@@ -20,7 +20,7 @@
               @if(\App\Helper\CustomHelper::canView('List Of User', 'Super Admin'))
               <div class="row">
                 <div class="col-lg-12 col-md-12 col-xl-12 text-right mb-3">
-                  <a href="{{ route('admin.user.list') }}" class="brn btn-success btn-sm">List of user</a>
+                  <a href="{{ route('admin.user.list') }}" class="brn btn-success btn-sm">List of Agents</a>
                 </div>
               </div>
               @endif

@@ -527,6 +527,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth', 'verified'])->group
   });
 
 
+
   #Roles
   Route::prefix('role')->name('role.')->group(function () {
     Route::get('/create', [RoleController::class, 'create'])->middleware('role_or_permission:Super Admin|Create Role')->name('create');

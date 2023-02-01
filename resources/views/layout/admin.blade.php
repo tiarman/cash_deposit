@@ -94,14 +94,14 @@
 
             @if(\App\Helper\CustomHelper::canView('Create User|Manage User|Delete User|View User|List Of User', 'Super Admin'))
                 <li class="has_sub">
-                    <a class="waves-effect"><i class="mdi mdi-account-multiple"></i><span> User <span
+                    <a class="waves-effect"><i class="mdi mdi-account-multiple"></i><span> Agent <span
                                 class="pull-right"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                     <ul class="list-unstyled">
                         @if(\App\Helper\CustomHelper::canView('Create User', 'Super Admin'))
                             <li><a href="{{ route('admin.user.create') }}">Create new</a></li>
                         @endif
                         @if(\App\Helper\CustomHelper::canView('Manage User|Delete User|View User|List Of User', 'Super Admin'))
-                            <li><a href="{{ route('admin.user.list') }}">List of Users</a></li>
+                            <li><a href="{{ route('admin.user.list') }}">List of Agent</a></li>
                         @endif
                     </ul>
                 </li>
