@@ -68,15 +68,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/test', function () {
-//  return \App\Models\User::with('permissions', 'roles')->find(auth()->id());
-  ini_set('max_execution_time', 300);
-  \Illuminate\Support\Facades\Mail::to('info@rast.com')->cc('admin@rast.com')->send(new \App\Mail\EligibilityApplicationFormIdgMail(\route('form.pdf', 1)));
-  return view('email.test');
-})->name('test');
+//Route::get('/test', function () {
+////  return \App\Models\User::with('permissions', 'roles')->find(auth()->id());
+//  ini_set('max_execution_time', 300);
+//  \Illuminate\Support\Facades\Mail::to('info@rast.com')->cc('admin@rast.com')->send(new \App\Mail\EligibilityApplicationFormIdgMail(\route('form.pdf', 1)));
+//  return view('email.test');
+//})->name('test');
 
 
-Route::get('send-mail', [ContactController::class, 'sendDemoMail'])->name('sendDemoMail');
+//Route::get('send-mail', [ContactController::class, 'sendDemoMail'])->name('sendDemoMail');
 //Route::get('sendbasicemail', [MailController::class, 'sendbasicemail'])->name('sendbasicemail');
 //Route::get('/jobpost', function (){
 //    return view('site.job.jobpostjobpost');
@@ -188,25 +188,25 @@ Route::post('/reset-password/store/{token}', [AuthController::class, 'resetPassw
   ->middleware(['guest:' . config('fortify.guard')])
   ->name('password.reset.store');
 
-Route::get('/email/verify', function () {
-  $data['images'] = BackgroundImage::where('status', BackgroundImage::$statusArray[0])->get();
-  return view('admin.auth.verify-email', $data);
-})->middleware('auth')->name('verification.notice');
+//Route::get('/email/verify', function () {
+//  $data['images'] = BackgroundImage::where('status', BackgroundImage::$statusArray[0])->get();
+//  return view('admin.auth.verify-email', $data);
+//})->middleware('auth')->name('verification.notice');
 Route::get('/forgot-password', function () {
   $data['images'] = BackgroundImage::where('status', BackgroundImage::$statusArray[0])->get();
   return view('admin.auth.forget-password', $data);
 })->middleware('guest')->name('password.request');
 
-Route::post('/email/verification-notification', function (Request $request) {
-  $request->user()->sendEmailVerificationNotification();
-  \Illuminate\Support\Facades\Session::put('email', $request->user()->email);
-  return redirect()->back();
-})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+//Route::post('/email/verification-notification', function (Request $request) {
+//  $request->user()->sendEmailVerificationNotification();
+//  \Illuminate\Support\Facades\Session::put('email', $request->user()->email);
+//  return redirect()->back();
+//})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 
 Route::post('/post/apply', [SiteController::class, 'postApply'])->name('ajax.post.apply');
 Route::get('/admin/logout', [AdminController::class, 'logout'])->middleware('auth')->name('admin.logout');
-Route::prefix('/admin')->name('admin.')->middleware(['auth', 'verified'])->group(function () {
+Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function () {
   Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
   Route::get('/profile', [AdminController::class, 'profile'])->name('profile.show');
   Route::post('/profile/update', [AdminController::class, 'profileUpdate'])->name('profile.update');
