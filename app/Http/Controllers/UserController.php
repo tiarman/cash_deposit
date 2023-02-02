@@ -60,6 +60,7 @@ class UserController extends Controller {
 
 
   public function store(Request $request) {
+    return auth()->id();
     $message = '<strong>Congratulations!!!</strong> User successfully';
     $rules = [
       'name' => 'required|string',
@@ -69,21 +70,27 @@ class UserController extends Controller {
     if ($request->has('id')) {
       $user = User::find($request->id);
       $rules['email'] = 'required|email|unique:' . with(new User)->getTable() . ',email,' . $request->id;
+      $rules['username'] = 'required|string|min:6|max:8|unique:'.with(new user)->getTable().',username';
       $rules['phone'] = 'required|string|min:11|max:11|unique:' . with(new User)->getTable() . ',phone,' . $request->id;
       $rules['password'] = 'nullable|string|min:' . User::$minimumPasswordLength;
       $message = $message . ' updated';
     } else {
       $user = new User();
       $rules['email'] = 'required|email|unique:' . with(new User)->getTable() . ',email';
-      $rules['phone'] = 'required|string|min:11|max:11|unique:' . with(new User)->getTable() . ',phone';
+      $rules['username'] = 'required|string|min:6|max:8|unique:'.with(new user)->getTable().',username';
+      // $rules['phone'] = 'required|string|min:11|max:11|unique:' . with(new User)->getTable() . ',phone';
       $message = $message . ' created';
     }
     $request->validate($rules);
 
     try {
       $user->name_en = $request->name;
+      $user->username = $request->username;
       $user->email = $request->email;
       $user->phone = $request->phone;
+      if( !auth()->user()->roles->pluck('name')=='Super Admin'){
+        $user->agent_id = auth()->id();
+      }
       if ($request->password != null) {
         $user->password = bcrypt($request->password);
       }

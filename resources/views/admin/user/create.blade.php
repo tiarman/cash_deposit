@@ -43,6 +43,16 @@
                   </div>
                   <div class="col-sm-4">
                     <div class="form-group">
+                      <label class="control-label">Login ID<span class="text-danger">*</span></label>
+                      <input type="text" name="username" placeholder="Username" required value="{{ old('username') }}"
+                             class="form-control @error('username') is-invalid @enderror">
+                      @error('username')
+                      <strong class="text-danger">{{ $errors->first('username') }}</strong>
+                      @enderror
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group">
                       <label class="control-label">Email <span class="text-danger">*</span></label>
                       <input type="email" name="email" placeholder="Email" value="{{ old('email') }}"
                              class="form-control @error('email') is-invalid @enderror" required>
@@ -61,8 +71,6 @@
                       @enderror
                     </div>
                   </div>
-                </div>
-                <div class="row">
                   <div class="col-sm-4">
                     <div class="form-group">
                       <label class="control-label">Password<span class="text-danger">*</span></label>

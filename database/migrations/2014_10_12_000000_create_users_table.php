@@ -18,6 +18,7 @@ return new class extends Migration
             $table->id();
             $table->string('image')->nullable();
             $table->string('name_en')->nullable();
+            $table->unsignedBigInteger('agent_id')->nullable();
             $table->string('username')->nullable()->unique();
             $table->string('father_name')->nullable();
             $table->string('mother_name')->nullable();
