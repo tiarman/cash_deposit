@@ -227,34 +227,11 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
       Route::get('/item/name', [SearchController::class, 'searchItemName'])->name('item.name');
       Route::get('/idea/student/name', [SearchController::class, 'searchUserName'])->name('idea.student.name');
     });
-    Route::get('/get-item-prefix', [InstituteBuildingController::class, 'ajaxGetItemPrefix'])->name('get.item.prefix');
 //    Route::get('/get-student-prefix', [ProjectIdeaController::class, 'ajaxprojectIdeaStudent'])->name('get.student.prefix');
     Route::post('/make/{id}/-as-read', [NotificationController::class, 'ajaxUpdateAsRead'])->name('make.modal.as.read');
     Route::post('/permission-by-role', [PermissionController::class, 'getPermissionByRole'])->middleware('role_or_permission:Super Admin|Manage Permission')->name('get.permission.by.role');
     Route::post('/update/user/status', [UserController::class, 'ajaxUpdateStatus'])->middleware('role_or_permission:Super Admin|Manage User|Manage Institute User')->name('update.user.status');
-    Route::post('/update/institute/status', [InstituteController::class, 'ajaxUpdateStatus'])->middleware('role_or_permission:Super Admin|Manage Institute')->name('update.institute.status');
-    Route::post('/update/fiscal-year/status', [FiscalYearController::class, 'ajaxUpdateStatus'])->middleware('role_or_permission:Super Admin|Manage Fiscal Year')->name('update.fiscal.year.status');
-    Route::post('/update/registration/status', [InstituteHeadController::class, 'ajaxUpdateStatus'])->middleware('role_or_permission:Super Admin|Manage Institute User')->name('update.registration.status');
-    Route::get('/user/details', [InstituteHeadController::class, 'ajaxUserDetails'])->middleware('role_or_permission:Super Admin|Create Institute User')->name('user.details');
-    Route::get('/training/member/create', [TrainingMemberController::class, 'ajaxUserChange'])->middleware('role_or_permission:Super Admin|Manage Institute')->name('training.member.create');
-    Route::get('/institute/create', [InstituteController::class, 'ajaxUsersChange'])->middleware('role_or_permission:Super Admin|Manage Institute')->name('institute.create');
-    Route::post('/update/training/status', [TrainingApprovalController::class, 'ajaxUpdateStatus'])->name('update.training.status');
-    Route::post('/update/projectIdea/hod_approval', [ProjectIdeaController::class, 'hod_approval'])->name('update.projectIdea.hod_approval');
-    Route::post('/update/projectIdea/vp_approval', [ProjectIdeaController::class, 'vp_approval'])->name('update.projectIdea.vp_approval');
-    Route::post('/update/projectIdea/p_approval', [ProjectIdeaController::class, 'p_approval'])->name('update.projectIdea.p_approval');
-    Route::post('/update/projectIdea/pmu_approval', [ProjectIdeaController::class, 'pmu_approval'])->name('update.projectIdea.pmu_approval');
-    Route::post('/update/projectIdea/status', [ProjectIdeaController::class, 'ajaxUpdateStatus'])->name('update.projectIdea.status');
-    Route::post('/update/projectIdea/foreword', [ProjectIdeaController::class, 'ajaxUpdateForeword'])->name('update.projectIdea.foreword');
-    Route::post('/update/coremodule/status', [CoreModuleController::class, 'ajaxUpdateStatus'])->name('update.coremodule.status');
     Route::post('/update/backgrouond/status', [BackgroundImageController::class, 'ajaxUpdateStatus'])->name('update.backgroundImage.status');
-    Route::post('/update/technology/status', [TechnologyController::class, 'ajaxUpdateStatus'])->name('update.technology.status');
-    Route::post('/update/shift/status', [ShiftController::class, 'ajaxUpdateStatus'])->name('update.shift.status');
-    Route::post('/update/semester/status', [SemesterController::class, 'ajaxUpdateStatus'])->name('update.semester.status');
-    Route::post('/update/job/event/status', [JobEventController::class, 'ajaxUpdateStatus'])->middleware('role_or_permission:Institute Head|Manage Job Event User')->name('update.event.job.status');
-    Route::post('/update/job/event/post/status', [JobEventController::class, 'ajaxPostUpdateStatus'])->middleware('role_or_permission:Institute Head|Manage Job Event User')->name('update.event.job.post.status');
-    Route::post('/update/job/post/status', [IndustryPostController::class, 'ajaxUpdateStatus'])->middleware('role_or_permission:Industry|Institute Head|Manage Industry|Manage Industry')->name('update.job.post.status');
-    Route::post('/update/job/applicant/status', [EmployerController::class, 'ajaxUpdatejobApplicantStatus'])->middleware('role_or_permission:Industry|Manage Industry|Manage Industry')->name('update.job.applicant.status');
-    Route::post('/update/send-mail/status', [EmployerController::class, 'ajaxSendMail'])->middleware('role_or_permission:Industry|Manage Industry|Manage Industry')->name('send-mail');
 
   });
 
@@ -281,67 +258,16 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
     Route::get('/list', [DivisionController::class, 'index'])->middleware('role_or_permission:Super Admin|List Of Division')->name('list');
   });
 
-#Component
-  Route::prefix('component')->name('component.')->group(function () {
-    Route::get('/create', [ComponentController::class, 'create'])->middleware('role_or_permission:Super Admin|Create Component')->name('create');
-    Route::post('/store', [ComponentController::class, 'store'])->middleware('role_or_permission:Super Admin|Create Component|Manage Component')->name('store');
-    Route::get('/manage/{id}', [ComponentController::class, 'manage'])->middleware('role_or_permission:Super Admin|Manage Component')->name('manage');
-    Route::get('/{id}/view', [ComponentController::class, 'view'])->middleware('role_or_permission:Super Admin|View Component')->name('view');
-    Route::delete('/destroy', [ComponentController::class, 'destroy'])->middleware('role_or_permission:Super Admin|Delete Component')->name('destroy');
-    Route::get('/list', [ComponentController::class, 'index'])->middleware('role_or_permission:Super Admin|List Of Component')->name('list');
-  });
-
-  #SubComponent
-  Route::prefix('sub-component')->name('subComponent.')->group(function () {
-    Route::get('/create', [SubComponentController::class, 'create'])->middleware('role_or_permission:Super Admin|Create Sub Component')->name('create');
-    Route::post('/store', [SubComponentController::class, 'store'])->middleware('role_or_permission:Super Admin|Create Sub Component|Manage Sub Component')->name('store');
-    Route::get('/manage/{id}', [SubComponentController::class, 'manage'])->middleware('role_or_permission:Super Admin|Manage Sub Component')->name('manage');
-    Route::get('/{id}/view', [SubComponentController::class, 'view'])->middleware('role_or_permission:Super Admin|View Sub Component')->name('view');
-    Route::delete('/destroy', [SubComponentController::class, 'destroy'])->middleware('role_or_permission:Super Admin|Delete Sub Component')->name('destroy');
-    Route::get('/list', [SubComponentController::class, 'index'])->middleware('role_or_permission:Super Admin|List Of Sub Component')->name('list');
-  });
-
-  #SubsidiaryComponent
-  Route::prefix('subsidiary-component')->name('subsidiaryComponent.')->group(function () {
-    Route::get('/create', [SubsidiaryComponentController::class, 'create'])->middleware('role_or_permission:Super Admin|Create Subsidiary Component')->name('create');
-    Route::post('/store', [SubsidiaryComponentController::class, 'store'])->middleware('role_or_permission:Super Admin|Create Subsidiary Component|Manage Subsidiary Component')->name('store');
-    Route::get('/manage/{id}', [SubsidiaryComponentController::class, 'manage'])->middleware('role_or_permission:Super Admin|Manage Subsidiary Component')->name('manage');
-    Route::get('/{id}/view', [SubsidiaryComponentController::class, 'view'])->middleware('role_or_permission:Super Admin|View Subsidiary Component')->name('view');
-    Route::delete('/destroy', [SubsidiaryComponentController::class, 'destroy'])->middleware('role_or_permission:Super Admin|Delete Subsidiary Component')->name('destroy');
-    Route::get('/list', [SubsidiaryComponentController::class, 'index'])->middleware('role_or_permission:Super Admin|List Of Subsidiary Component')->name('list');
-  });
-
-  #FiscalYear
-  Route::prefix('fiscal-year')->name('fiscal.year.')->group(function () {
-    Route::get('/create', [FiscalYearController::class, 'create'])->middleware('role_or_permission:Super Admin|Create Fiscal Year')->name('create');
-    Route::post('/store', [FiscalYearController::class, 'store'])->middleware('role_or_permission:Super Admin|Create Fiscal Year|Manage Fiscal Year')->name('store');
-    Route::get('/manage/{id}', [FiscalYearController::class, 'manage'])->middleware('role_or_permission:Super Admin|Manage Fiscal Year')->name('manage');
-    Route::get('/{id}/view', [FiscalYearController::class, 'view'])->middleware('role_or_permission:Super Admin|View Fiscal Year')->name('view');
-    Route::delete('/destroy', [FiscalYearController::class, 'destroy'])->middleware('role_or_permission:Super Admin|Delete Fiscal Year')->name('destroy');
-    Route::get('/list', [FiscalYearController::class, 'index'])->middleware('role_or_permission:Super Admin|List Of Fiscal Year')->name('list');
-  });
 
 
-  #FiscalPeriod
-  Route::prefix('fiscal-period')->name('fiscalPeriod.')->group(function () {
-    Route::get('/create', [FiscalPeriodController::class, 'create'])->middleware('role_or_permission:Super Admin|Create Fiscal Period')->name('create');
-    Route::post('/store', [FiscalPeriodController::class, 'store'])->middleware('role_or_permission:Super Admin|Create Fiscal Period|Manage Fiscal Period')->name('store');
-    Route::get('/manage/{id}', [FiscalPeriodController::class, 'manage'])->middleware('role_or_permission:Super Admin|Manage Fiscal Period')->name('manage');
-    Route::get('/{id}/view', [FiscalPeriodController::class, 'view'])->middleware('role_or_permission:Super Admin|View Fiscal Period')->name('view');
-    Route::delete('/destroy', [FiscalPeriodController::class, 'destroy'])->middleware('role_or_permission:Super Admin|Delete Fiscal Period')->name('destroy');
-    Route::get('/list', [FiscalPeriodController::class, 'index'])->middleware('role_or_permission:Super Admin|List Of Fiscal Period')->name('list');
-  });
 
-  #FiscalBudget
-  Route::prefix('fiscal-budget')->name('fiscal.budget.')->group(function () {
-    Route::get('/create', [FiscalBudgetController::class, 'create'])->middleware('role_or_permission:Super Admin|Create Fiscal Budget')->name('create');
-    Route::post('/store', [FiscalBudgetController::class, 'store'])->middleware('role_or_permission:Super Admin|Create Fiscal Budget|Manage Fiscal Budget')->name('store');
-    Route::get('/manage/{id}', [FiscalBudgetController::class, 'manage'])->middleware('role_or_permission:Super Admin|Manage Fiscal Budget')->name('manage');
-    Route::get('/{id}/view', [FiscalBudgetController::class, 'view'])->middleware('role_or_permission:Super Admin|View Fiscal Budget')->name('view');
-    Route::delete('/destroy', [FiscalBudgetController::class, 'destroy'])->middleware('role_or_permission:Super Admin|Delete Fiscal Budget')->name('destroy');
-    Route::get('/list', [FiscalBudgetController::class, 'index'])->middleware('role_or_permission:Super Admin|List Of Fiscal Budget')->name('list');
 
-  });
+
+
+
+
+
+
 
 # Budget
   Route::prefix('budget')->name('budget.')->group(function () {
@@ -397,73 +323,12 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
     });
   });
 
-  #InstituteType
-  Route::prefix('institute-type')->name('institute.type.')->group(function () {
-    Route::get('/create', [InstituteTypeController::class, 'create'])->middleware('role_or_permission:Super Admin')->name('create');
-    Route::any('/store', [InstituteTypeController::class, 'store'])->middleware('role_or_permission:Super Admin')->name('store');
-    Route::delete('/destroy', [InstituteTypeController::class, 'destroy'])->middleware('role_or_permission:Super Admin')->name('destroy');
-  });
-
-  Route::get('/my-trainings', [TrainingController::class, 'myTrainings'])->name('my.trainings');
-  Route::get('/withdraw/{id}/my-training', [TrainingController::class, 'myTrainingWithdraw'])->name('my.training.withdraw');
-//    Route::get('/training/{trainingId}/file/{id}/delete', [TrainingController::class, 'trainingFileDelete'])->name('training.delete');
-
-#Training
-  Route::prefix('training')->name('training.')->group(function () {
-    Route::get('/create', [TrainingController::class, 'create'])->middleware('role_or_permission:Super Admin|Create Training')->name('create');
-    Route::post('/store', [TrainingController::class, 'store'])->middleware('role_or_permission:Super Admin|Create Training|Manage Training')->name('store');
-    Route::get('/manage/{id}', [TrainingController::class, 'manage'])->middleware('role_or_permission:Super Admin|Manage Training')->name('manage');
-    Route::get('/make/completed/{id}', [TrainingController::class, 'makeCompleted'])->middleware('role_or_permission:Super Admin|Manage Training')->name('make.completed');
-    Route::get('/{id}/view', [TrainingController::class, 'view'])->middleware('role_or_permission:Super Admin|View Training')->name('view');
-    Route::delete('/destroy', [TrainingController::class, 'destroy'])->middleware('role_or_permission:Super Admin|Delete Training')->name('destroy');
-    Route::get('/list', [TrainingController::class, 'index'])->middleware('role_or_permission:Super Admin|List Of Training')->name('list');
 
 
-    Route::prefix('/apply')->name('apply.')->middleware('role_or_permission:Institute Head')->group(function () {
-      Route::get('/list', [TrainingApprovalController::class, 'applyListOfInstituteHead'])->name('list');
-      Route::get('/{id}/details', [TrainingApprovalController::class, 'applyDetailsOfInstituteHead'])->name('details');
-      Route::post('/approval/members/update', [TrainingApprovalController::class, 'approvalMemberListUpdateInstituteHead'])->name('member.list.update');
-      Route::get('/approval/{id}/{status}', [TrainingApprovalController::class, 'approvalMemberUpdateInstituteHead'])->name('member.update');
-    });
-
-
-    Route::prefix('/approval')->name('approval.')->middleware('role_or_permission:Super Admin|Batch Creator|Batch Approver')->group(function () {
-      Route::get('/list', [TrainingApprovalController::class, 'approval'])->name('list');
-      Route::get('/{id}/member-list', [TrainingApprovalController::class, 'approvalMemberList'])->name('member.list');
-      Route::post('/members/update', [TrainingApprovalController::class, 'approvalMemberListUpdate'])->name('member.list.update');
-      Route::post('/{id}/members/add', [TrainingApprovalController::class, 'addMemeberToTraining'])->middleware('role_or_permission:Super Admin|Batch Approver')->name('member.add');
-      Route::get('/{id}/{status}', [TrainingApprovalController::class, 'approvalMemberUpdate'])->name('member.update');
-      Route::post('/replace', [TrainingApprovalController::class, 'replace'])->name('replace');
-    });
-
-    #TrainingMember
-    Route::prefix('/{training_id}/member')->name('member.')->group(function () {
-      Route::get('/create', [TrainingMemberController::class, 'create'])->middleware('role_or_permission:Super Admin|Create Training Member')->name('create');
-      Route::post('/store', [TrainingMemberController::class, 'store'])->middleware('role_or_permission:Super Admin|Create Training Member|Manage Training Member')->name('store');
-      Route::get('/manage/{id}', [TrainingMemberController::class, 'manage'])->middleware('role_or_permission:Super Admin|Manage Training Member')->name('manage');
-      Route::get('/{id}/view', [TrainingMemberController::class, 'view'])->middleware('role_or_permission:Super Admin|View Training Member')->name('view');
-      Route::delete('/destroy', [TrainingMemberController::class, 'destroy'])->middleware('role_or_permission:Super Admin|Delete Training Member')->name('destroy');
-      Route::get('/list', [TrainingMemberController::class, 'index'])->middleware('role_or_permission:Super Admin|List Of Training Member')->name('list');
-      Route::post('/import', [TrainingMemberController::class, 'importMember'])->middleware('role_or_permission:Super Admin|List Of Training Member')->name('import');
-    });
-
-
-  });
 
 
 #Job Event
   Route::prefix('event')->name('event.')->group(function () {
-    Route::prefix('/job')->name('job.')->group(function () {
-//      Route::get('/manage', function () { return view('admin.event.job.manage'); })->name('manage');
-//      Route::get('/applied-fair-list', function () { return view('admin.Job.applied_fair_list'); })->name('applied_fair_list');
-      Route::get('/applied-fair-list', [IndustryPostController::class, 'fairList'])->middleware('role_or_permission:Industry|List Of Industry Post')->name('applied_fair_list');
-      Route::get('/create', [JobEventController::class, 'create'])->middleware('role_or_permission:Institute Head|Create Job Event')->name('create');
-      Route::post('/store', [JobEventController::class, 'store'])->middleware('role_or_permission:Institute Head|Create Job Event|Manage Job Event')->name('store');
-      Route::get('/manage/{id}', [JobEventController::class, 'manage'])->middleware('role_or_permission:Institute Head|Industry|Manage Job Event')->name('manage');
-      Route::delete('/destroy', [JobEventController::class, 'destroy'])->middleware('role_or_permission:Institute Head|Delete Job Event')->name('destroy');
-      Route::get('/list', [JobEventController::class, 'index'])->middleware('role_or_permission:Institute Head|List Of Job Event')->name('list');
-      Route::get('/{id}/participant/industry/', [IndustryPostController::class, 'fairAttendedIndustriesList'])->middleware('role_or_permission:Institute Head|List Of Job Event')->name('participant.industry.list');
-    });
     Route::prefix('/stall')->name('stall.')->group(function () {
       Route::get('/create', function () { return view('admin.event.stall.create'); })->name('create');
       Route::get('/list', function () { return view('admin.event.stall.list'); })->name('list');
@@ -475,21 +340,6 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
     });
   });
 
-//  #Job Event
-//  Route::prefix('fair')->name('fair.')->group(function () {
-//    Route::prefix('/organizer')->name('organizer.')->group(function () {
-//      Route::get('/create', function () { return view('admin.event.job.create'); })->name('create');
-//      Route::get('/list', function () { return view('admin.event.job.list'); })->name('list');
-//    });
-//    Route::prefix('/industry')->name('industry.')->group(function () {
-//      Route::get('/create', function () { return view('admin.event.stall.create'); })->name('create');
-//      Route::get('/list', function () { return view('admin.event.stall.list'); })->name('list');
-//    });
-//    Route::prefix('/student')->name('st.')->group(function () {
-//      Route::get('/create', function () { return view('admin.event.stall.create'); })->name('create');
-//      Route::get('/list', function () { return view('admin.event.stall.list'); })->name('list');
-//    });
-//  });
 
 #District
   Route::prefix('district')->name('district.')->group(function () {
@@ -522,8 +372,6 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
     Route::delete('/destroy', [UserController::class, 'destroy'])->middleware('role_or_permission:Super Admin|Delete User')->name('destroy');
     Route::get('/list', [UserController::class, 'index'])->middleware('role_or_permission:Super Admin|List Of User')->name('list');
 
-    #Education
-    Route::post('education/store', [TraineeController::class, 'employeeStore'])->middleware('role_or_permission:Super Admin|update_education')->name('education.store');
   });
 
 
@@ -542,80 +390,6 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
   Route::match(['get', 'post'], '/permission/manage', [PermissionController::class, 'managePermission'])->middleware('role_or_permission:Super Admin|Manage Permission')->name('permission.manage');
 
 //  Route::get('trainee/certificate/create', [CertificateController::class, 'create'])->middleware('role_or_permission:Super Admin|Create Certificate')->name('trainee.certificate.create');
-
-  Route::prefix('trainee')->name('trainee.')->group(function () {
-    Route::get('/view', [TraineeController::class, 'view'])->middleware('role_or_permission:Super Admin|update_trainee')->name('view');
-    Route::post('/update', [TraineeController::class, 'update'])->middleware('role_or_permission:Super Admin|update_trainee')->name('update');
-  });
-  #Education
-  Route::prefix('education')->name('education.')->group(function () {
-    Route::get('/create', [EducationController::class, 'create'])->middleware('role_or_permission:Super Admin|Create Education')->name('create');
-    Route::post('/store', [EducationController::class, 'store'])->middleware('role_or_permission:Super Admin|Create Education|Manage Education')->name('store');
-    Route::get('/manage/{id}', [EducationController::class, 'manage'])->middleware('role_or_permission:Super Admin|Manage Education')->name('manage');
-    Route::delete('/destroy', [EducationController::class, 'destroy'])->middleware('role_or_permission:Super Admin|Delete Education')->name('destroy');
-    Route::get('/list', [EducationController::class, 'index'])->middleware('role_or_permission:Super Admin|List Of Education')->name('list');
-  });
-
-  #Certificate
-  Route::prefix('certificate')->name('certificate.')->group(function () {
-    Route::get('/create', [CertificateController::class, 'create'])->middleware('role_or_permission:Super Admin|Create Certificate')->name('create');
-    Route::post('/store', [CertificateController::class, 'store'])->middleware('role_or_permission:Super Admin|Create Certificate|Manage Certificate')->name('store');
-    Route::get('/manage/{id}', [CertificateController::class, 'manage'])->middleware('role_or_permission:Super Admin|Manage Certificate')->name('manage');
-    Route::delete('/destroy', [CertificateController::class, 'destroy'])->middleware('role_or_permission:Super Admin|Delete Certificate')->name('destroy');
-    Route::get('/list', [CertificateController::class, 'index'])->middleware('role_or_permission:Super Admin|List Of Certificate')->name('list');
-  });
-
-  #Job Experience
-  Route::prefix('job/experience')->name('job.experience.')->group(function () {
-    Route::get('/create', [JobExperiencController::class, 'create'])->middleware('role_or_permission:Super Admin|Create Job Experience')->name('create');
-    Route::post('/store', [JobExperiencController::class, 'store'])->middleware('role_or_permission:Super Admin|Create Job Experience|Manage Job Experience')->name('store');
-    Route::get('/manage/{id}', [JobExperiencController::class, 'manage'])->middleware('role_or_permission:Super Admin|Manage Job Experience')->name('manage');
-    Route::delete('/destroy', [JobExperiencController::class, 'destroy'])->middleware('role_or_permission:Super Admin|Delete Job Experience')->name('destroy');
-    Route::get('/list', [JobExperiencController::class, 'index'])->middleware('role_or_permission:Super Admin|List Of Job Experience')->name('list');
-  });
-
-  #Institute Head
-  Route::prefix('institute/member/')->name('institute.head.')->group(function () {
-    Route::get('/pending', [InstituteHeadController::class, 'registration'])->middleware('role_or_permission:Super Admin|Manage Institute User')->name('registration');
-    Route::get('/approved', [InstituteHeadController::class, 'approved'])->middleware('role_or_permission:Super Admin|Manage Institute User')->name('approved');
-    Route::get('/rejected', [InstituteHeadController::class, 'rejected'])->middleware('role_or_permission:Super Admin|Manage Institute User')->name('rejected');
-    Route::get('/create', [InstituteHeadController::class, 'create'])->middleware('role_or_permission:Super Admin|Create Institute User|Manage Institute User')->name('create');
-    Route::get('/manage/{id}', [InstituteHeadController::class, 'manage'])->middleware('role_or_permission:Super Admin|Manage Institute User|Manage Institute User')->name('manage');
-    Route::delete('/destroy', [InstituteHeadController::class, 'destroy'])->middleware('role_or_permission:Super Admin|Delete Institute User|Manage Institute User')->name('destroy');
-    Route::get('/list', [InstituteHeadController::class, 'index'])->middleware('role_or_permission:Super Admin|List Of Institute User|Manage Institute User')->name('list');
-
-    Route::prefix('student')->name('student.')->group(function () {
-      Route::get('/create', [InstituteHeadController::class, 'createStudent'])->middleware('role_or_permission:Super Admin|Create Institute User|Manage Institute User')->name('create');
-      Route::post('/store', [InstituteHeadController::class, 'storeStudent'])->middleware('role_or_permission:Super Admin|Create Institute User|Manage Institute User|Manage Institute User')->name('store');
-      Route::get('/manage/{id}', [InstituteHeadController::class, 'manageStudent'])->middleware('role_or_permission:Super Admin|Manage Institute User|Manage Institute User')->name('manage');
-      Route::get('/list', [InstituteHeadController::class, 'students'])->middleware('role_or_permission:Super Admin|Industry|List Of Institute User|Manage Institute User')->name('list');
-      Route::get('/graduate-profile/{id}', [InstituteHeadController::class, 'profile'])->middleware('role_or_permission:Super Admin|Industry|List Of Institute User|Manage Institute User')->name('profile');
-    });
-    Route::prefix('employee')->name('employee.')->group(function () {
-      Route::get('/create', [InstituteHeadController::class, 'createEmployee'])->middleware('role_or_permission:Super Admin|Create Institute User|Manage Institute User')->name('create');
-      Route::post('/store', [InstituteHeadController::class, 'storeEmployee'])->middleware('role_or_permission:Super Admin|Create Institute User|Manage Institute User|Manage Institute User')->name('store');
-      Route::get('/manage/{id}', [InstituteHeadController::class, 'manageEmployee'])->middleware('role_or_permission:Super Admin|Manage Institute User|Manage Institute User')->name('manage');
-      Route::get('/list', [InstituteHeadController::class, 'employeeList'])->middleware('role_or_permission:Super Admin|List Of Institute User|Manage Institute User')->name('list');
-    });
-
-    Route::prefix('teacher')->name('teacher.')->group(function () {
-      Route::get('/create', [InstituteHeadController::class, 'createTeacher'])->middleware('role_or_permission:Super Admin|Create Institute User|Manage Institute User')->name('create');
-      Route::post('/create', [InstituteHeadController::class, 'storeTeacher'])->middleware('role_or_permission:Super Admin|Create Institute User|Manage Institute User')->name('create');
-      Route::get('/list', [InstituteHeadController::class, 'teachers'])->middleware('role_or_permission:Super Admin|List Of Institute User|Manage Institute User')->name('list');
-    });
-
-    Route::prefix('staff')->name('staff.')->group(function () {
-      Route::get('/create', [InstituteHeadController::class, 'createStaff'])->middleware('role_or_permission:Super Admin|Create Institute User|Manage Institute User')->name('create');
-      Route::post('/create', [InstituteHeadController::class, 'storeStaff'])->middleware('role_or_permission:Super Admin|Create Institute User|Manage Institute User')->name('create');
-      Route::get('/list', [InstituteHeadController::class, 'staffs'])->middleware('role_or_permission:Super Admin|List Of Institute User|Manage Institute User')->name('list');
-    });
-
-    Route::prefix('officer')->name('officer.')->group(function () {
-      Route::get('/create', [InstituteHeadController::class, 'createOfficer'])->middleware('role_or_permission:Super Admin|Create Institute User|Manage Institute User')->name('create');
-      Route::post('/create', [InstituteHeadController::class, 'storeOfficer'])->middleware('role_or_permission:Super Admin|Create Institute User|Manage Institute User')->name('create');
-      Route::get('/list', [InstituteHeadController::class, 'officers'])->middleware('role_or_permission:Super Admin|List Of Institute User|Manage Institute User')->name('list');
-    });
-  });
 
   #Voucher Type
   Route::prefix('voucher-type')->name('voucher.type.')->group(function () {
@@ -642,97 +416,14 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
     Route::get('/{id}/view', [AdminVoucherController::class, 'view'])->middleware('role_or_permission:Super Admin')->name('view');
   });
 
-  #Report
-  Route::prefix('report')->name('report.')->group(function () {
-    Route::get('/subsidiary-component-code-wise', [ReportController::class, 'subsidiaryComponentCodeWiseReport'])->middleware('role_or_permission:Super Admin|Subsidiary Component code wise')->name('subsidiary.component.code.wise');
-    Route::get('/subsidiary-component-quater-wise', [ReportController::class, 'subsidiaryComponentQuarterWiseReport'])->middleware('role_or_permission:Super Admin|Subsidiary Component quarter wise')->name('subsidiary.component.quarter.wise');
-  });
 
-#Training Type
-  Route::prefix('trainingType')->name('trainingType.')->group(function () {
-    Route::get('/create', [TrainingTypeController::class, 'create'])->middleware('role_or_permission:Super Admin|Create Training Type')->name('create');
-    Route::post('/store', [TrainingTypeController::class, 'store'])->middleware('role_or_permission:Super Admin|Create Training Type|Manage Training Type')->name('store');
-    Route::delete('/destroy', [TrainingTypeController::class, 'destroy'])->middleware('role_or_permission:Super Admin|Delete Training Type')->name('destroy');
-    // Route::get('/manage/{id}', [TrainingTypeController::class, 'manage'])->middleware('role_or_permission:Super Admin|Manage Training Type')->name('manage');
-    // Route::get('/{id}/view', [TrainingTypeController::class, 'view'])->middleware('role_or_permission:Super Admin|View Training Type')->name('view');
-
-    // Route::get('/list', [TrainingTypeController::class, 'index'])->middleware('role_or_permission:Super Admin|List Of Training Type')->name('list');
-  });
-
-#Project Idea
-  Route::prefix('projectIdea')->name('projectIdea.')->group(function () {
-    Route::get('/create', [ProjectIdeaController::class, 'create'])->middleware('role_or_permission:Super Admin|Create Project Idea')->name('create');
-    Route::post('/store', [ProjectIdeaController::class, 'store'])->middleware('role_or_permission:Super Admin|Create Project Idea|Manage Project Idea')->name('store');
-    Route::get('/manage/{id}', [ProjectIdeaController::class, 'manage'])->middleware('role_or_permission:Super Admin|Manage Project Idea')->name('manage');
-    Route::get('/{id}/view', [ProjectIdeaController::class, 'view'])->middleware('role_or_permission:Super Admin|View Project Idea')->name('view');
-    Route::delete('/destroy', [ProjectIdeaController::class, 'destroy'])->middleware('role_or_permission:Super Admin|Delete Project Idea')->name('destroy');
-    Route::get('/{project_idea_id}/file/destroy/{id}', [ProjectIdeaController::class, 'fileDestroy'])->middleware('role_or_permission:Super Admin|Delete Project Idea')->name('file.delete');
-    Route::get('/list', [ProjectIdeaController::class, 'index'])->middleware('role_or_permission:Super Admin|List Of Project Idea')->name('list');
-    Route::get('/mentor/list', [ProjectIdeaController::class, 'indexMentor'])->middleware('role_or_permission:Super Admin|List Of Project Idea')->name('list.mentor');
-    Route::get('/hod/list', [ProjectIdeaController::class, 'indexHod'])->middleware('role_or_permission:Super Admin|List Of Project Idea')->name('list.hod');
-    Route::get('/head/list', [ProjectIdeaController::class, 'indexHead'])->middleware('role_or_permission:Super Admin|List Of Project Idea')->name('list.head');
-  });
-
-#Project Idea
-//  Route::prefix('projectIdea')->name('projectIdea.')->group(function () {
-//    Route::get('/create', [ProjectIdeaController::class, 'create'])->name('create');
-//    Route::post('/store', [ProjectIdeaController::class, 'store'])->name('store');
-//    Route::get('/manage/{id}', [ProjectIdeaController::class, 'manage'])->name('manage');
-//    Route::get('/{id}/view', [ProjectIdeaController::class, 'view'])->name('view');
-//    Route::delete('/destroy', [ProjectIdeaController::class, 'destroy'])->name('destroy');
-//    Route::get('/{project_idea_id}/file/destroy/{id}', [ProjectIdeaController::class, 'fileDestroy'])->name('file.delete');
-//    Route::get('/list', [ProjectIdeaController::class, 'index'])->name('list');
-//  });
-
-
-  #Core Modules
-  Route::prefix('coremodule')->name('coremodule.')->group(function () {
-    Route::get('/create', [CoreModuleController::class, 'create'])->name('create');
-    Route::post('/store', [CoreModuleController::class, 'store'])->name('store');
-    Route::get('/manage/{id}', [CoreModuleController::class, 'manage'])->name('manage');
-    Route::get('/{id}/view', [CoreModuleController::class, 'view'])->name('view');
-    Route::delete('/destroy', [CoreModuleController::class, 'destroy'])->name('destroy');
-    Route::get('/list', [CoreModuleController::class, 'index'])->name('list');
-  });
 
   #Background Image
   Route::match(['get', 'post'], '/background-image', [BackgroundImageController::class, 'createOrIndex'])->name('backgroundImage');
   Route::delete('/background-image/destroy', [BackgroundImageController::class, 'destroy'])->name('backgroundImage.destroy');
 
-  Route::get('/eligibility/forms', [IdgController::class, 'index'])->name('eligibility.forms');
-
-  // technology
-  Route::prefix('/technology')->name('technology.')->group(function () {
-    Route::get('/create', [TechnologyController::class, 'create'])->middleware('role_or_permission:Institute Head|Create Technology')->name('create');
-    Route::post('/store', [TechnologyController::class, 'store'])->middleware('role_or_permission:Institute Head|Create Technology|Manage Technology')->name('store');
-    Route::delete('/destroy', [TechnologyController::class, 'destroy'])->middleware('role_or_permission:Institute Head|Delete Technology')->name('destroy');
-  });
-  // shift
-  Route::prefix('/shift')->name('shift.')->group(function () {
-    Route::get('/create', [ShiftController::class, 'create'])->middleware('role_or_permission:Institute Head|Create Shift')->name('create');
-    Route::post('/store', [ShiftController::class, 'store'])->middleware('role_or_permission:Institute Head|Create Shift|Manage Shift')->name('store');
-    Route::delete('/destroy', [ShiftController::class, 'destroy'])->middleware('role_or_permission:Institute Head|Delete Shift')->name('destroy');
-  });
-  // semester
-  Route::prefix('/semester')->name('semester.')->group(function () {
-    Route::get('/create', [SemesterController::class, 'create'])->middleware('role_or_permission:Institute Head|Create Semester')->name('create');
-    Route::post('/store', [SemesterController::class, 'store'])->middleware('role_or_permission:Institute Head|Create Semester|Manage Semester')->name('store');
-    Route::delete('/destroy', [SemesterController::class, 'destroy'])->middleware('role_or_permission:Institute Head|Delete Semester')->name('destroy');
-  });
-
   #Job Event
   Route::prefix('job')->name('job.')->group(function () {
-    Route::prefix('/post')->name('post.')->group(function () {
-//      Route::get('/create', function () {return view('admin.job.post.create');})->name('create');
-      Route::get('/create', [IndustryPostController::class, 'create'])->middleware('role_or_permission:Industry|Institute Head|Create Industry Post')->name('create');
-      Route::get('/create/{id}', [IndustryPostController::class, 'createEventPost'])->middleware('role_or_permission:Industry|Institute Head|Create Industry Post')->name('create.event');
-      Route::post('/store', [IndustryPostController::class, 'store'])->middleware('role_or_permission:Industry|Institute Head|Create Industry Post|Manage Industry Post')->name('store');
-      Route::get('/manage/{id}', [IndustryPostController::class, 'manage'])->middleware('role_or_permission:Industry|Institute Head|Manage Industry Post')->name('manage');
-      Route::delete('/destroy', [IndustryPostController::class, 'destroy'])->middleware('role_or_permission:Industry|Institute Head|Delete Industry Post')->name('destroy');
-      Route::get('/list', [IndustryPostController::class, 'index'])->middleware('role_or_permission:Industry|Institute Head|List Of Industry Post')->name('list');
-
-//      Route::get('/list', function () {return view('admin.event.stall.list');})->name('list');
-    });
     Route::prefix('/application')->name('application')->group(function () {
       Route::get('/list', function () {
         return view('admin.Job.application.list');
@@ -740,39 +431,16 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
     });
   });
 
-  Route::prefix('graduate')->name('graduate.')->group(function () {
-    Route::prefix('/job')->name('job.')->group(function () {
-      Route::get('/list', [GraduateController::class, 'appliedList'])->middleware('role_or_permission:Student')->name('list');
-    });
-  });
 
-  Route::prefix('employer')->name('employer.')->group(function () {
-    Route::prefix('/application')->name('application.')->group(function () {
-      Route::get('/list/{id}', [EmployerController::class, 'applicationList'])->middleware('role_or_permission:Industry')->name('list');
-    });
-  });
 
   Route::prefix('organizer')->name('organizer.')->group(function () {
-    Route::prefix('/post')->name('post.')->group(function () {
-//      Route::get('/create', function () { return view('admin.job.post.create'); })->name('create');
-//      Route::get('/list', function () { return view('admin.organizer.post');})->name('list');
-      Route::get('/list/{id}', [JobEventController::class, 'posts'])->middleware('role_or_permission:Institute Head|List Of Job Event')->name('list');
-//      Route::get('/list', [JobEventController::class, 'posts'])->middleware('role_or_permission:Institute Head|List Of Job Event')->name('list');
-    });
     Route::prefix('/guest')->name('guest.')->group(function () {
       Route::get('/list', function () {
         return view('admin.organizer.guest');
       })->name('list');
 
     });
-    Route::prefix('/applicant')->name('applicant.')->group(function (){
-      Route::get('/list', function () { return view('admin.organizer.applicant'); })->name('list');
-    });
   });
-
-  Route::get('/resume', [\App\Http\Controllers\ResumeController::class, 'registrationInfo'])->middleware('role_or_permission:Super Admin|Student')->name('resume');
-  Route::post('/resume/update', [\App\Http\Controllers\ResumeController::class, 'registrationInfoUpdate'])->middleware('role_or_permission:Super Admin|Student')->name('resume.update');
-
 });
 
 
@@ -787,23 +455,6 @@ Route::prefix('/institute-trainings')->name('institute.trainings.')->group(funct
 });
 Route::get('/institute/training-list', [SiteController::class, 'indexTrainingList'])->name('ajax.institute.training-list');
 
-// Eligibility Criteria for RPL Grant
-Route::prefix('/eligibility-rpl')->name('eligibility.rpl.')->group(function () {
-
-  Route::match(['get', 'post'], '/without-score', [RplController::class, 'withoutScore'])->name('without.score');
-  Route::get('/without-score/{id}', [RplController::class, 'withoutScorePdf'])->name('without.score.pdf');
-  Route::get('/without-score/{formId}/file/{id}/delete', [RplController::class, 'formFileDelete'])->name('without.score.file.delete');
-  Route::delete('/without-score/delete/ayo', [RplController::class, 'withoutScoreDeleteAyo'])->name('without.score.delete.ayo');
-  Route::delete('/without-score/delete/ooi', [RplController::class, 'withoutScoreDeleteOoi'])->name('without.score.delete.ooi');
-  Route::match(['get', 'post'], '/create-store', [RplController::class, 'createOrStore'])->name('createOrStore');
-});
-
-
-Route::match(['get', 'post'], '/eligibility-short-course', [ShortCourseController::class, 'createOrStore'])->middleware('auth')->name('eligibility.course.createOrStore');
-Route::get('/eligibility-short-course/{id}', [ShortCourseController::class, 'pdf'])->name('eligibility.course.pdf');
-Route::get('/eligibility-short-course/{formId}/file/{id}/delete', [ShortCourseController::class, 'formFileDelete'])->name('eligibility.course.file.delete');
-Route::delete('/short-course/delete/ayo', [ShortCourseController::class, 'shortCourseDeleteAco'])->name('eligibility.short.course.delete.aco');
-Route::delete('/short-course/delete/coi', [ShortCourseController::class, 'shortCourseDeleteCoi'])->name('eligibility.short.course.delete.coi');
 
 
 // event balde
