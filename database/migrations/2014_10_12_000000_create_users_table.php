@@ -27,11 +27,6 @@ return new class extends Migration
             $table->string('phone')->unique();
             $table->string('nid')->nullable()->unique();
             $table->string('dob')->nullable();
-            $table->string('alt_phone')->nullable();
-            $table->unsignedBigInteger('division_id')->nullable();
-            $table->unsignedBigInteger('district_id')->nullable();
-            $table->unsignedBigInteger('upazila_id')->nullable();
-            $table->unsignedBigInteger('institute_id')->nullable();
             $table->string('address')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
