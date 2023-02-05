@@ -20,16 +20,16 @@
         <form class="form-horizontal" action="{{ route('login')}}" method="post">
           @csrf
           <div class="form-group">
-            <label class="form-label" for="email">Email</label>
+            <label class="form-label" for="text">Login ID</label>
             <div class="d-flex">
-              <input type="email" name="email" id="email" placeholder="Enter Your email"
-                     class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" required>
+              <input type="username" name="username" id="username" placeholder="Enter Your username"
+                     class="form-control @error('username') is-invalid @enderror" value="{{ old('username') }}" required>
               <span class="mt-1 "><i class="fa fa-duotone fa-envelope icon login-icon"></i></span>
             </div>
 
             <span class="spin"></span>
-            @error('email')
-            <strong class="text-danger">{{ $errors->first('email') }}</strong>
+            @error('username')
+            <strong class="text-danger">{{ $errors->first('username') }}</strong>
             @enderror
           </div>
 

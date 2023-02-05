@@ -343,12 +343,12 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
 
 #District
   Route::prefix('district')->name('district.')->group(function () {
-    Route::get('/create', [DistrictController::class, 'create'])->middleware('role_or_permission:Super Admin|Create District')->name('create');
-    Route::post('/store', [DistrictController::class, 'store'])->middleware('role_or_permission:Super Admin|Create District|Manage District')->name('store');
-    Route::get('/manage/{id}', [DistrictController::class, 'manage'])->middleware('role_or_permission:Super Admin|Manage District')->name('manage');
-    Route::get('/{id}/view', [DistrictController::class, 'view'])->middleware('role_or_permission:Super Admin|View District')->name('view');
-    Route::delete('/destroy', [DistrictController::class, 'destroy'])->middleware('role_or_permission:Super Admin|Delete District')->name('destroy');
-    Route::get('/list', [DistrictController::class, 'index'])->middleware('role_or_permission:Super Admin|List Of District')->name('list');
+    Route::get('/create', [DistrictController::class, 'create'])->middleware('role_or_permission:Super Admin|Sub Agent|Create District')->name('create');
+    Route::post('/store', [DistrictController::class, 'store'])->middleware('role_or_permission:Super Admin|Sub Agent|Create District|Manage District')->name('store');
+    Route::get('/manage/{id}', [DistrictController::class, 'manage'])->middleware('role_or_permission:Super Admin|Sub Agent|Manage District')->name('manage');
+    Route::get('/{id}/view', [DistrictController::class, 'view'])->middleware('role_or_permission:Super Admin|Sub Agent|View District')->name('view');
+    Route::delete('/destroy', [DistrictController::class, 'destroy'])->middleware('role_or_permission:Super Admin|Sub Agent|Delete District')->name('destroy');
+    Route::get('/list', [DistrictController::class, 'index'])->middleware('role_or_permission:Super Admin|Sub Agent|List Of District')->name('list');
   });
 
 
@@ -365,12 +365,12 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
 
 #Users
   Route::prefix('user')->name('user.')->group(function () {
-    Route::get('/create', [UserController::class, 'create'])->middleware('role_or_permission:Super Admin|Create User')->name('create');
-    Route::post('/store', [UserController::class, 'store'])->middleware('role_or_permission:Super Admin|Create User|Manage User')->name('store');
-    Route::get('/manage/{id}', [UserController::class, 'manage'])->middleware('role_or_permission:Super Admin|Manage User')->name('manage');
-    Route::get('/{id}/view', [UserController::class, 'view'])->middleware('role_or_permission:Super Admin|View User')->name('view');
-    Route::delete('/destroy', [UserController::class, 'destroy'])->middleware('role_or_permission:Super Admin|Delete User')->name('destroy');
-    Route::get('/list', [UserController::class, 'index'])->middleware('role_or_permission:Super Admin|List Of User')->name('list');
+    Route::get('/create', [UserController::class, 'create'])->middleware('role_or_permission:Super Admin|Agent|Create User')->name('create');
+    Route::post('/store', [UserController::class, 'store'])->middleware('role_or_permission:Super Admin|Agent|Create User|Manage User')->name('store');
+    Route::get('/manage/{id}', [UserController::class, 'manage'])->middleware('role_or_permission:Super Admin|Agent|Manage User')->name('manage');
+    Route::get('/{id}/view', [UserController::class, 'view'])->middleware('role_or_permission:Super Admin|Agent|View User')->name('view');
+    Route::delete('/destroy', [UserController::class, 'destroy'])->middleware('role_or_permission:Super Admin|Agent|Delete User')->name('destroy');
+    Route::get('/list', [UserController::class, 'index'])->middleware('role_or_permission:Super Admin|Agent|List Of User')->name('list');
 
   });
 

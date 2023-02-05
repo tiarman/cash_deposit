@@ -27,8 +27,8 @@ class RoleSeeder extends Seeder {
 
 
     $superAdmin->givePermissionTo(Permission::all());
-    $agent->givePermissionTo(Permission::all());
-    $subagent->givePermissionTo(Permission::all());
+    // $agent->givePermissionTo(Permission::all());
+    // $subagent->givePermissionTo(Permission::all());
 
   }
 }

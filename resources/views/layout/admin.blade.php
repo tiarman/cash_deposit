@@ -92,15 +92,15 @@
             </a>
           </li>
 
-            @if(\App\Helper\CustomHelper::canView('Create User|Manage User|Delete User|View User|List Of User', 'Super Admin'))
+            @if(\App\Helper\CustomHelper::canView('Create User|Manage User|Delete User|View User|List Of User', 'Super Admin|Agent'))
                 <li class="has_sub">
-                    <a class="waves-effect"><i class="mdi mdi-account-multiple"></i><span> Agent <span
+                    <a class="waves-effect"><i class="mdi mdi-account-multiple"></i><span> Agent/Sub Agent <span
                                 class="pull-right"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                     <ul class="list-unstyled">
-                        @if(\App\Helper\CustomHelper::canView('Create User', 'Super Admin'))
+                        @if(\App\Helper\CustomHelper::canView('Create User', 'Super Admin|Agent'))
                             <li><a href="{{ route('admin.user.create') }}">Create new</a></li>
                         @endif
-                        @if(\App\Helper\CustomHelper::canView('Manage User|Delete User|View User|List Of User', 'Super Admin'))
+                        @if(\App\Helper\CustomHelper::canView('Manage User|Delete User|View User|List Of User', 'Super Admin|Agent'))
                             <li><a href="{{ route('admin.user.list') }}">List of Agent</a></li>
                         @endif
                     </ul>
@@ -169,15 +169,15 @@
           @endif
             {{--end event manage module --}}
 
-          @if(\App\Helper\CustomHelper::canView('Create District|Manage District|Delete District|View District|List Of District', 'Super Admin'))
+          @if(\App\Helper\CustomHelper::canView('Create District|Manage District|Delete District|View District|List Of District', 'Super Admin|Sub Agent'))
             <li class="has_sub">
               <a class="waves-effect"><i class="mdi mdi-houzz"></i><span> District <span
                     class="pull-right"><i class="mdi mdi-chevron-right"></i></span> </span></a>
               <ul class="list-unstyled">
-                @if(\App\Helper\CustomHelper::canView('Create District', 'Super Admin'))
+                @if(\App\Helper\CustomHelper::canView('Create District', 'Super Admin|Sub Agent'))
                   <li><a href="{{ route('admin.district.create') }}">Create new</a></li>
                 @endif
-                @if(\App\Helper\CustomHelper::canView('Manage District|Delete District|View District|List Of District', 'Super Admin'))
+                @if(\App\Helper\CustomHelper::canView('Manage District|Delete District|View District|List Of District', 'Super Admin|Sub Agent'))
                   <li><a href="{{ route('admin.district.list') }}">List of Districts</a></li>
                 @endif
               </ul>
@@ -201,7 +201,7 @@
             </li>
           @endif
 
-          @if(\App\Helper\CustomHelper::canView('Manage Permission', 'Institute Head'))
+          @if(\App\Helper\CustomHelper::canView('Manage Permission', 'Super Admin'))
             <li><a href="{{ route('admin.backgroundImage') }}" class="waves-effect">
                 <i class="mdi mdi-image-album"></i>
                 <span>Login Background Slider</span>

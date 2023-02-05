@@ -60,7 +60,7 @@ class UserController extends Controller {
 
 
   public function store(Request $request) {
-    return auth()->id();
+    // return auth()->id();
     $message = '<strong>Congratulations!!!</strong> User successfully';
     $rules = [
       'name' => 'required|string',
