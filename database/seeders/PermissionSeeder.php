@@ -62,6 +62,28 @@ class PermissionSeeder extends Seeder {
       'name' => 'View Role'
     ]);
 
+      //      Sub Agent
+      Permission::create([
+          'type' => 'Sub Agent',
+          'name' => 'List Of Sub Agent'
+      ]);
+      Permission::create([
+          'type' => 'Sub Agent',
+          'name' => 'Create Sub Agent'
+      ]);
+      Permission::create([
+          'type' => 'Sub Agent',
+          'name' => 'Manage Sub Agent'
+      ]);
+      Permission::create([
+          'type' => 'Sub Agent',
+          'name' => 'Delete Sub Agent'
+      ]);
+      Permission::create([
+          'type' => 'Sub Agent',
+          'name' => 'View Sub Agent'
+      ]);
+
     //      Event
     Permission::create([
       'type' => 'Event',
