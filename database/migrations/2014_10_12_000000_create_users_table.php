@@ -18,6 +18,7 @@ return new class extends Migration
             $table->id();
             $table->string('image')->nullable();
             $table->string('name_en')->nullable();
+            $table->unsignedBigInteger('agent_id')->nullable();
             $table->string('username')->nullable()->unique();
             $table->string('father_name')->nullable();
             $table->string('mother_name')->nullable();
@@ -27,11 +28,6 @@ return new class extends Migration
             $table->string('phone')->unique();
             $table->string('nid')->nullable()->unique();
             $table->string('dob')->nullable();
-            $table->string('alt_phone')->nullable();
-            $table->unsignedBigInteger('division_id')->nullable();
-            $table->unsignedBigInteger('district_id')->nullable();
-            $table->unsignedBigInteger('upazila_id')->nullable();
-            $table->unsignedBigInteger('institute_id')->nullable();
             $table->string('address')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

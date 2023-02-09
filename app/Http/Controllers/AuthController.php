@@ -33,11 +33,11 @@ class AuthController extends Controller {
   public function login(Request $request) {
     if ($request->isMethod('POST')) {
       $request->validate([
-        'email' => 'required|email',
+        'username' => 'required|string',
         'password' => 'required|string|min:' . User::$minimumPasswordLength
       ]);
 
-      $credential = $request->only('email', 'password');
+      $credential = $request->only('username', 'password');
 
       if (Auth::attempt($credential)) {
         if (\auth()->user()->status !== User::$statusArrays[1]) {
