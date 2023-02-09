@@ -20,7 +20,7 @@
                             @if(\App\Helper\CustomHelper::canView('Sub Agent', 'Super Admin'))
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-xl-12 text-right mb-3">
-                                        <a href="{{ route('admin.subagent.list') }}" class="brn btn-success btn-sm">বিভাগের তালিকা</a>
+                                        <a href="{{ route('admin.subagent.list') }}" class="brn btn-success btn-sm">List of Sub Agent</a>
                                     </div>
                                 </div>
                             @endif

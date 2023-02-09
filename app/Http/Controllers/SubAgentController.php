@@ -15,6 +15,7 @@ class SubAgentController extends Controller
 {
     public function index() {
         $data['users'] = User::with('roles')->orderby('id', 'desc')->paginate(100);
+//        return $data;
         return view('admin.subagent.list', $data);
     }
 

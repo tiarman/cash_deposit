@@ -1,16 +1,9 @@
 @extends('layout.admin')
 
 @section('stylesheet')
-    <!-- DataTables -->
-    <link href="{{ asset('assets/admin/plugins/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
-          type="text/css"/>
-    <link href="{{ asset('assets/admin/plugins/datatables/buttons.bootstrap4.min.css') }}" rel="stylesheet"
-          type="text/css"/>
-
-    <link href="{{ asset('assets/admin/plugins/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet"
-          type="text/css"/>
-
-
+    <link href="{{ asset('assets/admin/plugins/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('assets/admin/plugins/datatables/buttons.bootstrap4.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('assets/admin/plugins/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet" type="text/css"/>
 @endsection
 
 @section('content')
@@ -20,60 +13,83 @@
                 <div class="card-body">
                     <section class="panel">
                         <header class="panel-heading">
-                            <h2 class="panel-title">Sub Agent List</h2>
+                            <h2 class="panel-title">List of Sub Agents</h2>
                         </header>
                         <div class="panel-body">
                             @if(session()->has('status'))
                                 {!! session()->get('status') !!}
                             @endif
-                                @if(\App\Helper\CustomHelper::canView('Create Division', 'Super Admin'))
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-xl-12 text-right mb-3">
-                                            <a href="{{ route('admin.subagent.create') }}" class="brn btn-success btn-sm">নতুন বিভাগ তৈরি করুন</a>
-                                        </div>
-                                    </div>
-                                @endif
 
+                            @if(\App\Helper\CustomHelper::canView('Create Sub Agent', 'Super Admin'))
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-xl-12 text-right mb-3">
+                                        <a href="{{ route('admin.subagent.create') }}" class="brn btn-success btn-sm">New Sub Agent</a>
+                                    </div>
+                                </div>
+                            @endif
+                            {{--<table class="table table-bordered table-striped mb-none" id="data-table">--}}
                             <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap"
                                    cellspacing="0" width="100%" style="font-size: 14px">
 
                                 <thead>
                                 <tr>
                                     <th width="10">#</th>
-                                    <th> User Name</th>
+                                    <th>Name</th>
                                     <th>Email</th>
-                                    <th>Sub Agent Name</th>
-                                    <th> Address </th>
-                                    <th width="200">Created At</th>
-                                    <th class="hidden-phone" width="40"> Option </th>
+                                    <th>Phone</th>
+                                    <th width="30">Type</th>
+                                    <th width="200">Created</th>
+                                    <th width="50">Status</th>
+                                    @if(\App\Helper\CustomHelper::canView('Manage SubAgent|Delete SubAgent', 'Super Admin'))
+                                        <th class="hidden-phone" width="40">Option</th>
+                                    @endif
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($data as $key => $val)
+                                @foreach($users as $key => $val)
                                     <tr class="@if(($key%2) == 0)gradeX @else gradeC @endif">
                                         <td class="p-1">{{ ($key+1) }}</td>
-                                        <td class="p-1">{{ $val->user->name }}</td>
-                                        <td class="p-1">{{ $val->user->email }}</td>
-                                        <td class="p-1">{{ $val->Commissionerate->name }}</td>
-                                        <td class="p-1">{{ $val->address}}</td>
+                                        <td class="p-1 text-capitalize">{{ $val->name_en }}</td>
+                                        <td class="p-1">{{ $val->email }}</td>
+                                        <td class="p-1">{{ $val->phone }}</td>
+                                        <td class="p-1 text-capitalize">{{ \App\Helper\CustomHelper::userRoleName($val) }}</td>
                                         <td width="200" class="p-1">{{ date('F d, Y h:i A', strtotime($val->created_at)) }}</td>
-
-                                        <td class="center hidden-phone p-1" width="100">
-                                            @if(\App\Helper\CustomHelper::canView('Manage Sub Agent', 'Super Admin'))
-                                            <a href="{{ route('admin.subagent.manage', $val->id) }}" class="btn btn-sm btn-success"> <i class="fa fa-edit"></i> </a>
-                                            @endif
-
-                                            @if(\App\Helper\CustomHelper::canView('Delete Sub Agent', 'Super Admin'))
-                                                <span class="btn btn-sm btn-danger btn-delete delete_{{ $val->id }}" style="cursor: pointer"
-                                                      data-id="{{ $val->id }}"><i class="fa fa-trash-o"></i></span>
-                                            @endif                                        </td>
+                                        @if(\App\Helper\CustomHelper::canView('Manage SubAgent', 'Super Admin'))
+                                            <td class="text-capitalize p-1" width="100">
+                                                <div class="onoffswitch">
+                                                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox"
+                                                           @checked($val->status == \App\Models\User::$statusArrays[1])
+                                                           data-id="{{ $val->id }}"
+                                                           id="myonoffswitch{{ ($key+1) }}">
+                                                    <label class="onoffswitch-label" for="myonoffswitch{{ ($key+1) }}">
+                                                        <span class="onoffswitch-inner"></span>
+                                                        <span class="onoffswitch-switch"></span>
+                                                    </label>
+                                                </div>
+                                            </td>
+                                        @else
+                                            <td class="p-1 text-capitalize">{{ $val->status }}</td>
+                                        @endif
+                                        @if(\App\Helper\CustomHelper::canView('Manage User|Delete User', 'Super Admin'))
+                                            <td class="text-center p-1" width="100">
+                                                @if(\App\Helper\CustomHelper::canView('Manage Sub Agent', 'Super Admin'))
+                                                    <a href="{{ route('admin.subagent.manage', $val->id) }}" class="btn btn-sm btn-success"> <i
+                                                            class="fa fa-edit"></i> </a>
+                                                @endif
+                                                @if(\App\Helper\CustomHelper::canView('Delete Sub Agent', 'Super Admin'))
+                                                    <span class="btn btn-sm btn-danger btn-delete delete_{{ $val->id }}" style="cursor: pointer"
+                                                          data-id="{{ $val->id }}"><i
+                                                            class="fa fa-trash-o"></i></span>
+                                                @endif
+                                            </td>
+                                        @endif
                                     </tr>
                                 @endforeach
                                 </tbody>
                             </table>
-                            {{--              <div class="row">--}}
-                            {{--                <div class="col-sm-12">{{ $data->links() }}</div>--}}
-                            {{--              </div>--}}
+                            <div class="row">
+                                <div class="col-sm-12">{{ $users->links('vendor.pagination.bootstrap-4') }}</div>
+                            </div>
                         </div>
                     </section>
                 </div>
@@ -88,11 +104,10 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-{{--                    <h4>{{__('slider.delete_user')}}</h4>--}}
-                    <h4>Delete Core Module</h4>
+                    <h4>Delete User</h4>
                 </div>
                 <div class="modal-body">
-                    <strong>Are You Sure Delete Core Module</strong>
+                    <strong>Are you sure to delete this user?</strong>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">No</button>
