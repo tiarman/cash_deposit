@@ -19,7 +19,7 @@ class UserController extends Controller {
    */
   public function index() {
     $data['users'] = User::with('roles')->orderby('id', 'desc')->paginate(100);
-    return view('admin.user.list', $data);
+    return view('admin.user.agent.list', $data);
   }
 
   /**
@@ -27,20 +27,14 @@ class UserController extends Controller {
    */
   public function create() {
     $data['roles'] = Role::select('id', 'name')->orderby('name', 'asc')->get();
-//    $data['departments'] = Department::select('id', 'name')->orderby('name', 'asc')->get();
-//    $data['companies'] = Company::select('id', 'name_en')->orderby('name_en', 'asc')->get();
-//    $data['designations'] = Designation::select('id', 'name')->orderby('name', 'asc')->get();
-    return view('admin.user.create', $data);
+    return view('admin.user.agent.create', $data);
   }
 
 
   public function manage($id = null) {
     if ($data['user'] = User::with('roles')->find($id)) {
       $data['roles'] = Role::select('id', 'name')->orderby('name', 'asc')->get();
-//      $data['departments'] = Department::select('id', 'name')->orderby('name', 'asc')->get();
-//      $data['companies'] = Company::select('id', 'name_en')->orderby('name_en', 'asc')->get();
-//      $data['designations'] = Designation::select('id', 'name')->orderby('name', 'asc')->get();
-      return view('admin.user.manage', $data);
+      return view('admin.user.agent.manage', $data);
     }
     return RedirectHelper::routeWarning('admin.user.list', '<strong>Sorry!!!</strong> User not found');
   }
@@ -49,11 +43,7 @@ class UserController extends Controller {
   public function view($id = null) {
     if ($data['user'] = User::find($id)) {
       $data['roles'] = Role::select('id', 'name')->orderby('name', 'asc')->get();
-//      $data['departments'] = Department::select('id', 'name')->orderby('name', 'asc')->get();
-//      $data['companies'] = Company::select('id', 'name_en')->orderby('name_en', 'asc')->get();
-//      $data['designations'] = Designation::select('id', 'name')->orderby('name', 'asc')->get();
-//      return $data;
-      return view('admin.user.view', $data);
+      return view('admin.user.agent.view', $data);
     }
     return RedirectHelper::routeWarning('admin.user.list', '<strong>Sorry!!!</strong> User not found');
   }
@@ -88,9 +78,7 @@ class UserController extends Controller {
       $user->username = $request->username;
       $user->email = $request->email;
       $user->phone = $request->phone;
-      if( !auth()->user()->roles->pluck('name')=='Super Admin'){
-        $user->agent_id = auth()->id();
-      }
+     
       if ($request->password != null) {
         $user->password = bcrypt($request->password);
       }
