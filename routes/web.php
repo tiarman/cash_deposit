@@ -132,12 +132,12 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
 
 #Sub Agent
     Route::prefix('subagent')->name('subagent.')->group(function () {
-        Route::get('/create', [SubAgentController::class, 'create'])->middleware('role_or_permission:Super Admin|Create Sub Agent')->name('create');
-        Route::post('/store', [SubAgentController::class, 'store'])->middleware('role_or_permission:Super Admin|Create Sub Agent')->name('store');
-        Route::get('/manage/{id}', [SubAgentController::class, 'manage'])->middleware('role_or_permission:Super Admin|Create Sub Agent')->name('manage');
-        Route::get('/{id}/view', [SubAgentController::class, 'view'])->middleware('role_or_permission:Super Admin|Create Sub Agent')->name('view');
-        Route::delete('/destroy', [SubAgentController::class, 'destroy'])->middleware('role_or_permission:Super Admin|Create Sub Agent')->name('destroy');
-        Route::get('/list', [SubAgentController::class, 'index'])->middleware('role_or_permission:Super Admin|Create Sub Agent')->name('list');
+        Route::get('/create', [SubAgentController::class, 'create'])->middleware('role_or_permission:Super Admin|Agent|Create Sub Agent')->name('create');
+        Route::post('/store', [SubAgentController::class, 'store'])->middleware('role_or_permission:Super Admin|Agent|Create Sub Agent')->name('store');
+        Route::get('/manage/{id}', [SubAgentController::class, 'manage'])->middleware('role_or_permission:Super Admin|Agent|Create Sub Agent')->name('manage');
+        Route::get('/{id}/view', [SubAgentController::class, 'view'])->middleware('role_or_permission:Super Admin|Agent|Create Sub Agent')->name('view');
+        Route::delete('/destroy', [SubAgentController::class, 'destroy'])->middleware('role_or_permission:Super Admin|Agent|Create Sub Agent')->name('destroy');
+        Route::get('/list', [SubAgentController::class, 'index'])->middleware('role_or_permission:Super Admin|Agent|Create Sub Agent')->name('list');
     });
 
 

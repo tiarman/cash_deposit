@@ -16,28 +16,36 @@ class SubAgentController extends Controller
     public function index() {
         $data['users'] = User::with('roles')->orderby('id', 'desc')->paginate(100);
 //        return $data;
-        return view('admin.subagent.list', $data);
+        return view('admin.user.subAgent.list', $data);
     }
 
 
-    public function create()
-    {
-        return view('admin.subagent.create');
+    public function create(){
+        // return auth()->user()->roles->pluck('name')[0];
+        if((auth()->user()->roles->pluck('name')[0] == "Super Admin")){
+            $data['agents'] = User::whereHas('roles',function( $user){
+                $user->where('roles.name','Agent');
+            })->get();
+            
+            $data['isAdmin'] = true;
+        }
+        $data['roles'] = Role::select('id', 'name')->orderby('name', 'asc')->get();
+        return view('admin.user.subAgent.create', $data);
     }
 
 
     public function manage($id = null)
     {
         if ($data['subagent'] = SubAgent::find($id)) {
-            return view('admin.subagent.manage', $data);
+            return view('admin.user.subAgent.manage', $data);
         }
-        return RedirectHelper::routeWarningWithParams('subagent.list', '<strong>Sorry!!!</strong> Division not found');
+        return RedirectHelper::routeWarningWithParams('admin.subagent.list', '<strong>Sorry!!!</strong> Division not found');
     }
 
 
 
     public function store(Request $request) {
-        // return auth()->id();
+        // return $request->agent_id;
         $message = '<strong>Congratulations!!!</strong> Sub Agent Successfully';
         $rules = [
             'name' => 'required|string',
@@ -65,7 +73,12 @@ class SubAgentController extends Controller
             $user->username = $request->username;
             $user->email = $request->email;
             $user->phone = $request->phone;
-            $user->agent_id = auth()->id();
+            if( !(auth()->user()->roles->pluck('name')[0]=='Super Admin')){
+                $user->agent_id = auth()->id();
+              }
+              else{
+            $user->agent_id = $request->agent_id;
+              }
             $user->assignRole('Sub Agent');
             if ($request->password != null) {
                 $user->password = bcrypt($request->password);

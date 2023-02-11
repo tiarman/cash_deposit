@@ -94,7 +94,7 @@
 
             @if(\App\Helper\CustomHelper::canView('Create User|Manage User|Delete User|View User|List Of User', 'Super Admin'))
                 <li class="has_sub">
-                    <a class="waves-effect"><i class="mdi mdi-account-multiple"></i><span> Agent/Sub Agent <span
+                    <a class="waves-effect"><i class="mdi mdi-account-multiple"></i><span> Agent <span
                                 class="pull-right"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                     <ul class="list-unstyled">
                         @if(\App\Helper\CustomHelper::canView('Create User', 'Super Admin'))
@@ -111,10 +111,10 @@
                     <a class="waves-effect"><i class="mdi mdi-account-multiple"></i><span> Sub Agent <span
                                 class="pull-right"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                     <ul class="list-unstyled">
-                        @if(\App\Helper\CustomHelper::canView('Create Sub Agent', 'Super Admin|Agent|Sub Agent'))
+                        @if(\App\Helper\CustomHelper::canView('Create Sub Agent', 'Super Admin|Agent'))
                             <li><a href="{{ route('admin.subagent.create') }}">Create new</a></li>
                         @endif
-                        @if(\App\Helper\CustomHelper::canView('Manage Sub Agent|Delete Sub Agent|View Sub Agent|List Of Sub Agent', 'Super Admin|Agent|Sub Agent'))
+                        @if(\App\Helper\CustomHelper::canView('Manage Sub Agent|Delete Sub Agent|View Sub Agent|List Of Sub Agent', 'Super Admin|Agent'))
                             <li><a href="{{ route('admin.subagent.list') }}">List of Sub Agent</a></li>
                         @endif
                     </ul>
