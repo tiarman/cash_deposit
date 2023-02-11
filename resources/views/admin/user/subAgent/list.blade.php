@@ -13,17 +13,17 @@
         <div class="card-body">
           <section class="panel">
             <header class="panel-heading">
-              <h2 class="panel-title">List of Agents</h2>
+              <h2 class="panel-title">List of Sub Agents</h2>
             </header>
             <div class="panel-body">
               @if(session()->has('status'))
                 {!! session()->get('status') !!}
               @endif
 
-                @if(\App\Helper\CustomHelper::canView('Create User', 'Super Admin'))
+                @if(\App\Helper\CustomHelper::canView('Create Sub Agent', 'Super Admin|Agent'))
               <div class="row">
                   <div class="col-lg-12 col-md-12 col-xl-12 text-right mb-3">
-                    <a href="{{ route('admin.user.create') }}" class="brn btn-success btn-sm">New Agent</a>
+                    <a href="{{ route('admin.subagent.create') }}" class="brn btn-success btn-sm">New Agent</a>
                   </div>
                 </div>
                 @endif
@@ -40,7 +40,7 @@
                   <th width="30">Type</th>
                   <th width="200">Created</th>
                   <th width="50">Status</th>
-                  @if(\App\Helper\CustomHelper::canView('Manage User|Delete User', 'Super Admin'))
+                  @if(\App\Helper\CustomHelper::canView('Manage Sub Agent|Delete Sub Agent', 'Super Admin|Agent'))
                     <th class="hidden-phone" width="40">Option</th>
                     @endif
                 </tr>
@@ -54,7 +54,7 @@
                     <td class="p-1">{{ $val->phone }}</td>
                     <td class="p-1 text-capitalize">{{ \App\Helper\CustomHelper::userRoleName($val) }}</td>
                     <td width="200" class="p-1">{{ date('F d, Y h:i A', strtotime($val->created_at)) }}</td>
-                    @if(\App\Helper\CustomHelper::canView('Manage User', 'Super Admin'))
+                    @if(\App\Helper\CustomHelper::canView('Manage Sub Agent', 'Super Admin|Agent'))
                       <td class="text-capitalize p-1" width="100">
                         <div class="onoffswitch">
                           <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox"
@@ -70,13 +70,13 @@
                     @else
                       <td class="p-1 text-capitalize">{{ $val->status }}</td>
                       @endif
-                    @if(\App\Helper\CustomHelper::canView('Manage User|Delete User', 'Super Admin'))
+                    @if(\App\Helper\CustomHelper::canView('Manage Sub Agent|Delete Sub Agent', 'Super Admin|Agent'))
                       <td class="text-center p-1" width="100">
-                        @if(\App\Helper\CustomHelper::canView('Manage User', 'Super Admin'))
-                          <a href="{{ route('admin.user.manage', $val->id) }}" class="btn btn-sm btn-success"> <i
+                        @if(\App\Helper\CustomHelper::canView('Manage Sub Agent', 'Super Admin|Agent'))
+                          <a href="{{ route('admin.subagent.manage', $val->id) }}" class="btn btn-sm btn-success"> <i
                               class="fa fa-edit"></i> </a>
                         @endif
-                        @if(\App\Helper\CustomHelper::canView('Delete User', 'Super Admin'))
+                        @if(\App\Helper\CustomHelper::canView('Delete Sub Agent', 'Super Admin|Agent'))
                             <span class="btn btn-sm btn-danger btn-delete delete_{{ $val->id }}" style="cursor: pointer"
                                 data-id="{{ $val->id }}"><i
                               class="fa fa-trash-o"></i></span>
@@ -104,10 +104,10 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h4>Delete User</h4>
+          <h4>Delete Sub Agents</h4>
         </div>
         <div class="modal-body">
-          <strong>Are you sure to delete this user?</strong>
+          <strong>Are you sure to delete this Sub Agent?</strong>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">No</button>
@@ -158,7 +158,7 @@
           status = 'active';
         }
         $.ajax({
-          url: "{{ route('admin.ajax.update.user.status') }}",
+          url: "{{ route('admin.ajax.update.subagent.status') }}",
           method: "post",
           dataType: "html",
           data: {'id': id, 'status': status},
@@ -174,7 +174,7 @@
         var pid = $(this).data('id');
         var $this = $('.delete_' + pid)
         $.ajax({
-          url: "{{ route('admin.user.destroy') }}",
+          url: "{{ route('admin.subagent.destroy') }}",
           method: "delete",
           dataType: "html",
           data: {id: pid},

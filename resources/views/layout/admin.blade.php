@@ -79,7 +79,7 @@
     <div class="topbar-left">
       <div class="text-center" style="padding-right: 35px">
         <a href="{{ route('home') }}" class="logo">
-{{--          <x-admin-sidebar-logo/>--}}
+          <x-admin-sidebar-logo/>
         </a>
       </div>
     </div>
