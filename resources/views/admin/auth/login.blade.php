@@ -5,7 +5,7 @@
       <div class="row">
         <div style="background-color:#54359D;" class="col-12 text-center rounded"><a href="{{ route('home') }}" class="logo logo-admin">
 {{--            <img src="{{ asset('assets/text-logo.png') }}" height="80" alt="logo">--}}
-            <h4 style="color:white;">Institute Management System</h4>
+            <h4 style="color:white;">Cash Deposit</h4>
           </a></div>
       </div>
       <div class="pl-3 pr-3 pb-3">

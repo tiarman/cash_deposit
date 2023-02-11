@@ -4,12 +4,12 @@
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-  <title>Institute Management Software</title>
+  <title>Cash Deposit</title>
 
-  <meta content="Native Institute Management Software" name="description"/>
-  <meta content="Raihan Afroz; Saidul Islam; Dipta Day; Arif Hosen; Towhidul Islam;"
+  <meta content="Cash Deposit" name="description"/>
+  <meta content="Towhidul Islam; Arif Hosen;"
         name="author"/>
-  <meta content="Touch & Solve" name="company"/>
+  <meta content="Personal Clients" name="company"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
   <meta name="csrf-token" content="{{ csrf_token() }}">

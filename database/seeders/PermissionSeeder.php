@@ -84,27 +84,6 @@ class PermissionSeeder extends Seeder {
           'name' => 'View Sub Agent'
       ]);
 
-    //      Event
-    Permission::create([
-      'type' => 'Event',
-      'name' => 'List Of Event'
-    ]);
-    Permission::create([
-      'type' => 'Event',
-      'name' => 'Create Event'
-    ]);
-    Permission::create([
-      'type' => 'Event',
-      'name' => 'Manage Event'
-    ]);
-    Permission::create([
-      'type' => 'Event',
-      'name' => 'Delete Event'
-    ]);
-    Permission::create([
-      'type' => 'Event',
-      'name' => 'View Event'
-    ]);
 
 //      Division
     Permission::create([
