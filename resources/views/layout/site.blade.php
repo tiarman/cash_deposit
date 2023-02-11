@@ -32,7 +32,7 @@
     <link rel="icon" href="{{asset('assets/frontend/img/favicon.png')}}" type="image/png" sizes="16x16" />
 
     <!--title-->
-    <title>Hostim - 2 - HTML Template</title>
+    <title>Cash Deposit</title>
 
     <!--google fonts-->
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700&amp;family=Urbanist:wght@600;700&amp;display=swap" rel="stylesheet">
