@@ -46,7 +46,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($users as $key => $val)
+                @foreach($sub_agent as $key => $val)
                   <tr class="@if(($key%2) == 0)gradeX @else gradeC @endif">
                     <td class="p-1">{{ ($key+1) }}</td>
                     <td class="p-1 text-capitalize">{{ $val->name_en }}</td>
@@ -88,7 +88,7 @@
                 </tbody>
               </table>
               <div class="row">
-                <div class="col-sm-12">{{ $users->links('vendor.pagination.bootstrap-4') }}</div>
+                <div class="col-sm-12">{{ $sub_agent->links('vendor.pagination.bootstrap-4') }}</div>
               </div>
             </div>
           </section>
@@ -139,7 +139,7 @@
 
   <script>
     $(document).ready(function () {
-      // $('#datatable-buttons').DataTable();
+      $('#datatable-buttons').DataTable();
 
       // var table = $('#datatable-buttons').DataTable({
       //   lengthChange: false,
