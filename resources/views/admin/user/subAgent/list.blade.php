@@ -35,6 +35,8 @@
                 <tr>
                   <th width="10">#</th>
                   <th>Name</th>
+                  <th>Login ID</th>
+                  <th>Agent</th>
                   <th>Email</th>
                   <th>Phone</th>
                   <th width="30">Type</th>
@@ -50,6 +52,8 @@
                   <tr class="@if(($key%2) == 0)gradeX @else gradeC @endif">
                     <td class="p-1">{{ ($key+1) }}</td>
                     <td class="p-1 text-capitalize">{{ $val->name_en }}</td>
+                    <td class="p-1 text-capitalize">{{ $val->username }}</td>
+                    <td class="p-1">{{ $val->agent_id }}</td>
                     <td class="p-1">{{ $val->email }}</td>
                     <td class="p-1">{{ $val->phone }}</td>
                     <td class="p-1 text-capitalize">{{ \App\Helper\CustomHelper::userRoleName($val) }}</td>

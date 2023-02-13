@@ -15,7 +15,7 @@ class SubAgentController extends Controller
 {
     public function index() {
             $data['sub_agent'] = User::whereHas('roles',function( $user){$user->where('roles.name','Sub Agent');})->paginate(100);
-
+//            $data['agent'] = User::select('name_en','id')->where('id', $data['sub_agent'][0]->agent_id)->get();
 //        $data['roles'] = Role::select('id', 'name')->orderby('name', 'asc')->get();
 //        $roleNames = auth()->user()->roles->pluck('name');
 //        $roles = Role::whereIn('name', $roleNames)->get();
