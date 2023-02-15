@@ -22,6 +22,9 @@ class RoleSeeder extends Seeder {
       $subagent = Role::create([
           'name' => 'Sub Agent'
       ]);
+      $payment = Role::create([
+          'name' => 'Payment'
+      ]);
 
 
 
