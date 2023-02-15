@@ -84,7 +84,7 @@ class PermissionSeeder extends Seeder {
           'name' => 'View Sub Agent'
       ]);
 
-      //      Sub Agent
+      //      Payment
       Permission::create([
           'type' => 'Payment',
           'name' => 'List Of Payment'
