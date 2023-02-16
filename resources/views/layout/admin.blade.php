@@ -262,7 +262,7 @@
       <!-- Top Bar End -->
 
       <div class="page-content-wrapper">
-          <marquee class="margueue_align1" loop behavior="scroll" direction="left"><p>Arman</p></marquee>
+          <marquee class="margueue_align1" loop behavior="scroll" direction="left"><p><strong>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took</strong></p></marquee>
         @yield('content')
         <div class="modal fade" id="notificationModal" tabindex="-1" role="dialog" aria-labelledby="notificationModal"
              aria-hidden="true">
