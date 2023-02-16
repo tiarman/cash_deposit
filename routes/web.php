@@ -112,7 +112,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
     Route::post('/make/{id}/-as-read', [NotificationController::class, 'ajaxUpdateAsRead'])->name('make.modal.as.read');
     Route::post('/permission-by-role', [PermissionController::class, 'getPermissionByRole'])->middleware('role_or_permission:Super Admin|Manage Permission')->name('get.permission.by.role');
     Route::post('/update/user/status', [UserController::class, 'ajaxUpdateStatus'])->middleware('role_or_permission:Super Admin|Manage User|Manage Institute User')->name('update.user.status');
-    Route::post('/update/subagent/status', [SubAgentController::class, 'ajaxUpdateStatus'])->middleware('role_or_permission:Super Admin|Manage Sub Agent')->name('update.subagent.status');
+    Route::post('/update/subagent/status', [SubAgentController::class, 'ajaxUpdateStatus'])->middleware('role_or_permission:Super Admin|Agent|Manage Sub Agent')->name('update.subagent.status');
     Route::post('/update/backgrouond/status', [BackgroundImageController::class, 'ajaxUpdateStatus'])->name('update.backgroundImage.status');
     Route::post('/update/payment/status', [PaymentController::class, 'ajaxUpdateStatus'])->name('update.payment.status');
 
@@ -135,11 +135,11 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
 #Sub Agent
     Route::prefix('subagent')->name('subagent.')->group(function () {
         Route::get('/create', [SubAgentController::class, 'create'])->middleware('role_or_permission:Super Admin|Agent|Create Sub Agent')->name('create');
-        Route::post('/store', [SubAgentController::class, 'store'])->middleware('role_or_permission:Super Admin|Agent|Create Sub Agent')->name('store');
-        Route::get('/manage/{id}', [SubAgentController::class, 'manage'])->middleware('role_or_permission:Super Admin|Agent|Create Sub Agent')->name('manage');
-        Route::get('/{id}/view', [SubAgentController::class, 'view'])->middleware('role_or_permission:Super Admin|Agent|Create Sub Agent')->name('view');
-        Route::delete('/destroy', [SubAgentController::class, 'destroy'])->middleware('role_or_permission:Super Admin|Agent|Create Sub Agent')->name('destroy');
-        Route::get('/list', [SubAgentController::class, 'index'])->middleware('role_or_permission:Super Admin|Agent|Create Sub Agent')->name('list');
+        Route::post('/store', [SubAgentController::class, 'store'])->middleware('role_or_permission:Super Admin|Agent|Create Sub Agent|Manage Sub Agent')->name('store');
+        Route::get('/manage/{id}', [SubAgentController::class, 'manage'])->middleware('role_or_permission:Super Admin|Agent|Manage Sub Agent')->name('manage');
+        Route::get('/{id}/view', [SubAgentController::class, 'view'])->middleware('role_or_permission:Super Admin|Agent|View Sub Agent')->name('view');
+        Route::delete('/destroy', [SubAgentController::class, 'destroy'])->middleware('role_or_permission:Super Admin|Agent|Delete Sub Agent')->name('destroy');
+        Route::get('/list', [SubAgentController::class, 'index'])->middleware('role_or_permission:Super Admin|Agent|List Sub Agent')->name('list');
     });
 
 
@@ -169,12 +169,12 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
 
 #Users
   Route::prefix('user')->name('user.')->group(function () {
-    Route::get('/create', [UserController::class, 'create'])->middleware('role_or_permission:Super Admin|Agent|Create User')->name('create');
-    Route::post('/store', [UserController::class, 'store'])->middleware('role_or_permission:Super Admin|Agent|Create User|Manage User')->name('store');
-    Route::get('/manage/{id}', [UserController::class, 'manage'])->middleware('role_or_permission:Super Admin|Agent|Manage User')->name('manage');
-    Route::get('/{id}/view', [UserController::class, 'view'])->middleware('role_or_permission:Super Admin|Agent|View User')->name('view');
-    Route::delete('/destroy', [UserController::class, 'destroy'])->middleware('role_or_permission:Super Admin|Agent|Delete User')->name('destroy');
-    Route::get('/list', [UserController::class, 'index'])->middleware('role_or_permission:Super Admin|Agent|List Of User')->name('list');
+    Route::get('/create', [UserController::class, 'create'])->middleware('role_or_permission:Super Admin|Agent|Create Agent')->name('create');
+    Route::post('/store', [UserController::class, 'store'])->middleware('role_or_permission:Super Admin|Agent|Create Agent|Manage Agent')->name('store');
+    Route::get('/manage/{id}', [UserController::class, 'manage'])->middleware('role_or_permission:Super Admin|Agent|Manage Agent')->name('manage');
+    Route::get('/{id}/view', [UserController::class, 'view'])->middleware('role_or_permission:Super Admin|Agent|View Agent')->name('view');
+    Route::delete('/destroy', [UserController::class, 'destroy'])->middleware('role_or_permission:Super Admin|Agent|Delete Agent')->name('destroy');
+    Route::get('/list', [UserController::class, 'index'])->middleware('role_or_permission:Super Admin|Agent|List Of Agent')->name('list');
 
   });
 
@@ -234,5 +234,18 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
   Route::match(['get', 'post'], '/background-image', [BackgroundImageController::class, 'createOrIndex'])->name('backgroundImage');
   Route::delete('/background-image/destroy', [BackgroundImageController::class, 'destroy'])->name('backgroundImage.destroy');
 
+
+  #Cash
+    Route::get('/deposit', function (){
+        return view('admin.cash.deposit');
+    })->name('deposit');
+
+   Route::get('/withdraw', function (){
+        return view('admin.cash.withdraw');
+    })->name('withdraw');
+
+ Route::get('/transaction', function (){
+        return view('admin.cash.transaction');
+    })->name('transaction');
 
 });

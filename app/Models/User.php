@@ -106,10 +106,8 @@ class User extends Authenticatable implements MustVerifyEmail
     return $this->hasOne(Technology::class, 'id', 'department_id');
   }
 
-  public static $genderArrays = ['male','female'];
-  public static $religionArrays = ['islam','hindu'];
-  public static $bloodArrays = ['a+', 'a-','b+','b-','o+','o-','ab+','ab-'];
-  public static $maritalArrays = ['married', 'unmarried'];
-  public static $yearArrays = ['first year', 'second year','third year','fourth year',];
+//public function agent(){
+//      return $this->belongsTo(User::class,'agent_id', 'id');
+//}
   public static $employmentArrays = ['unemployed', 'employed', 'self employed'];
 }

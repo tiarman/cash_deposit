@@ -10,13 +10,13 @@
         <div class="card-body">
           <section class="panel">
             <header class="panel-heading">
-              <h2 class="panel-title">Manage user</h2>
+              <h2 class="panel-title">Manage Sub Agent</h2>
             </header>
             <div class="panel-body">
-              @if(\App\Helper\CustomHelper::canView('List of User', 'Super Admin'))
+              @if(\App\Helper\CustomHelper::canView('List of Sub Agent', 'Super Admin|Agent'))
                 <div class="row">
                   <div class="col-lg-12 col-md-12 col-xl-12 text-right mb-3">
-                    <a href="{{ route('admin.user.list') }}" class="brn btn-success btn-sm">List of user</a>
+                    <a href="{{ route('admin.subagent.list') }}" class="brn btn-success btn-sm">List of Sub Agent</a>
                   </div>
                 </div>
               @endif
@@ -24,7 +24,7 @@
                 {!! session()->get('status') !!}
               @endif
 
-              <form action="{{ route('admin.user.store') }}" method="post" enctype="multipart/form-data">
+              <form action="{{ route('admin.subagent.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                   <input type="hidden" name="id" value="{{ $user->id }}">
@@ -68,7 +68,7 @@
                       @enderror
                     </div>
                   </div>
-               
+
                   <div class="col-sm-4">
                     <div class="form-group">
                       <label class="control-label">Password</label>

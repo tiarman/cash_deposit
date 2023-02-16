@@ -358,3 +358,8 @@ input[fullmark] {
     background: linear-gradient(to right, #2d348f, #e9ecef);
     border-radius: 5px;
 }
+
+.margueue_align1{
+    background: springgreen;
+    padding: 10px;
+}

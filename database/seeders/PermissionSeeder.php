@@ -20,24 +20,24 @@ class PermissionSeeder extends Seeder {
     ]);
 //      User
     Permission::create([
-      'type' => 'User',
-      'name' => 'List Of User'
+      'type' => 'Agent',
+      'name' => 'List Of Agent'
     ]);
     Permission::create([
-      'type' => 'User',
-      'name' => 'Create User'
+      'type' => 'Agent',
+      'name' => 'Create Agent'
     ]);
     Permission::create([
-      'type' => 'User',
-      'name' => 'Manage User'
+      'type' => 'Agent',
+      'name' => 'Manage Agent'
     ]);
     Permission::create([
-      'type' => 'User',
-      'name' => 'Delete User'
+      'type' => 'Agent',
+      'name' => 'Delete Agent'
     ]);
     Permission::create([
-      'type' => 'User',
-      'name' => 'View User'
+      'type' => 'Agent',
+      'name' => 'View Agent'
     ]);
 
 //      Role
@@ -84,119 +84,141 @@ class PermissionSeeder extends Seeder {
           'name' => 'View Sub Agent'
       ]);
 
+      //      Payment
+      Permission::create([
+          'type' => 'Payment',
+          'name' => 'List Of Payment'
+      ]);
+      Permission::create([
+          'type' => 'Payment',
+          'name' => 'Create Payment'
+      ]);
+      Permission::create([
+          'type' => 'Payment',
+          'name' => 'Manage Payment'
+      ]);
+      Permission::create([
+          'type' => 'Payment',
+          'name' => 'Delete Payment'
+      ]);
+      Permission::create([
+          'type' => 'Payment',
+          'name' => 'View Payment'
+      ]);
+
 
 //      Division
-    Permission::create([
-      'type' => 'Division',
-      'name' => 'List Of Division'
-    ]);
-    Permission::create([
-      'type' => 'Division',
-      'name' => 'Create Division'
-    ]);
-    Permission::create([
-      'type' => 'Division',
-      'name' => 'Manage Division'
-    ]);
-    Permission::create([
-      'type' => 'Division',
-      'name' => 'Delete Division'
-    ]);
-    Permission::create([
-      'type' => 'Division',
-      'name' => 'View Division'
-    ]);
+//    Permission::create([
+//      'type' => 'Division',
+//      'name' => 'List Of Division'
+//    ]);
+//    Permission::create([
+//      'type' => 'Division',
+//      'name' => 'Create Division'
+//    ]);
+//    Permission::create([
+//      'type' => 'Division',
+//      'name' => 'Manage Division'
+//    ]);
+//    Permission::create([
+//      'type' => 'Division',
+//      'name' => 'Delete Division'
+//    ]);
+//    Permission::create([
+//      'type' => 'Division',
+//      'name' => 'View Division'
+//    ]);
 
 
 //      District
-    Permission::create([
-      'type' => 'District',
-      'name' => 'List Of District'
-    ]);
-    Permission::create([
-      'type' => 'District',
-      'name' => 'Create District'
-    ]);
-    Permission::create([
-      'type' => 'District',
-      'name' => 'Manage District'
-    ]);
-    Permission::create([
-      'type' => 'District',
-      'name' => 'Delete District'
-    ]);
-    Permission::create([
-      'type' => 'District',
-      'name' => 'View District'
-    ]);
+//    Permission::create([
+//      'type' => 'District',
+//      'name' => 'List Of District'
+//    ]);
+//    Permission::create([
+//      'type' => 'District',
+//      'name' => 'Create District'
+//    ]);
+//    Permission::create([
+//      'type' => 'District',
+//      'name' => 'Manage District'
+//    ]);
+//    Permission::create([
+//      'type' => 'District',
+//      'name' => 'Delete District'
+//    ]);
+//    Permission::create([
+//      'type' => 'District',
+//      'name' => 'View District'
+//    ]);
 
 
 //      Upazila
-    Permission::create([
-      'type' => 'Upazila',
-      'name' => 'List Of Upazila'
-    ]);
-    Permission::create([
-      'type' => 'Upazila',
-      'name' => 'Create Upazila'
-    ]);
-    Permission::create([
-      'type' => 'Upazila',
-      'name' => 'Manage Upazila'
-    ]);
-    Permission::create([
-      'type' => 'Upazila',
-      'name' => 'Delete Upazila'
-    ]);
-    Permission::create([
-      'type' => 'Upazila',
-      'name' => 'View Upazila'
-    ]);
+//    Permission::create([
+//      'type' => 'Upazila',
+//      'name' => 'List Of Upazila'
+//    ]);
+//    Permission::create([
+//      'type' => 'Upazila',
+//      'name' => 'Create Upazila'
+//    ]);
+//    Permission::create([
+//      'type' => 'Upazila',
+//      'name' => 'Manage Upazila'
+//    ]);
+//    Permission::create([
+//      'type' => 'Upazila',
+//      'name' => 'Delete Upazila'
+//    ]);
+//    Permission::create([
+//      'type' => 'Upazila',
+//      'name' => 'View Upazila'
+//    ]);
 
 
 //      Voucher Type
-    Permission::create([
-      'type' => 'Voucher Type',
-      'name' => 'List Of Voucher Type'
-    ]);
-    Permission::create([
-      'type' => 'Voucher Type',
-      'name' => 'Create Voucher Type'
-    ]);
-    Permission::create([
-      'type' => 'Voucher Type',
-      'name' => 'Manage Voucher Type'
-    ]);
-    Permission::create([
-      'type' => 'Voucher Type',
-      'name' => 'Delete Voucher Type'
-    ]);
-    Permission::create([
-      'type' => 'Voucher Type',
-      'name' => 'View Voucher Type'
-    ]);
+//    Permission::create([
+//      'type' => 'Voucher Type',
+//      'name' => 'List Of Voucher Type'
+//    ]);
+//    Permission::create([
+//      'type' => 'Voucher Type',
+//      'name' => 'Create Voucher Type'
+//    ]);
+//    Permission::create([
+//      'type' => 'Voucher Type',
+//      'name' => 'Manage Voucher Type'
+//    ]);
+//    Permission::create([
+//      'type' => 'Voucher Type',
+//      'name' => 'Delete Voucher Type'
+//    ]);
+//    Permission::create([
+//      'type' => 'Voucher Type',
+//      'name' => 'View Voucher Type'
+//    ]);
 
 
     //      Voucher
-    Permission::create([
-      'type' => 'Voucher',
-      'name' => 'List Of Voucher'
-    ]);
-    Permission::create([
-      'type' => 'Voucher',
-      'name' => 'Create Voucher'
-    ]);
-    Permission::create([
-      'type' => 'Voucher',
-      'name' => 'Manage Voucher'
-    ]);
-    Permission::create([
-      'type' => 'Voucher',
-      'name' => 'Delete Voucher'
-    ]);
-    Permission::create([
-      'type' => 'Voucher',
-      'name' => 'View Voucher'
-    ]);
+//    Permission::create([
+//      'type' => 'Voucher',
+//      'name' => 'List Of Voucher'
+//    ]);
+//    Permission::create([
+//      'type' => 'Voucher',
+//      'name' => 'Create Voucher'
+//    ]);
+//    Permission::create([
+//      'type' => 'Voucher',
+//      'name' => 'Manage Voucher'
+//    ]);
+//    Permission::create([
+//      'type' => 'Voucher',
+//      'name' => 'Delete Voucher'
+//    ]);
+//    Permission::create([
+//      'type' => 'Voucher',
+//      'name' => 'View Voucher'
+//    ]);
   }
 }
