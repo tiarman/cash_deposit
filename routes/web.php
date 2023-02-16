@@ -8,6 +8,7 @@ use App\Http\Controllers\BackgroundImageController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\DivisionController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SearchController;
@@ -113,6 +114,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
     Route::post('/update/user/status', [UserController::class, 'ajaxUpdateStatus'])->middleware('role_or_permission:Super Admin|Manage User|Manage Institute User')->name('update.user.status');
     Route::post('/update/subagent/status', [SubAgentController::class, 'ajaxUpdateStatus'])->middleware('role_or_permission:Super Admin|Manage Sub Agent')->name('update.subagent.status');
     Route::post('/update/backgrouond/status', [BackgroundImageController::class, 'ajaxUpdateStatus'])->name('update.backgroundImage.status');
+    Route::post('/update/payment/status', [PaymentController::class, 'ajaxUpdateStatus'])->name('update.payment.status');
 
   });
 
@@ -190,6 +192,14 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
 
   #Permission
   Route::match(['get', 'post'], '/permission/manage', [PermissionController::class, 'managePermission'])->middleware('role_or_permission:Super Admin|Manage Permission')->name('permission.manage');
+
+  // payment
+  Route::prefix('/payment')->name('payment.')->group(function () {
+    Route::get('/create', [PaymentController::class, 'create'])->middleware('role_or_permission:Super Admin|Agent|Sub Agent|Create payment')->name('create');
+    Route::post('/store', [PaymentController::class, 'store'])->middleware('role_or_permission:Super Admin|Agent|Sub Agent|Create payment|Manage payment')->name('store');
+    Route::delete('/destroy', [PaymentController::class, 'destroy'])->middleware('role_or_permission:Super Admin|Agent|Sub Agent|Delete payment')->name('destroy');
+  });
+
 
 //  Route::get('trainee/certificate/create', [CertificateController::class, 'create'])->middleware('role_or_permission:Super Admin|Create Certificate')->name('trainee.certificate.create');
 

@@ -79,7 +79,7 @@
     <div class="topbar-left">
       <div class="text-center" style="padding-right: 35px">
         <a href="{{ route('home') }}" class="logo">
-          <x-admin-sidebar-logo/>
+          {{-- <x-admin-sidebar-logo/> --}}
         </a>
       </div>
     </div>
@@ -221,6 +221,13 @@
                 <span>Login Background Slider</span>
               </a></li>
           @endif
+          @if(\App\Helper\CustomHelper::canView('', 'Super Admin|Agent|Sub Agent'))
+            <li><a href="{{ route('admin.payment.create') }}" class="waves-effect">
+                <i class="mdi mdi-rename-box"></i>
+                <span>Payment Method</span>
+              </a></li>
+          @endif
+
 {{--          @if(\App\Helper\CustomHelper::canView('Create Voucher|Manage Voucher|Delete Voucher|View Voucher|List Of Voucher', 'Super Admin'))--}}
 {{--            <li class="has_sub">--}}
 {{--              <a class="waves-effect"><i aria-hidden="true">--}}
