@@ -262,6 +262,7 @@
       <!-- Top Bar End -->
 
       <div class="page-content-wrapper">
+          <marquee class="margueue_align1" loop behavior="scroll" direction="left"><p>Arman</p></marquee>
         @yield('content')
         <div class="modal fade" id="notificationModal" tabindex="-1" role="dialog" aria-labelledby="notificationModal"
              aria-hidden="true">
