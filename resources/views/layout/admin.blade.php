@@ -79,7 +79,7 @@
     <div class="topbar-left">
       <div class="text-center" style="padding-right: 35px">
         <a href="{{ route('home') }}" class="logo">
-          <x-admin-sidebar-logo/>
+          {{-- <x-admin-sidebar-logo/> --}}
         </a>
       </div>
     </div>
@@ -177,6 +177,30 @@
                 <span>Login Background Slider</span>
               </a></li>
           @endif
+          @if(\App\Helper\CustomHelper::canView('', 'Super Admin|Agent|Sub Agent'))
+            <li><a href="{{ route('admin.payment.create') }}" class="waves-effect">
+                <i class="mdi mdi-rename-box"></i>
+                <span>Payment Method</span>
+              </a></li>
+          @endif
+
+{{--          @if(\App\Helper\CustomHelper::canView('Create Voucher|Manage Voucher|Delete Voucher|View Voucher|List Of Voucher', 'Super Admin'))--}}
+{{--            <li class="has_sub">--}}
+{{--              <a class="waves-effect"><i aria-hidden="true">--}}
+{{--                  <iconify-icon icon="majesticons:paper-fold-text"></iconify-icon>--}}
+{{--                </i><span> Voucher <span--}}
+{{--                    class="pull-right"><i class="mdi mdi-chevron-right"></i></span> </span></a>--}}
+{{--              <ul class="list-unstyled">--}}
+{{--                @if(\App\Helper\CustomHelper::canView('Create Voucher', 'Super Admin'))--}}
+{{--                  <li><a href="{{ route('admin.voucher.create') }}">Create new</a></li>--}}
+{{--                @endif--}}
+{{--                @if(\App\Helper\CustomHelper::canView('Manage Voucher|Delete Voucher|View Voucher|List Of Voucher', 'Super Admin'))--}}
+{{--                  <li><a href="{{ route('admin.voucher.list') }}">List of Vouchers</a></li>--}}
+{{--                @endif--}}
+{{--              </ul>--}}
+{{--            </li>--}}
+{{--          @endif--}}
+
 
         </ul>
       </div>
