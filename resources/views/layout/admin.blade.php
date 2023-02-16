@@ -139,6 +139,24 @@
             @endif
 
 
+            @if(\App\Helper\CustomHelper::canView('Create Role|Manage Role|Delete Role|View Role|List Of Role', 'Super Admin'))
+                <li class="has_sub">
+                    <a class="waves-effect"><i>
+                            <iconify-icon icon="eos-icons:cluster-role-binding"></iconify-icon>
+                        </i><span> Cash <span
+                                class="pull-right"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+                    <ul class="list-unstyled">
+                        @if(\App\Helper\CustomHelper::canView('Create Role', 'Super Admin'))
+                            <li><a href="{{ route('admin.deposit') }}"> Deposit Cash</a></li>
+                        @endif
+{{--                        @if(\App\Helper\CustomHelper::canView('Manage Role|Delete Role|View Role|List Of Role', 'Super Admin'))--}}
+{{--                            <li><a href="{{ route('admin.role.list') }}">List of roles</a></li>--}}
+{{--                        @endif--}}
+                    </ul>
+                </li>
+            @endif
+
+
             @if(\App\Helper\CustomHelper::canView('Manage Permission', 'Super Admin'))
                 <li><a href="{{ route('admin.permission.manage') }}" class="waves-effect">
                         <i>
@@ -149,71 +167,6 @@
             @endif
 
 
-{{--          @if(\App\Helper\CustomHelper::canView('Create Division|Manage Division|Delete Division|View Division|List Of Division', 'Super Admin'))--}}
-{{--            <li class="has_sub">--}}
-
-{{--              <a class="waves-effect"><i class="mdi mdi-city"></i><span> Division <span--}}
-{{--                    class="pull-right"><i class="mdi mdi-chevron-right"></i></span> </span></a>--}}
-{{--              <ul class="list-unstyled">--}}
-{{--                @if(\App\Helper\CustomHelper::canView('Create Division', 'Super Admin'))--}}
-{{--                  <li><a href="{{ route('admin.division.create') }}">Create new</a></li>--}}
-{{--                @endif--}}
-{{--                @if(\App\Helper\CustomHelper::canView('Manage Division|Delete Division|View Division|List Of Division', 'Super Admin'))--}}
-{{--                  <li><a href="{{ route('admin.division.list') }}">List of Divisions</a></li>--}}
-{{--                @endif--}}
-{{--              </ul>--}}
-{{--            </li>--}}
-{{--          @endif--}}
-
-
-{{--            @if(\App\Helper\CustomHelper::canView('Create Event|Manage Event|Delete Event|View Event|List Of Event', 'Super Admin'))--}}
-{{--            <li class="has_sub">--}}
-
-{{--              <a class="waves-effect"><i class="mdi mdi-city"></i><span> Event <span--}}
-{{--                    class="pull-right"><i class="mdi mdi-chevron-right"></i></span> </span></a>--}}
-{{--              <ul class="list-unstyled">--}}
-{{--                @if(\App\Helper\CustomHelper::canView('Create Event', 'Super Admin'))--}}
-{{--                  <li><a href="{{ route('admin.event.create') }}">Create new</a></li>--}}
-{{--                @endif--}}
-{{--                @if(\App\Helper\CustomHelper::canView('Manage Event|Delete Event|View Event|List Of Event', 'Super Admin'))--}}
-{{--                  <li><a href="{{ route('admin.event.list') }}">List of Events</a></li>--}}
-{{--                @endif--}}
-{{--              </ul>--}}
-{{--            </li>--}}
-{{--          @endif--}}
-            {{--end event manage module --}}
-
-{{--          @if(\App\Helper\CustomHelper::canView('Create District|Manage District|Delete District|View District|List Of District', 'Super Admin|Sub Agent'))--}}
-{{--            <li class="has_sub">--}}
-{{--              <a class="waves-effect"><i class="mdi mdi-houzz"></i><span> District <span--}}
-{{--                    class="pull-right"><i class="mdi mdi-chevron-right"></i></span> </span></a>--}}
-{{--              <ul class="list-unstyled">--}}
-{{--                @if(\App\Helper\CustomHelper::canView('Create District', 'Super Admin|Sub Agent'))--}}
-{{--                  <li><a href="{{ route('admin.district.create') }}">Create new</a></li>--}}
-{{--                @endif--}}
-{{--                @if(\App\Helper\CustomHelper::canView('Manage District|Delete District|View District|List Of District', 'Super Admin|Sub Agent'))--}}
-{{--                  <li><a href="{{ route('admin.district.list') }}">List of Districts</a></li>--}}
-{{--                @endif--}}
-{{--              </ul>--}}
-{{--            </li>--}}
-{{--          @endif--}}
-
-{{--          @if(\App\Helper\CustomHelper::canView('Create Upazila|Manage Upazila|Delete Upazila|View Upazila|List Of Upazila', 'Super Admin'))--}}
-{{--            <li class="has_sub">--}}
-{{--              <a class="waves-effect"><i>--}}
-{{--                  <iconify-icon icon="map:city-hall"></iconify-icon>--}}
-{{--                </i><span> Upazila <span--}}
-{{--                    class="pull-right"><i class="mdi mdi-chevron-right"></i></span> </span></a>--}}
-{{--              <ul class="list-unstyled">--}}
-{{--                @if(\App\Helper\CustomHelper::canView('Create Upazila', 'Super Admin'))--}}
-{{--                  <li><a href="{{ route('admin.upazila.create') }}">Create new</a></li>--}}
-{{--                @endif--}}
-{{--                @if(\App\Helper\CustomHelper::canView('Manage Upazila|Delete Upazila|View Upazila|List Of Upazila', 'Super Admin'))--}}
-{{--                  <li><a href="{{ route('admin.upazila.list') }}">List of Upazilas</a></li>--}}
-{{--                @endif--}}
-{{--              </ul>--}}
-{{--            </li>--}}
-{{--          @endif--}}
 
           @if(\App\Helper\CustomHelper::canView('Manage Permission', 'Super Admin'))
             <li><a href="{{ route('admin.backgroundImage') }}" class="waves-effect">
@@ -221,22 +174,6 @@
                 <span>Login Background Slider</span>
               </a></li>
           @endif
-{{--          @if(\App\Helper\CustomHelper::canView('Create Voucher|Manage Voucher|Delete Voucher|View Voucher|List Of Voucher', 'Super Admin'))--}}
-{{--            <li class="has_sub">--}}
-{{--              <a class="waves-effect"><i aria-hidden="true">--}}
-{{--                  <iconify-icon icon="majesticons:paper-fold-text"></iconify-icon>--}}
-{{--                </i><span> Voucher <span--}}
-{{--                    class="pull-right"><i class="mdi mdi-chevron-right"></i></span> </span></a>--}}
-{{--              <ul class="list-unstyled">--}}
-{{--                @if(\App\Helper\CustomHelper::canView('Create Voucher', 'Super Admin'))--}}
-{{--                  <li><a href="{{ route('admin.voucher.create') }}">Create new</a></li>--}}
-{{--                @endif--}}
-{{--                @if(\App\Helper\CustomHelper::canView('Manage Voucher|Delete Voucher|View Voucher|List Of Voucher', 'Super Admin'))--}}
-{{--                  <li><a href="{{ route('admin.voucher.list') }}">List of Vouchers</a></li>--}}
-{{--                @endif--}}
-{{--              </ul>--}}
-{{--            </li>--}}
-{{--          @endif--}}
 
         </ul>
       </div>

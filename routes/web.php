@@ -225,4 +225,9 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
   Route::delete('/background-image/destroy', [BackgroundImageController::class, 'destroy'])->name('backgroundImage.destroy');
 
 
+  #Cash
+    Route::get('/deposit', function (){
+        return view('admin.cash.deposit');
+    })->name('deposit');
+
 });
