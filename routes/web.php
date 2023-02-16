@@ -230,4 +230,12 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
         return view('admin.cash.deposit');
     })->name('deposit');
 
+   Route::get('/withdraw', function (){
+        return view('admin.cash.withdraw');
+    })->name('withdraw');
+
+ Route::get('/transaction', function (){
+        return view('admin.cash.transaction');
+    })->name('transaction');
+
 });

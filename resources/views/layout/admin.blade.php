@@ -149,9 +149,12 @@
                         @if(\App\Helper\CustomHelper::canView('Create Role', 'Super Admin'))
                             <li><a href="{{ route('admin.deposit') }}"> Deposit Cash</a></li>
                         @endif
-{{--                        @if(\App\Helper\CustomHelper::canView('Manage Role|Delete Role|View Role|List Of Role', 'Super Admin'))--}}
-{{--                            <li><a href="{{ route('admin.role.list') }}">List of roles</a></li>--}}
-{{--                        @endif--}}
+                        @if(\App\Helper\CustomHelper::canView('Manage Role|Delete Role|View Role|List Of Role', 'Super Admin'))
+                            <li><a href="{{ route('admin.withdraw') }}">Withdraw Cash</a></li>
+                        @endif
+                            @if(\App\Helper\CustomHelper::canView('Manage Role|Delete Role|View Role|List Of Role', 'Super Admin'))
+                                <li><a href="{{ route('admin.transaction') }}">Transaction History</a></li>
+                            @endif
                     </ul>
                 </li>
             @endif
