@@ -139,20 +139,20 @@
             @endif
 
 
-            @if(\App\Helper\CustomHelper::canView('Create Role|Manage Role|Delete Role|View Role|List Of Role', 'Super Admin'))
+            @if(\App\Helper\CustomHelper::canView('', 'Super Admin|Agent|Sub Agent'))
                 <li class="has_sub">
                     <a class="waves-effect"><i>
                             <iconify-icon icon="eos-icons:cluster-role-binding"></iconify-icon>
                         </i><span> Cash <span
                                 class="pull-right"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                     <ul class="list-unstyled">
-                        @if(\App\Helper\CustomHelper::canView('Create Role', 'Super Admin'))
+                        @if(\App\Helper\CustomHelper::canView('', 'Super Admin|Agent|Sub Agent'))
                             <li><a href="{{ route('admin.deposit') }}"> Deposit Cash</a></li>
                         @endif
-                        @if(\App\Helper\CustomHelper::canView('Manage Role|Delete Role|View Role|List Of Role', 'Super Admin'))
+                        @if(\App\Helper\CustomHelper::canView('', 'Super Admin|Agent|Sub Agent'))
                             <li><a href="{{ route('admin.withdraw') }}">Withdraw Cash</a></li>
                         @endif
-                            @if(\App\Helper\CustomHelper::canView('Manage Role|Delete Role|View Role|List Of Role', 'Super Admin'))
+                            @if(\App\Helper\CustomHelper::canView('', 'Super Admin|Agent|Sub Agent'))
                                 <li><a href="{{ route('admin.transaction') }}">Transaction History</a></li>
                             @endif
                     </ul>
@@ -286,7 +286,7 @@
       <!-- Top Bar End -->
 
       <div class="page-content-wrapper">
-          <marquee class="margueue_align1" loop behavior="scroll" direction="left"><p><strong>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took</strong></p></marquee>
+          <marquee class="margueue_align1" loop behavior="scroll" direction="left"><p><strong>ডিপোজিট করে পয়েন্ট জিতুন, পয়েন্টস দিয়ে কয়েন কিনুন। বিট ডিপোজিট দিচ্ছে ৪,০০,০০০ পয়েন্টস পর্যন্ত বোনাস। বিস্তারিত জানতে যোগাযোগ করুন, +8801856129075 (what's app)</strong></p></marquee>
         @yield('content')
         <div class="modal fade" id="notificationModal" tabindex="-1" role="dialog" aria-labelledby="notificationModal"
              aria-hidden="true">

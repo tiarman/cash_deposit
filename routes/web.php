@@ -240,9 +240,11 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
         return view('admin.cash.deposit');
     })->name('deposit');
 
-   Route::get('/withdraw', function (){
-        return view('admin.cash.withdraw');
-    })->name('withdraw');
+//   Route::get('/withdraw', function (){
+//        return view('admin.cash.withdraw');
+//    })->name('withdraw');
+
+    Route::get('/withdraw', [SiteController::class, 'withdraw'])->middleware('role_or_permission:Super Admin|Agent|Sub Agent|Create withdraw')->name('withdraw');
 
  Route::get('/transaction', function (){
         return view('admin.cash.transaction');

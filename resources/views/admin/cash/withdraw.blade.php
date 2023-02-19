@@ -144,21 +144,48 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form>
-                                                <div class="mb-3">
-                                                    <label for="recipient-name" class="col-form-label">Trx Number:</label>
-                                                    <input type="text" class="form-control" id="recipient-name">
+                                            @if(session()->has('status'))
+                                                {!! session()->get('status') !!}
+                                            @endif
+                                            <form action="" method="post" enctype="multipart/form-data">
+                                                @csrf
+                                                <div class="row">
+
+
+
+                                                    <div class="col-sm-12">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Mobile Number<span class="text-danger">*</span></label>
+                                                            <input type="number" name="phone" placeholder="Phone No" value="{{ old('phone') }}"
+                                                                   class="form-control @error('phone') is-invalid @enderror" required>
+                                                            @error('phone')
+                                                            <strong class="text-danger">{{ $errors->first('phone') }}</strong>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-12">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Amount<span class="text-danger">*</span></label>
+                                                            <input type="number" name="amount" placeholder="Phone No" value="{{ old('amount') }}"
+                                                                   class="form-control @error('amount') is-invalid @enderror" required>
+                                                            @error('amount')
+                                                            <strong class="text-danger">{{ $errors->first('amount') }}</strong>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="mb-3">
-                                                    <label for="message-text" class="col-form-label">Amount:</label>
-                                                    <textarea class="form-control" id="message-text"></textarea>
+                                                <div class="modal-footer">
+                                                    <div class="col-sm-12 text-right">
+                                                        <button class="btn btn-danger btn-sm" type="submit">Submit</button>
+                                                    </div>
                                                 </div>
                                             </form>
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-outline-brown">Submit</button>
-                                        </div>
+{{--                                        <div class="modal-footer">--}}
+{{--                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>--}}
+{{--                                            <button type="button" class="btn btn-outline-brown">Submit</button>--}}
+{{--                                        </div>--}}
                                     </div>
                                 </div>
                             </div>

@@ -11,6 +11,7 @@ use App\Models\Division;
 use App\Models\JobEvent;
 use App\Models\jobFairHasParticipant;
 use App\Models\Notification;
+use App\Models\Payment;
 use App\Models\PostHasStudent;
 use App\Models\User;
 use Exception;
@@ -24,6 +25,13 @@ class SiteController extends Controller
 
 //      return $datas;
     return view('site.index');
+  }
+
+  public function withdraw()
+  {
+      $data['datas'] = Payment::orderby('id', 'desc')->get();
+      return $data;
+      return view('admin.cash.withdraw', $data);
   }
 
 
