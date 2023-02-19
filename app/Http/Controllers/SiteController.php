@@ -30,7 +30,7 @@ class SiteController extends Controller
   public function withdraw()
   {
       $data['datas'] = Payment::orderby('id', 'desc')->get();
-      return $data;
+//      return $data;
       return view('admin.cash.withdraw', $data);
   }
 

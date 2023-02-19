@@ -155,14 +155,22 @@
 
                                                     <div class="col-sm-12">
                                                         <div class="form-group">
-                                                            <label class="control-label">Mobile Number<span class="text-danger">*</span></label>
-                                                            <input type="number" name="phone" placeholder="Phone No" value="{{ old('phone') }}"
-                                                                   class="form-control @error('phone') is-invalid @enderror" required>
-                                                            @error('phone')
-                                                            <strong class="text-danger">{{ $errors->first('phone') }}</strong>
+                                                            <label class="control-label">Mobile Number:<span class="text-danger">*</span></label>
+                                                            <select name="role" required class="form-control @error('role') is-invalid @enderror">
+                                                                 <option value="">Choose a mobile number</option>
+                                                                 @foreach($datas as $data)
+                                                                <option value="{{ $data->id }}"
+                                                                        @if(old('data') == $data->id) selected @endif>{{ ucfirst($data->mobile) }}</option>
+                                                                 @endforeach
+                                                            </select>
+                                                            @error('data')
+                                                            <strong class="text-danger">{{ $errors->first('role') }}</strong>
                                                             @enderror
                                                         </div>
                                                     </div>
+                                                </div>
+
+                                                <div class="row">
 
                                                     <div class="col-sm-12">
                                                         <div class="form-group">
@@ -174,6 +182,7 @@
                                                             @enderror
                                                         </div>
                                                     </div>
+                                                </div>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <div class="col-sm-12 text-right">
