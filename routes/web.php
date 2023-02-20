@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminVoucherController;
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BackgroundImageController;
+use App\Http\Controllers\DepositController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\DivisionController;
 use App\Http\Controllers\NotificationController;
@@ -95,7 +96,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
   Route::match(['get', 'post'], '/institute-profile', [AdminController::class, 'instituteProfile'])->name('instituteProfile');
 
   Route::prefix('ajax')->name('ajax.')->group(function () {
-//    Route::match(['get', 'post'], '/post/apply', [SiteController::class, 'postApply'])->name('post.apply');
+    //    Route::match(['get', 'post'], '/post/apply', [SiteController::class, 'postApply'])->name('post.apply');
     Route::get('/institute/from/type-and-division', [SearchController::class, 'searchInstituteFromTypeAndDivision'])->name('institute.from.type.and.division');
     Route::get('/user/from/institute', [SearchController::class, 'searchUserFromInstitute'])->name('user.from.institute');
     Route::prefix('search')->name('search.')->group(function () {
@@ -108,18 +109,18 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
       Route::get('/item/name', [SearchController::class, 'searchItemName'])->name('item.name');
       Route::get('/idea/student/name', [SearchController::class, 'searchUserName'])->name('idea.student.name');
     });
-//    Route::get('/get-student-prefix', [ProjectIdeaController::class, 'ajaxprojectIdeaStudent'])->name('get.student.prefix');
+    //    Route::get('/get-student-prefix', [ProjectIdeaController::class, 'ajaxprojectIdeaStudent'])->name('get.student.prefix');
     Route::post('/make/{id}/-as-read', [NotificationController::class, 'ajaxUpdateAsRead'])->name('make.modal.as.read');
     Route::post('/permission-by-role', [PermissionController::class, 'getPermissionByRole'])->middleware('role_or_permission:Super Admin|Manage Permission')->name('get.permission.by.role');
     Route::post('/update/user/status', [UserController::class, 'ajaxUpdateStatus'])->middleware('role_or_permission:Super Admin|Manage User|Manage Institute User')->name('update.user.status');
     Route::post('/update/subagent/status', [SubAgentController::class, 'ajaxUpdateStatus'])->middleware('role_or_permission:Super Admin|Agent|Manage Sub Agent')->name('update.subagent.status');
     Route::post('/update/backgrouond/status', [BackgroundImageController::class, 'ajaxUpdateStatus'])->name('update.backgroundImage.status');
     Route::post('/update/payment/status', [PaymentController::class, 'ajaxUpdateStatus'])->name('update.payment.status');
-
+    Route::post('/update/deposit/status', [DepositController::class, 'ajaxUpdateStatus'])->name('update.deposit.status');
   });
 
 
-#Division
+  #Division
   Route::prefix('division')->name('division.')->group(function () {
     Route::get('/create', [DivisionController::class, 'create'])->middleware('role_or_permission:Super Admin|Create Division')->name('create');
     Route::post('/store', [DivisionController::class, 'store'])->middleware('role_or_permission:Super Admin|Create Division|Manage Division')->name('store');
@@ -132,20 +133,20 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
 
 
 
-#Sub Agent
-    Route::prefix('subagent')->name('subagent.')->group(function () {
-        Route::get('/create', [SubAgentController::class, 'create'])->middleware('role_or_permission:Super Admin|Agent|Create Sub Agent')->name('create');
-        Route::post('/store', [SubAgentController::class, 'store'])->middleware('role_or_permission:Super Admin|Agent|Create Sub Agent|Manage Sub Agent')->name('store');
-        Route::get('/manage/{id}', [SubAgentController::class, 'manage'])->middleware('role_or_permission:Super Admin|Agent|Manage Sub Agent')->name('manage');
-        Route::get('/{id}/view', [SubAgentController::class, 'view'])->middleware('role_or_permission:Super Admin|Agent|View Sub Agent')->name('view');
-        Route::delete('/destroy', [SubAgentController::class, 'destroy'])->middleware('role_or_permission:Super Admin|Agent|Delete Sub Agent')->name('destroy');
-        Route::get('/list', [SubAgentController::class, 'index'])->middleware('role_or_permission:Super Admin|Agent|List Sub Agent')->name('list');
-    });
+  #Sub Agent
+  Route::prefix('subagent')->name('subagent.')->group(function () {
+    Route::get('/create', [SubAgentController::class, 'create'])->middleware('role_or_permission:Super Admin|Agent|Create Sub Agent')->name('create');
+    Route::post('/store', [SubAgentController::class, 'store'])->middleware('role_or_permission:Super Admin|Agent|Create Sub Agent|Manage Sub Agent')->name('store');
+    Route::get('/manage/{id}', [SubAgentController::class, 'manage'])->middleware('role_or_permission:Super Admin|Agent|Manage Sub Agent')->name('manage');
+    Route::get('/{id}/view', [SubAgentController::class, 'view'])->middleware('role_or_permission:Super Admin|Agent|View Sub Agent')->name('view');
+    Route::delete('/destroy', [SubAgentController::class, 'destroy'])->middleware('role_or_permission:Super Admin|Agent|Delete Sub Agent')->name('destroy');
+    Route::get('/list', [SubAgentController::class, 'index'])->middleware('role_or_permission:Super Admin|Agent|List Sub Agent')->name('list');
+  });
 
 
 
 
-#District
+  #District
   Route::prefix('district')->name('district.')->group(function () {
     Route::get('/create', [DistrictController::class, 'create'])->middleware('role_or_permission:Super Admin|Sub Agent|Create District')->name('create');
     Route::post('/store', [DistrictController::class, 'store'])->middleware('role_or_permission:Super Admin|Sub Agent|Create District|Manage District')->name('store');
@@ -156,7 +157,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
   });
 
 
-#Division
+  #Division
   Route::prefix('upazila')->name('upazila.')->group(function () {
     Route::get('/create', [UpazilaController::class, 'create'])->middleware('role_or_permission:Super Admin|Create Upazila')->name('create');
     Route::post('/store', [UpazilaController::class, 'store'])->middleware('role_or_permission:Super Admin|Create Upazila|Manage Upazila')->name('store');
@@ -167,7 +168,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
   });
 
 
-#Users
+  #Users
   Route::prefix('user')->name('user.')->group(function () {
     Route::get('/create', [UserController::class, 'create'])->middleware('role_or_permission:Super Admin|Agent|Create Agent')->name('create');
     Route::post('/store', [UserController::class, 'store'])->middleware('role_or_permission:Super Admin|Agent|Create Agent|Manage Agent')->name('store');
@@ -175,7 +176,6 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
     Route::get('/{id}/view', [UserController::class, 'view'])->middleware('role_or_permission:Super Admin|Agent|View Agent')->name('view');
     Route::delete('/destroy', [UserController::class, 'destroy'])->middleware('role_or_permission:Super Admin|Agent|Delete Agent')->name('destroy');
     Route::get('/list', [UserController::class, 'index'])->middleware('role_or_permission:Super Admin|Agent|List Of Agent')->name('list');
-
   });
 
 
@@ -201,7 +201,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
   });
 
 
-//  Route::get('trainee/certificate/create', [CertificateController::class, 'create'])->middleware('role_or_permission:Super Admin|Create Certificate')->name('trainee.certificate.create');
+  //  Route::get('trainee/certificate/create', [CertificateController::class, 'create'])->middleware('role_or_permission:Super Admin|Create Certificate')->name('trainee.certificate.create');
 
   #Voucher Type
   Route::prefix('voucher-type')->name('voucher.type.')->group(function () {
@@ -236,16 +236,21 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
 
 
   #Cash
-    Route::get('/deposit', function (){
-        return view('admin.cash.deposit');
-    })->name('deposit');
+  Route::match(['get', 'post'], '/deposit', [DepositController::class, 'createOrIndex'])->name('deposit');
 
-   Route::get('/withdraw', function (){
-        return view('admin.cash.withdraw');
-    })->name('withdraw');
+  // Route::get('/deposit', function () {
+  //   return view('admin.cash.deposit');
+  // })->name('deposit');
 
- Route::get('/transaction', function (){
-        return view('admin.cash.transaction');
-    })->name('transaction');
+  Route::get('/withdraw', function () {
+    return view('admin.cash.withdraw');
+  })->name('withdraw');
 
+  Route::get('/transaction', function () {
+    return view('admin.cash.transaction');
+  })->name('transaction');
+
+  #deposit
+  // Route::match(['get', 'post'], '/deposit', [BackgroundImageController::class, 'createOrIndex'])->name('deposit');
+  // Route::delete('/background-image/destroy', [BackgroundImageController::class, 'destroy'])->name('deposit.destroy');
 });
