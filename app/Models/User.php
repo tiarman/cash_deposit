@@ -28,49 +28,21 @@ class User extends Authenticatable implements MustVerifyEmail
   protected $fillable = [
     'username',
     'marital_status',
-    'blood_group',
-    'trade_technology',
     'designation',
-    'religion',
-    'gender',
     'email',
     'phone',
     'name_en',
-    'name_bn',
     'father_name',
     'mother_name',
     'nid',
     'dob',
     'alt_phone',
     'village',
-    'ps',
-    'po',
-    'division_id',
-    'district_id',
-    'upazila_id',
-    'institute_id',
     'password',
     'profile_photo_path',
     'status',
     'image',
     'address',
-    'institute_type',
-    'trade_technology_id',
-    'shift_id',
-    'section',
-    // 'department',
-    'semester_id',
-    'year',
-    'session',
-    'board_roll',
-    'running_board_roll',
-    'admission_year',
-    'birth_certificate',
-    //evalutor
-    'office',
-    'employment_status',
-    'employing_company',
-    'cv',
 
   ];
 
@@ -134,10 +106,8 @@ class User extends Authenticatable implements MustVerifyEmail
     return $this->hasOne(Technology::class, 'id', 'department_id');
   }
 
-  public static $genderArrays = ['male','female'];
-  public static $religionArrays = ['islam','hindu'];
-  public static $bloodArrays = ['a+', 'a-','b+','b-','o+','o-','ab+','ab-'];
-  public static $maritalArrays = ['married', 'unmarried'];
-  public static $yearArrays = ['first year', 'second year','third year','fourth year',];
+//public function agent(){
+//      return $this->belongsTo(User::class,'agent_id', 'id');
+//}
   public static $employmentArrays = ['unemployed', 'employed', 'self employed'];
 }
