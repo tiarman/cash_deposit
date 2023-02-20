@@ -25,6 +25,9 @@ class RoleSeeder extends Seeder {
       $payment = Role::create([
           'name' => 'Payment'
       ]);
+      $cash = Role::create([
+          'name' => 'cash'
+      ]);
 
 
 

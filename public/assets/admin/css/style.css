@@ -696,7 +696,7 @@ body.fixed-left .side-menu.left {
 
 #sidebar-menu ul ul li {
   border-top: 0;
- 
+
 }
 
 #sidebar-menu ul ul li.active a {
@@ -4524,6 +4524,80 @@ Invoice
 
 
 /*# sourceMappingURL=style.css.map */
+/*switch2*/
+.onoffswitch2 {
+    position: relative; width: 90px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch2-checkbox {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+.onoffswitch2-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #999999; border-radius: 20px;
+}
+.onoffswitch2-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch2-inner:before, .onoffswitch2-inner:after {
+    display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
+    font-size: 12px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    box-sizing: border-box;
+}
+.onoffswitch2-inner:before {
+    content: "Accepted";
+    padding-left: 10px;
+    background-color: #34A7C1; color: #FFFFFF;
+}
+.onoffswitch2-inner:after {
+    content: "Pending";
+    padding-right: 10px;
+    background-color: #EEEEEE; color: #999999;
+    text-align: right;
+}
+.onoffswitch2-switch {
+    display: block; width: 18px; margin: 6px;
+    background: #FFFFFF;
+    position: absolute; top: 0; bottom: 0;
+    right: 56px;
+    border: 2px solid #999999; border-radius: 20px;
+    transition: all 0.3s ease-in 0s;
+}
+.onoffswitch2-checkbox:checked + .onoffswitch2-label .onoffswitch2-inner {
+    margin-left: 0;
+}
+.onoffswitch2-checkbox:checked + .onoffswitch2-label .onoffswitch2-switch {
+    right: 0px;
+}
+.cursor-pointer{
+    cursor: pointer;
+}
+
+
+
+
+
+
+.btn-group-toggle .btn{
+    background-color: #ffffff!important;
+    color: black;
+}
+.btn-group-toggle .active{
+    background-color: #0062cc!important;
+}
+
+
+
+
+
+
+
+
+
+
 
 /*switch*/
 .onoffswitch {

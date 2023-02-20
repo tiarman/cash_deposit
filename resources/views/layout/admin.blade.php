@@ -139,22 +139,41 @@
             @endif
 
 
-            @if(\App\Helper\CustomHelper::canView('', 'Super Admin|Agent|Sub Agent'))
+            @if(\App\Helper\CustomHelper::canView('', 'Agent|Sub Agent'))
                 <li class="has_sub">
                     <a class="waves-effect"><i>
                             <iconify-icon icon="eos-icons:cluster-role-binding"></iconify-icon>
                         </i><span> Cash <span
                                 class="pull-right"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                     <ul class="list-unstyled">
-                        @if(\App\Helper\CustomHelper::canView('', 'Super Admin|Agent|Sub Agent'))
+                        @if(\App\Helper\CustomHelper::canView('Create Deposit', 'Super Admin|Agent|Sub Agent'))
                             <li><a href="{{ route('admin.deposit') }}"> Deposit Cash</a></li>
                         @endif
-                        @if(\App\Helper\CustomHelper::canView('', 'Super Admin|Agent|Sub Agent'))
-                            <li><a href="{{ route('admin.withdraw') }}">Withdraw Cash</a></li>
+                        @if(\App\Helper\CustomHelper::canView('Create Withdraw', 'Agent|Sub Agent'))
+                            <li><a href="{{ route('admin.withdraw.create') }}">Withdraw Cash</a></li>
                         @endif
-                            @if(\App\Helper\CustomHelper::canView('', 'Super Admin|Agent|Sub Agent'))
+                            @if(\App\Helper\CustomHelper::canView('Create Transaction', 'Agent|Sub Agent'))
                                 <li><a href="{{ route('admin.transaction') }}">Transaction History</a></li>
                             @endif
+                    </ul>
+                </li>
+            @endif
+            @if(\App\Helper\CustomHelper::canView('', 'Super Admin|Agent|Sub Agent'))
+                <li class="has_sub">
+                    <a class="waves-effect"><i>
+                            <iconify-icon icon="eos-icons:cluster-role-binding"></iconify-icon>
+                        </i><span> Cash Manage<span
+                                class="pull-right"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+                    <ul class="list-unstyled">
+{{--                        @if(\App\Helper\CustomHelper::canView('', 'Super Admin|Agent|Sub Agent'))--}}
+{{--                            <li><a href="{{ route('admin.deposit') }}"> Deposit Cash</a></li>--}}
+{{--                        @endif--}}
+                        @if(\App\Helper\CustomHelper::canView('', 'Super Admin|Agent|Sub Agent'))
+                            <li><a href="{{ route('admin.withdraw.list') }}">Withdraw Manage</a></li>
+                        @endif
+{{--                        @if(\App\Helper\CustomHelper::canView('', 'Super Admin|Agent|Sub Agent'))--}}
+{{--                            <li><a href="{{ route('admin.transaction') }}">Transaction History</a></li>--}}
+{{--                        @endif--}}
                     </ul>
                 </li>
             @endif

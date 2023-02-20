@@ -101,31 +101,64 @@
                                     {{--                                        </div>--}}
                                 @endif
                                 {{--<table class="table table-bordered table-striped mb-none" id="data-table">--}}
-                                <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap"
-                                       cellspacing="0" width="100%" style="font-size: 14px">
+                                    <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap"
+                                           cellspacing="0" width="100%" style="font-size: 14px">
 
-                                    <thead>
-                                    <tr>
-                                        <th width="10">#</th>
-                                        <th>Date</th>
-                                        <th>Transaction Type</th>
-                                        <th>Mobile/AC Number</th>
-                                        <th>Amount</th>
-                                        <th>Coin Amount</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                        {{--                                            <th width="30">Status</th>--}}
-                                        {{--                                            <th width="200">screen</th>--}}
-                                        {{--                                            <th width="50">Action</th>--}}
-                                        @if(\App\Helper\CustomHelper::canView('Manage Sub Agent|Delete Sub Agent', 'Super Admin|Agent'))
-                                            <th class="hidden-phone" width="40">Option</th>
-                                        @endif
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-
-                                    </tbody>
-                                </table>
+                                        <thead>
+                                        <tr>
+                                            <th width="10">#</th>
+                                            <th>Transaction Type</th>
+                                            <th>Mobile/AC Number</th>
+                                            <th>Amount</th>
+                                            <th>Date</th>
+{{--                                            <th>Status</th>--}}
+{{--                                            <th>Action</th>--}}
+                                            @if(\App\Helper\CustomHelper::canView('Manage User|Delete User', 'Super Admin'))
+                                                <th class="hidden-phone" width="40">Option</th>
+                                            @endif
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($wid as $key => $val)
+                                            <tr class="@if(($key%2) == 0)gradeX @else gradeC @endif">
+                                                <td class="p-1">{{ ($key+1) }}</td>
+                                                <td class="p-1 text-capitalize">trtype</td>
+                                                <td class="p-1 text-capitalize">{{ $val->withdraw_id }}</td>
+                                                <td class="p-1">{{ $val->amount }}</td>
+                                                <td width="200" class="p-1">{{ date('F d, Y h:i A', strtotime($val->created_at)) }}</td>
+{{--                                                @if(\App\Helper\CustomHelper::canView('Manage User', 'Super Admin'))--}}
+{{--                                                    <td class="text-capitalize p-1" width="100">--}}
+{{--                                                        <div class="onoffswitch">--}}
+{{--                                                            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox"--}}
+{{--                                                                   @checked($val->status == \App\Models\User::$statusArrays[1])--}}
+{{--                                                                   data-id="{{ $val->id }}"--}}
+{{--                                                                   id="myonoffswitch{{ ($key+1) }}">--}}
+{{--                                                            <label class="onoffswitch-label" for="myonoffswitch{{ ($key+1) }}">--}}
+{{--                                                                <span class="onoffswitch-inner"></span>--}}
+{{--                                                                <span class="onoffswitch-switch"></span>--}}
+{{--                                                            </label>--}}
+{{--                                                        </div>--}}
+{{--                                                    </td>--}}
+{{--                                                @else--}}
+                                                    <td class="p-1 text-capitalize">{{ $val->status }}</td>
+{{--                                                @endif--}}
+{{--                                                @if(\App\Helper\CustomHelper::canView('Manage User|Delete User', 'Super Admin'))--}}
+{{--                                                    <td class="text-center p-1" width="100">--}}
+{{--                                                        @if(\App\Helper\CustomHelper::canView('Manage User', 'Super Admin'))--}}
+{{--                                                            <a href="{{ route('admin.user.manage', $val->id) }}" class="btn btn-sm btn-success"> <i--}}
+{{--                                                                    class="fa fa-edit"></i> </a>--}}
+{{--                                                        @endif--}}
+{{--                                                        @if(\App\Helper\CustomHelper::canView('Delete User', 'Super Admin'))--}}
+{{--                                                            <span class="btn btn-sm btn-danger btn-delete delete_{{ $val->id }}" style="cursor: pointer"--}}
+{{--                                                                  data-id="{{ $val->id }}"><i--}}
+{{--                                                                    class="fa fa-trash-o"></i></span>--}}
+{{--                                                        @endif--}}
+{{--                                                    </td>--}}
+{{--                                                @endif--}}
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
 
                             </div>
 
@@ -147,16 +180,14 @@
                                             @if(session()->has('status'))
                                                 {!! session()->get('status') !!}
                                             @endif
-                                            <form action="" method="post" enctype="multipart/form-data">
+                                            <form action="{{route('admin.withdraw.store')}}" method="post" enctype="multipart/form-data">
                                                 @csrf
                                                 <div class="row">
-
-
 
                                                     <div class="col-sm-12">
                                                         <div class="form-group">
                                                             <label class="control-label">Mobile Number:<span class="text-danger">*</span></label>
-                                                            <select name="role" required class="form-control @error('role') is-invalid @enderror">
+                                                            <select name="withdraw_id" required class="form-control @error('withdraw_id') is-invalid @enderror">
                                                                  <option value="">Choose a mobile number</option>
                                                                  @foreach($datas as $data)
                                                                 <option value="{{ $data->id }}"
@@ -164,7 +195,7 @@
                                                                  @endforeach
                                                             </select>
                                                             @error('data')
-                                                            <strong class="text-danger">{{ $errors->first('role') }}</strong>
+                                                            <strong class="text-danger">{{ $errors->first('withdraw_id') }}</strong>
                                                             @enderror
                                                         </div>
                                                     </div>
@@ -175,14 +206,13 @@
                                                     <div class="col-sm-12">
                                                         <div class="form-group">
                                                             <label class="control-label">Amount<span class="text-danger">*</span></label>
-                                                            <input type="number" name="amount" placeholder="Phone No" value="{{ old('amount') }}"
+                                                            <input type="number" name="amount" placeholder="00.00" value="{{ old('amount') }}"
                                                                    class="form-control @error('amount') is-invalid @enderror" required>
                                                             @error('amount')
                                                             <strong class="text-danger">{{ $errors->first('amount') }}</strong>
                                                             @enderror
                                                         </div>
                                                     </div>
-                                                </div>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <div class="col-sm-12 text-right">
@@ -200,11 +230,7 @@
                             </div>
 
 
-
-
-
-                        </div>
-                    </section>
+</section>
                 </div>
             </div>
         </div>
