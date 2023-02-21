@@ -12,6 +12,7 @@ class Withdraw extends Model
     protected $fillable = [
         'user_id',
         'withdraw_id',
+        'transaction_type',
         'amount',
         'status'
     ];
@@ -21,8 +22,8 @@ class Withdraw extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function withdraw(): \Illuminate\Database\Eloquent\Relations\HasOne
-    {
-        return $this->hasOne(Payment::class, 'id', 'withdraw_id');
-    }
+//    public function withdraw(): \Illuminate\Database\Eloquent\Relations\HasOne
+//    {
+//        return $this->hasOne(Payment::class, 'id', 'withdraw_id');
+//    }
 }

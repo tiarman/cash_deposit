@@ -18,6 +18,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('withdraw_id');
+            $table->string('transaction_type');
             $table->string('amount')->nullable();
             $table->string('status')->default(Withdraw::$statusArrays[0]);
             $table->timestamps();

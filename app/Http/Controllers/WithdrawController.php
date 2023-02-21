@@ -41,16 +41,23 @@ public function list(){
 //    }
 
 
-    public function create($id=0){
+    public function create(){
         // return auth()->user()->roles->pluck('name')[0];
 //        if((auth()->user()->roles->pluck('name')[0] == "Super Admin")){
 //            $data['agents'] = User::whereHas('roles',function( $user){$user->where('roles.name','Agent');})->get();
 //            $data['isAdmin'] = true;
 //        }
+
+//
+//        $adminId=app('request')->user()->id;
+        $data['user'] = User::whereHas('roles',function( $user){$user->where('roles.name','Agent','Sub Agent');})->first();
+        $adminId = $data['user']->id;
+        $data['bkash'] = Payment::where('name','bkash personal')->get();
+//        return $datas;
         $user_id=app('request')->user()->id;
 
         $wid['wid'] = Withdraw::where('user_id',$user_id)->get();
-        $data['datas'] = Payment::orderby('id', 'desc')->get();
+//        $data['datas'] = Payment::orderby('id', 'desc')->get();
 //        return $wid;
         $data['roles'] = Role::select('id', 'name')->orderby('name', 'asc')->get();
         return view('admin.cash.withdraw', $data, $wid);
@@ -75,7 +82,8 @@ public function list(){
         if ($request->has('id')) {
             $withdraw = Withdraw::find($request->id);
             $rules['withdraw_id'] = 'required|string';
-            $rules['amount'] = 'nullable|string';
+            $rules['transaction_type'] = 'required|string';
+            $rules['amount'] = 'nullable|numeric';
                         $message = $message . ' updated';
         } else {
             $withdraw = new Withdraw();
@@ -89,6 +97,7 @@ public function list(){
         try {
             $withdraw->user_id = auth()->id();
             $withdraw->withdraw_id = $request->withdraw_id;
+            $withdraw->transaction_type = $request->transaction_type;
             $withdraw->amount = $request->amount;
             $withdraw->status = Withdraw::$statusArrays[0];
             if ($withdraw->save()) {
