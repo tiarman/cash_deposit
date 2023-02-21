@@ -25,22 +25,6 @@ public function list(){
 
 }
 
-//    public function index() {
-//        $wid['wid'] = Withdraw::get();
-//              return $wid;
-//        return view('admin.cash.withdraw', $wid);
-
-//    }
-
-//    public function withdraw()
-//    {
-//        $data['datas'] = Payment::orderby('id', 'desc')->get();
-//        $wid['wid'] = Withdraw::get();
-////      return $wid;
-//
-//        return view('admin.cash.withdraw', $data, $wid);
-//    }
-
 
     public function create(){
         // return auth()->user()->roles->pluck('name')[0];
