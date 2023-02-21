@@ -209,7 +209,7 @@
 {{--    </script>--}}
     <script>
         $(document).ready(function () {
-            // $('#datatable-buttons').DataTable();
+            $('#datatable-buttons').DataTable();
 
             // var table = $('#datatable-buttons').DataTable({
             //   lengthChange: false,
