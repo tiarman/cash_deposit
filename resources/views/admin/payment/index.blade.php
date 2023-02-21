@@ -51,7 +51,7 @@
                                 </div>
                                 @endif
                                 {{-- for agent/sub agent --}}
-                                @if (\App\Helper\CustomHelper::canView('Create Payment', 'Agent|Sub Agent'))
+                                @if (\App\Helper\CustomHelper::canView('', 'Agent|Sub Agent'))
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label class="control-label">Payment Method<span
