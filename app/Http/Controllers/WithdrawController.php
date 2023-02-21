@@ -34,13 +34,12 @@ public function list(){
 //        }
 
 
+        $user_id=app('request')->user()->id;
         $activewith = Withdraw::select(DB::raw("SUM(`amount`) as `sum_total`"))
-            ->where('status', '=', Withdraw::$statusArrays[1])->groupby('withdraw_id')->get();
-        $data['sum_total'] = $activewith[0]['sum_total'];
-
+            ->where('status', '=', Withdraw::$statusArrays[1])->groupby('withdraw_id')->where('user_id',$user_id)->get();
+        $data['sum_total'] = $activewith[0]['sum_total'] ?? "";
         $data['user'] = User::whereHas('roles',function( $user){$user->where('roles.name','Agent','Sub Agent');})->first();
         $data['bkash'] = Payment::where('name','bkash personal')->get();
-        $user_id=app('request')->user()->id;
         $wid['wid'] = Withdraw::where('user_id',$user_id)->get();
 //        $data['datas'] = Payment::orderby('id', 'desc')->get();
 //        return $wid;

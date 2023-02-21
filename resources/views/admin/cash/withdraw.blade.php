@@ -137,7 +137,7 @@
 
                                                     <td></td>
 
-                                                <td>Total = <strong style="color: green">{{$sum_total}}</strong></td>
+                                                <td>Total = <strong style="color: green">{{$sum_total ?? ""}}</strong></td>
                                                 <td></td>
                                                 <td></td>
 
