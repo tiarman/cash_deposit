@@ -14,6 +14,7 @@ use App\Models\Notification;
 use App\Models\Payment;
 use App\Models\PostHasStudent;
 use App\Models\User;
+use App\Models\Withdraw;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -30,8 +31,10 @@ class SiteController extends Controller
   public function withdraw()
   {
       $data['datas'] = Payment::orderby('id', 'desc')->get();
-      return $data;
-      return view('admin.cash.withdraw', $data);
+      $wid['wid'] = Withdraw::get();
+//      return $wid;
+
+      return view('admin.cash.withdraw', $data, $wid);
   }
 
 

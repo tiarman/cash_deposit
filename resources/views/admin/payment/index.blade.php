@@ -376,7 +376,7 @@
 <script>
     $(document).ready(function() {
 
-        // training type show in manage modal  
+        // training type show in manage modal
 
         $(document).on('click', '.btn-manage', function() {
             var pid = $(this).data('id');
@@ -389,7 +389,7 @@
         $(document).on('click', '.btn-manage', function() {
             $('#manageTrainingTypeModal').modal('show')
         });
-        //end show manage modal  
+        //end show manage modal
 
 
         $(document).on('click', '.yes-btn', function() {

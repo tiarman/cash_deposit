@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Deposit;
+use App\Models\Withdraw;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,14 +14,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create(with(new Deposit)->getTable(), function (Blueprint $table) {
+        Schema::create(with(new Withdraw)->getTable(), function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('amount');
-            $table->string('transaction_id');
-            $table->string('payment_no');
+            $table->unsignedBigInteger('withdraw_id');
             $table->string('transaction_type');
-            $table->string('status')->default(App\Models\Deposit::$statusArrays[1]);
+            $table->string('amount')->nullable();
+            $table->string('status')->default(Withdraw::$statusArrays[0]);
             $table->timestamps();
         });
     }
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(with(new Deposit)->getTable());
+        Schema::dropIfExists(with(new Withdraw)->getTable());
     }
 };

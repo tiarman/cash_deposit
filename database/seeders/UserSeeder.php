@@ -42,6 +42,31 @@ class UserSeeder extends Seeder
         'password' => bcrypt('12345600'),
         'status' => User::$statusArrays[1],
       ]);
+      $agentone = User::create([
+        'name_en' => 'Agent1',
+        'username' => 'agent1',
+        'phone' => '01860842421',
+        'email' => 'agent1@mail.com',
+        'password' => bcrypt('12345600'),
+        'status' => User::$statusArrays[1],
+      ]);
+        $agenttwo = User::create([
+            'name_en' => 'Agent2',
+            'username' => 'agent2',
+            'phone' => '01860842423',
+            'email' => 'agent2@mail.com',
+            'password' => bcrypt('12345600'),
+            'status' => User::$statusArrays[1],
+        ]);
+        $subagentone = User::create([
+            'agent_id' => '4',
+            'name_en' => 'Sagent',
+            'username' => 'sagent1',
+            'phone' => '01860842422',
+            'email' => 'sagent@mail.com',
+            'password' => bcrypt('12345600'),
+            'status' => User::$statusArrays[1],
+        ]);
 
         $subagent = User::create([
             'name_en' => 'Arif Hosens',
@@ -57,6 +82,9 @@ class UserSeeder extends Seeder
       $user->assignRole('Super Admin');
       $usertwo->assignRole('Super Admin');
       $agent->assignRole('Agent');
+      $agentone->assignRole('Agent');
+      $agenttwo->assignRole('Agent');
+      $subagentone->assignRole('Sub Agent');
       $subagent->assignRole('Sub Agent');
 
 
