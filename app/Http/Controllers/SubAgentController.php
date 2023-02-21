@@ -36,7 +36,8 @@ class SubAgentController extends Controller
             $data['agents'] = User::whereHas('roles',function( $user){$user->where('roles.name','Agent');})->get();
             $data['isAdmin'] = true;
         }
-        $data['roles'] = Role::select('id', 'name')->orderby('name', 'asc')->get();
+        $data['roles'] = Role::select('id', 'name')->orderby('id', 'asc')->get();
+        // return $data;
         return view('admin.user.subAgent.create', $data);
     }
 

@@ -100,8 +100,13 @@
                             <header class="panel-heading">
                                 <h2 class="panel-title">Deposit List</h2>
                             </header>
-
-
+                            <?php 
+                            $total = 0;
+                            foreach ($total_deposits as $item) {
+                                $total += intval($item->amount);
+                            }
+                            ?>
+                            <h1 class="btn btn-primary mb-3 fw-bold">Total Deposit: {{ $total}}</h1>
                             <div class="panel-body">
                                 @if (session()->has('status'))
                                     {!! session()->get('status') !!}
@@ -144,7 +149,7 @@
                                                 {{-- <td class="p-1">{{ $val->phone }}</td> --}}
                                                 {{-- <td class="p-1 text-capitalize"> --}}
                                                     {{-- {{ \App\Helper\CustomHelper::userRoleName($val) }}</td> --}}
-                                                
+{{--                                                 
                                                 @if(\App\Helper\CustomHelper::canView('', 'Super Admin'))
                                                 <td class="text-capitalize p-1" width="100">
                                                     <div class="onoffswitch3">
@@ -158,9 +163,9 @@
                                                         </label>
                                                     </div>
                                                 </td>
-                                                @else
-                                                    <td class="p-1 text-capitalize">{{ $val->status }}</td>
-                                                @endif
+                                                @else --}}
+                                                    <td class="p-1 text-capitalize "><button class="btn text-capitalize @if($val->status == 'pending') btn-warning @else btn-success @endif">{{ $val->status }}</button></td>
+                                                {{-- @endif --}}
                                                 {{-- @if (\App\Helper\CustomHelper::canView('Manage Sub Agent|Delete Sub Agent', 'Super Admin|Agent'))
                                                     <td class="text-center p-1" width="100">
                                                         @if (\App\Helper\CustomHelper::canView('Manage Sub Agent', 'Super Admin|Agent'))
@@ -279,11 +284,11 @@
                                                 {{-- nextt  --}}
                                             </form>
                                         </div>
-                                        <div class="modal-footer">
+                                        {{-- <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">Close</button>
-                                            {{-- <button type="button" class="btn btn-outline-brown">Submit</button> --}}
-                                        </div>
+                                            <button type="button" class="btn btn-outline-brown">Submit</button>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
@@ -300,52 +305,367 @@
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form>
-                                                <div class="mb-3">
-                                                    <label for="recipient-name" class="col-form-label">Recipient:</label>
-                                                    <input type="text" class="form-control" id="recipient-name">
+                                            <form action="{{ route('admin.deposit') }}" method="POST">
+                                                @csrf
+
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Transaction Type<span
+                                                                    class="text-danger">*</span></label>
+                                                            <select name="transaction_type"
+                                                                class="form-control @error('transaction_type') is-invalid @enderror">
+                                                                <option value="bkash personal">Bkash Personal</option>
+                                                                /
+                                                            </select>
+                                                            @error('transaction_type')
+                                                                <strong
+                                                                    class="text-danger">{{ $errors->first('transaction_type') }}</strong>
+                                                            @enderror
+                                                            <strong class="text-danger" id="name_error"></strong>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Payment No<span
+                                                                    class="text-danger">*</span></label>
+                                                            <select name="payment_no"
+                                                                class="form-control @error('payment_no') is-invalid @enderror">
+                                                                <option value="">Choose a Payment Number</option>
+                                                                @foreach ($bkash_agents as $data)
+                                                                    <option value="{{ $data->mobile }}"
+                                                                        @if (old('mobile') == $data->mobile) selected @endif>
+                                                                        {{ ucfirst($data->mobile) }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                            @error('payment_no')
+                                                                <strong
+                                                                    class="text-danger">{{ $errors->first('payment_no') }}</strong>
+                                                            @enderror
+                                                            <strong class="text-danger" id="payment_no_error"></strong>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Transaction Number<span
+                                                                    class="text-danger">*</span></label>
+                                                            <input type="text" name="transaction_id"
+                                                                placeholder="017****" autocomplete="off" required
+                                                                value="{{ old('transaction_id') }}"
+                                                                class="form-control @error('transaction_id') is-invalid @enderror">
+                                                            @error('transaction_id')
+                                                                <strong
+                                                                    class="text-danger">{{ $errors->first('transaction_id') }}</strong>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Amount<span
+                                                                    class="text-danger">*</span></label>
+                                                            <input type="text" name="amount" placeholder="017****"
+                                                                autocomplete="off" required value="{{ old('amount') }}"
+                                                                class="form-control @error('amount') is-invalid @enderror">
+                                                            @error('amount')
+                                                                <strong
+                                                                    class="text-danger">{{ $errors->first('amount') }}</strong>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <button type="submit"
+                                                            class="btn btn-success">Submit</button>
+                                                    </div>
                                                 </div>
-                                                <div class="mb-3">
-                                                    <label for="message-text" class="col-form-label">Message:</label>
-                                                    <textarea class="form-control" id="message-text"></textarea>
-                                                </div>
+                                                {{-- nextt  --}}
                                             </form>
                                         </div>
-                                        <div class="modal-footer">
+                                        {{-- <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Send message</button>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
-                            {{--                            Model --}}
-                            <div class="modal fade" id="bkashPersonalModal" tabindex="-1"
+                            {{--                nagad            Model --}}
+                            <div class="modal fade" id="nagadPersonalModal" tabindex="-1"
                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Bkash Personal</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">Nagad Personal</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form>
-                                                <div class="mb-3">
-                                                    <label for="recipient-name" class="col-form-label">Recipient:</label>
-                                                    <input type="text" class="form-control" id="recipient-name">
+                                            <form action="{{ route('admin.deposit') }}" method="POST">
+                                                @csrf
+
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Transaction Type<span
+                                                                    class="text-danger">*</span></label>
+                                                            <select name="transaction_type"
+                                                                class="form-control @error('transaction_type') is-invalid @enderror">
+                                                                <option value="nagad personal">Nagad Personal</option>
+                                                                /
+                                                            </select>
+                                                            @error('transaction_type')
+                                                                <strong
+                                                                    class="text-danger">{{ $errors->first('transaction_type') }}</strong>
+                                                            @enderror
+                                                            <strong class="text-danger" id="name_error"></strong>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Payment No<span
+                                                                    class="text-danger">*</span></label>
+                                                            <select name="payment_no"
+                                                                class="form-control @error('payment_no') is-invalid @enderror">
+                                                                <option value="">Choose a Payment Number</option>
+                                                                @foreach ($bkash_agents as $data)
+                                                                    <option value="{{ $data->mobile }}"
+                                                                        @if (old('mobile') == $data->mobile) selected @endif>
+                                                                        {{ ucfirst($data->mobile) }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                            @error('payment_no')
+                                                                <strong
+                                                                    class="text-danger">{{ $errors->first('payment_no') }}</strong>
+                                                            @enderror
+                                                            <strong class="text-danger" id="payment_no_error"></strong>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Transaction Number<span
+                                                                    class="text-danger">*</span></label>
+                                                            <input type="text" name="transaction_id"
+                                                                placeholder="017****" autocomplete="off" required
+                                                                value="{{ old('transaction_id') }}"
+                                                                class="form-control @error('transaction_id') is-invalid @enderror">
+                                                            @error('transaction_id')
+                                                                <strong
+                                                                    class="text-danger">{{ $errors->first('transaction_id') }}</strong>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Amount<span
+                                                                    class="text-danger">*</span></label>
+                                                            <input type="text" name="amount" placeholder="017****"
+                                                                autocomplete="off" required value="{{ old('amount') }}"
+                                                                class="form-control @error('amount') is-invalid @enderror">
+                                                            @error('amount')
+                                                                <strong
+                                                                    class="text-danger">{{ $errors->first('amount') }}</strong>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <button type="submit"
+                                                            class="btn btn-success">Submit</button>
+                                                    </div>
                                                 </div>
-                                                <div class="mb-3">
-                                                    <label for="message-text" class="col-form-label">Message:</label>
-                                                    <textarea class="form-control" id="message-text"></textarea>
-                                                </div>
+                                                {{-- nextt  --}}
                                             </form>
                                         </div>
-                                        <div class="modal-footer">
+                                        {{-- <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
                                                 data-bs-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Send message</button>
+                                        </div> --}}
+                                    </div>
+                                </div>
+                            </div>
+                            {{--                rocket            Model --}}
+                            <div class="modal fade" id="rocketPersonalModal" tabindex="-1"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Rocket Personal</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
                                         </div>
+                                        <div class="modal-body">
+                                            <form action="{{ route('admin.deposit') }}" method="POST">
+                                                @csrf
+
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Transaction Type<span
+                                                                    class="text-danger">*</span></label>
+                                                            <select name="transaction_type"
+                                                                class="form-control @error('transaction_type') is-invalid @enderror">
+                                                                <option value="rocket personal">Rocket Personal</option>
+                                                                
+                                                            </select>
+                                                            @error('transaction_type')
+                                                                <strong
+                                                                    class="text-danger">{{ $errors->first('transaction_type') }}</strong>
+                                                            @enderror
+                                                            <strong class="text-danger" id="name_error"></strong>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Payment No<span
+                                                                    class="text-danger">*</span></label>
+                                                            <select name="payment_no"
+                                                                class="form-control @error('payment_no') is-invalid @enderror">
+                                                                <option value="">Choose a Payment Number</option>
+                                                                @foreach ($bkash_agents as $data)
+                                                                    <option value="{{ $data->mobile }}"
+                                                                        @if (old('mobile') == $data->mobile) selected @endif>
+                                                                        {{ ucfirst($data->mobile) }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                            @error('payment_no')
+                                                                <strong
+                                                                    class="text-danger">{{ $errors->first('payment_no') }}</strong>
+                                                            @enderror
+                                                            <strong class="text-danger" id="payment_no_error"></strong>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Transaction Number<span
+                                                                    class="text-danger">*</span></label>
+                                                            <input type="text" name="transaction_id"
+                                                                placeholder="017****" autocomplete="off" required
+                                                                value="{{ old('transaction_id') }}"
+                                                                class="form-control @error('transaction_id') is-invalid @enderror">
+                                                            @error('transaction_id')
+                                                                <strong
+                                                                    class="text-danger">{{ $errors->first('transaction_id') }}</strong>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Amount<span
+                                                                    class="text-danger">*</span></label>
+                                                            <input type="text" name="amount" placeholder="017****"
+                                                                autocomplete="off" required value="{{ old('amount') }}"
+                                                                class="form-control @error('amount') is-invalid @enderror">
+                                                            @error('amount')
+                                                                <strong
+                                                                    class="text-danger">{{ $errors->first('amount') }}</strong>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <button type="submit"
+                                                            class="btn btn-success">Submit</button>
+                                                    </div>
+                                                </div>
+                                                {{-- nextt  --}}
+                                            </form>
+                                        </div>
+                                        {{-- <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                        </div> --}}
+                                    </div>
+                                </div>
+                            </div>
+                            {{--                upay            Model --}}
+                            <div class="modal fade" id="upayPersonalModal" tabindex="-1"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Upay Personal</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="{{ route('admin.deposit') }}" method="POST">
+                                                @csrf
+
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Transaction Type<span
+                                                                    class="text-danger">*</span></label>
+                                                            <select name="transaction_type"
+                                                                class="form-control @error('transaction_type') is-invalid @enderror">
+                                                                <option value="upay personal">Upay Personal</option>
+                                                            </select>
+                                                            @error('transaction_type')
+                                                                <strong
+                                                                    class="text-danger">{{ $errors->first('transaction_type') }}</strong>
+                                                            @enderror
+                                                            <strong class="text-danger" id="name_error"></strong>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Payment No<span
+                                                                    class="text-danger">*</span></label>
+                                                            <select name="payment_no"
+                                                                class="form-control @error('payment_no') is-invalid @enderror">
+                                                                <option value="">Choose a Payment Number</option>
+                                                                @foreach ($bkash_agents as $data)
+                                                                    <option value="{{ $data->mobile }}"
+                                                                        @if (old('mobile') == $data->mobile) selected @endif>
+                                                                        {{ ucfirst($data->mobile) }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                            @error('payment_no')
+                                                                <strong
+                                                                    class="text-danger">{{ $errors->first('payment_no') }}</strong>
+                                                            @enderror
+                                                            <strong class="text-danger" id="payment_no_error"></strong>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Transaction Number<span
+                                                                    class="text-danger">*</span></label>
+                                                            <input type="text" name="transaction_id"
+                                                                placeholder="017****" autocomplete="off" required
+                                                                value="{{ old('transaction_id') }}"
+                                                                class="form-control @error('transaction_id') is-invalid @enderror">
+                                                            @error('transaction_id')
+                                                                <strong
+                                                                    class="text-danger">{{ $errors->first('transaction_id') }}</strong>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label class="control-label">Amount<span
+                                                                    class="text-danger">*</span></label>
+                                                            <input type="text" name="amount" placeholder="017****"
+                                                                autocomplete="off" required value="{{ old('amount') }}"
+                                                                class="form-control @error('amount') is-invalid @enderror">
+                                                            @error('amount')
+                                                                <strong
+                                                                    class="text-danger">{{ $errors->first('amount') }}</strong>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <button type="submit"
+                                                            class="btn btn-success">Submit</button>
+                                                    </div>
+                                                </div>
+                                                {{-- nextt  --}}
+                                            </form>
+                                        </div>
+                                        {{-- <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>

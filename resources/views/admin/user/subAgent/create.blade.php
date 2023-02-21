@@ -105,8 +105,8 @@
                       <select name="role" required class="form-control @error('role') is-invalid @enderror">
                         {{-- <option value="">Choose a role</option> --}}
                         {{-- @foreach($roles as $role) --}}
-                          <option value="{{ $roles[1]->id }}"
-                                  @if(old('role') == $roles[1]->id) selected @endif>{{ ucfirst($roles[1]->name) }}</option>
+                          <option value="{{ $roles[2]->id }}"
+                                  @if(old('role') == $roles[2]->id) selected @endif>{{ ucfirst($roles[2]->name) }}</option>
                         {{-- @endforeach --}}
                       </select>
                       @error('role')
