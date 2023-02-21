@@ -7,6 +7,53 @@
 @endsection
 
 @section('content')
+
+
+                        <header class="panel-heading">
+                            <h2 class="panel-title">Transaction History</h2>
+                        </header>
+                        <div class="main-content">
+
+                            <div class="page-content">
+                                <div class="container-fluid">
+
+                                    <div class="row">
+                                        <div class="col-md-6 col-xl-6">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="mini-stat">
+                                                        <span class="mini-stat-icon bg-primary float-start"><i class="mdi mdi-currency-usd"></i></span>
+                                                        <div class="mini-stat-info text-end">
+                                                            <span class="counter text-primary">Withdraw Total</span>
+                                                            <strong>Total: {{$sum_total ?? " "}}</strong>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-xl-6">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="mini-stat clearfix">
+                                                        <span class="mini-stat-icon bg-success float-start"><i class="mdi mdi-currency-usd"></i></span>
+                                                        <div class="mini-stat-info text-end">
+                                                            <span class="counter text-success">Deposit Total</span>
+                                                            New Orders
+                                                        </div>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                        </div>
+
+
+
+
+
+
+
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -21,67 +68,50 @@
                             @endif
 
                             {{--<table class="table table-bordered table-striped mb-none" id="data-table">--}}
-                            <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap"
-                                   cellspacing="0" width="100%" style="font-size: 14px">
+                                <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap"
+                                       cellspacing="0" width="100%" style="font-size: 14px">
 
-                                <thead>
-                                <tr>
-                                    <th width="10">#</th>
-                                    <th>Approve Date</th>
-                                    <th>Trx Type</th>
-                                    <th>Trx Number</th>
-                                    <th>Trx ID</th>
-                                    <th>Amount</th>
-                                    <th width="30">Remark</th>
-                                    @if(\App\Helper\CustomHelper::canView('Manage Sub Agent|Delete Sub Agent', 'Super Admin|Agent'))
-                                        <th class="hidden-phone" width="40">Option</th>
-                                    @endif
-                                </tr>
-                                </thead>
-                                <tbody>
-{{--                                @foreach($sub_agent as $key => $val)--}}
-{{--                                    <tr class="@if(($key%2) == 0)gradeX @else gradeC @endif">--}}
-{{--                                        <td class="p-1">{{ ($key+1) }}</td>--}}
-{{--                                        <td class="p-1 text-capitalize">{{ $val->name_en }}</td>--}}
-{{--                                        <td class="p-1 text-capitalize">{{ $val->username }}</td>--}}
-{{--                                        <td class="p-1">{{ $val->agent_id }}</td>--}}
-{{--                                        <td class="p-1">{{ $val->email }}</td>--}}
-{{--                                        <td class="p-1">{{ $val->phone }}</td>--}}
-{{--                                        <td class="p-1 text-capitalize">{{ \App\Helper\CustomHelper::userRoleName($val) }}</td>--}}
-{{--                                        <td width="200" class="p-1">{{ date('F d, Y h:i A', strtotime($val->created_at)) }}</td>--}}
-{{--                                        @if(\App\Helper\CustomHelper::canView('Manage Sub Agent', 'Super Admin|Agent'))--}}
-{{--                                            <td class="text-capitalize p-1" width="100">--}}
-{{--                                                <div class="onoffswitch">--}}
-{{--                                                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox"--}}
-{{--                                                           @checked($val->status == \App\Models\User::$statusArrays[1])--}}
-{{--                                                           data-id="{{ $val->id }}"--}}
-{{--                                                           id="myonoffswitch{{ ($key+1) }}">--}}
-{{--                                                    <label class="onoffswitch-label" for="myonoffswitch{{ ($key+1) }}">--}}
-{{--                                                        <span class="onoffswitch-inner"></span>--}}
-{{--                                                        <span class="onoffswitch-switch"></span>--}}
-{{--                                                    </label>--}}
-{{--                                                </div>--}}
-{{--                                            </td>--}}
-{{--                                        @else--}}
-{{--                                            <td class="p-1 text-capitalize">{{ $val->status }}</td>--}}
-{{--                                        @endif--}}
-{{--                                        @if(\App\Helper\CustomHelper::canView('Manage Sub Agent|Delete Sub Agent', 'Super Admin|Agent'))--}}
-{{--                                            <td class="text-center p-1" width="100">--}}
-{{--                                                @if(\App\Helper\CustomHelper::canView('Manage Sub Agent', 'Super Admin|Agent'))--}}
-{{--                                                    <a href="{{ route('admin.subagent.manage', $val->id) }}" class="btn btn-sm btn-success"> <i--}}
-{{--                                                            class="fa fa-edit"></i> </a>--}}
-{{--                                                @endif--}}
-{{--                                                @if(\App\Helper\CustomHelper::canView('Delete Sub Agent', 'Super Admin|Agent'))--}}
-{{--                                                    <span class="btn btn-sm btn-danger btn-delete delete_{{ $val->id }}" style="cursor: pointer"--}}
-{{--                                                          data-id="{{ $val->id }}"><i--}}
-{{--                                                            class="fa fa-trash-o"></i></span>--}}
-{{--                                                @endif--}}
-{{--                                            </td>--}}
-{{--                                        @endif--}}
-{{--                                    </tr>--}}
-{{--                                @endforeach--}}
-                                </tbody>
-                            </table>
+                                    <thead>
+                                    <tr>
+                                        <th width="10">#</th>
+                                        <th>Transaction Type</th>
+                                        <th>Mobile/AC Number</th>
+                                        <th>Amount</th>
+                                        <th>Date</th>
+                                        <th>Status</th>
+
+                                        @if(\App\Helper\CustomHelper::canView('Manage User|Delete User', 'Super Admin'))
+                                            <th class="hidden-phone" width="40">Option</th>
+                                        @endif
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($wid as $key => $val)
+                                        <tr class="@if(($key%2) == 0)gradeX @else gradeC @endif">
+                                            <td class="p-1">{{ ($key+1) }}</td>
+                                            <td class="p-1 text-capitalize">{{$val->transaction_type}}</td>
+                                            <td class="p-1 text-capitalize">{{ $val->withdraw_id }}</td>
+                                            <td class="p-1">{{ $val->amount }}</td>
+                                            <td width="200" class="p-1">{{ date('F d, Y h:i A', strtotime($val->created_at)) }}</td>
+                                            <td class="p-1 text-capitalize">{{ $val->status }}</td>
+
+                                            @endforeach
+                                        </tr>
+                                    <thead>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+
+                                        <td></td>
+
+                                        <td>Total = <strong style="color: green">{{$sum_total ?? " "}}</strong></td>
+                                        <td></td>
+                                        <td></td>
+
+                                    </tr>
+                                    </thead>
+                                    </tbody>
+                                </table>
                             <div class="row">
 {{--                                <div class="col-sm-12">{{ $sub_agent->links('vendor.pagination.bootstrap-4') }}</div>--}}
                             </div>

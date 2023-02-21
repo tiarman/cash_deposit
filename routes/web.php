@@ -15,6 +15,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\SubAgentController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UpazilaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VoucherController;
@@ -265,9 +266,11 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
     return view('admin.cash.withdraw');
   })->name('withdraw');
 
-  Route::get('/transaction', function () {
-    return view('admin.cash.transaction');
-  })->name('transaction');
+//  Route::get('/transaction', function () {
+//    return view('admin.cash.transaction');
+//  })->name('transaction');
+
+  Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction');
 
   #deposit
   // Route::match(['get', 'post'], '/deposit', [BackgroundImageController::class, 'createOrIndex'])->name('deposit');

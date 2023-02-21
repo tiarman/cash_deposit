@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Withdraw;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
 
@@ -24,22 +25,6 @@ public function list(){
 
 }
 
-//    public function index() {
-//        $wid['wid'] = Withdraw::get();
-//              return $wid;
-//        return view('admin.cash.withdraw', $wid);
-
-//    }
-
-//    public function withdraw()
-//    {
-//        $data['datas'] = Payment::orderby('id', 'desc')->get();
-//        $wid['wid'] = Withdraw::get();
-////      return $wid;
-//
-//        return view('admin.cash.withdraw', $data, $wid);
-//    }
-
 
     public function create(){
         // return auth()->user()->roles->pluck('name')[0];
@@ -48,14 +33,13 @@ public function list(){
 //            $data['isAdmin'] = true;
 //        }
 
-//
-//        $adminId=app('request')->user()->id;
-        $data['user'] = User::whereHas('roles',function( $user){$user->where('roles.name','Agent','Sub Agent');})->first();
-        $adminId = $data['user']->id;
-        $data['bkash'] = Payment::where('name','bkash personal')->get();
-//        return $datas;
-        $user_id=app('request')->user()->id;
 
+        $user_id=app('request')->user()->id;
+        $activewith = Withdraw::select(DB::raw("SUM(`amount`) as `sum_total`"))
+            ->where('status', '=', Withdraw::$statusArrays[1])->groupby('withdraw_id')->where('user_id',$user_id)->get();
+        $data['sum_total'] = $activewith[0]['sum_total'] ?? "";
+        $data['user'] = User::whereHas('roles',function( $user){$user->where('roles.name','Agent','Sub Agent');})->first();
+        $data['bkash'] = Payment::where('name','bkash personal')->get();
         $wid['wid'] = Withdraw::where('user_id',$user_id)->get();
 //        $data['datas'] = Payment::orderby('id', 'desc')->get();
 //        return $wid;
