@@ -14,7 +14,7 @@ use Spatie\Permission\Models\Role;
 class SubAgentController extends Controller
 {
     public function index() {
-            $data['sub_agent'] = User::whereHas('roles',function( $user){$user->where('roles.name','Sub Agent');})->paginate(100);
+            $data['sub_agent'] = User::with('agent')->whereHas('roles',function( $user){$user->where('roles.name','Sub Agent');})->paginate(100);
 //            $data['agent'] = User::select('name_en','id')->where('id', $data['sub_agent'][0]->agent_id)->get();
 //        $data['roles'] = Role::select('id', 'name')->orderby('name', 'asc')->get();
 //        $roleNames = auth()->user()->roles->pluck('name');
@@ -26,6 +26,7 @@ class SubAgentController extends Controller
 //        $role['data'] = Role::where('name', $roleName)->first();
 //        $data['users'] = User::with('roles')->orderby('id', 'desc')->paginate(100);
 //return $data;
+//        return $data['sub_agent'];
         return view('admin.user.subAgent.list', $data);
     }
 
