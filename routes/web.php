@@ -251,6 +251,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
 
   #Cash
   Route::match(['get', 'post'], '/deposit', [DepositController::class, 'createOrIndex'])->name('deposit');
+  Route::get('/deposit/list', [DepositController::class, 'depositList'])->name('deposit.list');
 
 //   Route::get('/withdraw', function (){
 //        return view('admin.cash.withdraw');

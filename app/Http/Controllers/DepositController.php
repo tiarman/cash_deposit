@@ -18,17 +18,21 @@ class DepositController extends Controller
      */
     public function createOrIndex(Request $request)
     {
-//        return $request;
+        // for deposit only admin selected method can be load
            $data['user'] = User::whereHas('roles',function( $user){$user->where('roles.name','Super Admin');})->first();
            $adminId = $data['user']->id;
-//        $adminId=app('request')->user()->id;
+
+        //   get numbers for specific payment method
            $data['bkash_agents'] = Payment::where('user_id', $adminId)->where('name','bkash agent')->get();
-//           return $adminId;
+           $data['bkash_personals'] = Payment::where('user_id', $adminId)->where('name','bkash personal')->get();
+           $data['nagad_personals'] = Payment::where('user_id', $adminId)->where('name','nagad personal')->get();
+           $data['rocket_personals'] = Payment::where('user_id', $adminId)->where('name','rocket personal')->get();
+           $data['upay_personals'] = Payment::where('user_id', $adminId)->where('name','upay personal')->get();
+        //    user wise deposit data
            $data['deposits'] = Deposit::where('user_id', auth()->id())->get();
-        //    return $data['deposits'];
-        //    $data['bkash_pers'] = Payment::where('user_id', $adminId)->where('name','bkash agent')->get();
-        //    $data['bkash_agents'] = Payment::where('user_id', $adminId)->where('name','bkash agent')->get();
-        //    $data['bkash_agents'] = Payment::where('user_id', $adminId)->where('name','bkash agent')->get();
+        // total deposit 
+        $data['total_deposits'] = Deposit::select('amount')->where('user_id', auth()->id())->where('status','accepted')->get();
+        // return $data['total_deposits'];
 
         if($request->isMethod('post')){
             $message = "Deposit sent Successfully";
@@ -62,27 +66,15 @@ class DepositController extends Controller
         return view('admin.cash.deposit',$data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+   
+    public function depositList()
     {
-        //
+        $data['allDeposits'] = Deposit::get();
+        $data['total_deposits'] = Deposit::select('amount')->where('status','accepted')->get();
+        return view('admin.cashmanage.depositManage',$data);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
+   
     /**
      * Display the specified resource.
      *

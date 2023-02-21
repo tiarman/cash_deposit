@@ -158,7 +158,7 @@
                     </ul>
                 </li>
             @endif
-            @if(\App\Helper\CustomHelper::canView('', 'Super Admin|Agent|Sub Agent'))
+            @if(\App\Helper\CustomHelper::canView('', 'Super Admin'))
                 <li class="has_sub">
                     <a class="waves-effect"><i>
                             <iconify-icon icon="eos-icons:cluster-role-binding"></iconify-icon>
@@ -168,8 +168,11 @@
 {{--                        @if(\App\Helper\CustomHelper::canView('', 'Super Admin|Agent|Sub Agent'))--}}
 {{--                            <li><a href="{{ route('admin.deposit') }}"> Deposit Cash</a></li>--}}
 {{--                        @endif--}}
-                        @if(\App\Helper\CustomHelper::canView('', 'Super Admin|Agent|Sub Agent'))
+                        @if(\App\Helper\CustomHelper::canView('', 'Super Admin'))
                             <li><a href="{{ route('admin.withdraw.list') }}">Withdraw Manage</a></li>
+                        @endif
+                        @if(\App\Helper\CustomHelper::canView('', 'Super Admin'))
+                            <li><a href="{{ route('admin.deposit.list') }}">Deposit Manage</a></li>
                         @endif
 {{--                        @if(\App\Helper\CustomHelper::canView('', 'Super Admin|Agent|Sub Agent'))--}}
 {{--                            <li><a href="{{ route('admin.transaction') }}">Transaction History</a></li>--}}
