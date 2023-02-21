@@ -154,7 +154,7 @@
       //   .appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
 
 
-      $(document).on('change', 'input[name="onoffswitch"]', function () {
+              $(document).on('change', 'input[name="onoffswitch"]', function () {
         var status = 'inactive';
         var id = $(this).data('id')
         var isChecked = $(this).is(":checked");

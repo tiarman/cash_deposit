@@ -17,4 +17,6 @@ class Payment extends Model
     'status',
    ];
    public static $statusArray = ['active','inactive'];
+
+
 }

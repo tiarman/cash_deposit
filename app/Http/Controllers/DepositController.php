@@ -17,10 +17,13 @@ class DepositController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function createOrIndex(Request $request)
-    { 
+    {
+//        return $request;
            $data['user'] = User::whereHas('roles',function( $user){$user->where('roles.name','Super Admin');})->first();
            $adminId = $data['user']->id;
+//        $adminId=app('request')->user()->id;
            $data['bkash_agents'] = Payment::where('user_id', $adminId)->where('name','bkash agent')->get();
+//           return $adminId;
            $data['deposits'] = Deposit::where('user_id', auth()->id())->get();
         //    return $data['deposits'];
         //    $data['bkash_pers'] = Payment::where('user_id', $adminId)->where('name','bkash agent')->get();
@@ -43,17 +46,17 @@ class DepositController extends Controller
                 $deposit->transaction_id = $request->transaction_id;
                 $deposit->amount = $request->amount;
                 $deposit->status = \App\Models\Deposit::$statusArrays[1];
-              
+
                 // return $deposit;
                 if ($deposit->save()) {
                     return RedirectHelper::routeSuccess('admin.deposit', $message);
                 }
                 return RedirectHelper::backWithInput();
             } catch (QueryException $e) {
-                return $e;
+//                return $e;
                 return RedirectHelper::backWithInputFromException();
             }
-            // return $request; 
+            // return $request;
         }
         // return $data;
         return view('admin.cash.deposit',$data);

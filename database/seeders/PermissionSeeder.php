@@ -105,6 +105,19 @@ class PermissionSeeder extends Seeder {
           'type' => 'Payment',
           'name' => 'View Payment'
       ]);
+      //      Cash
+      Permission::create([
+          'type' => 'cash',
+          'name' => 'List of Withdraw'
+      ]);
+      Permission::create([
+          'type' => 'cash',
+          'name' => 'Create Withdraw'
+      ]);
+      Permission::create([
+          'type' => 'cash',
+          'name' => 'Manage Withdraw'
+      ]);
 
 
 //      Division

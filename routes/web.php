@@ -15,10 +15,12 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\SubAgentController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UpazilaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VoucherController;
 use App\Http\Controllers\VoucherTypeController;
+use App\Http\Controllers\WithdrawController;
 use App\Models\BackgroundImage;
 use Illuminate\Support\Facades\Route;
 
@@ -116,6 +118,8 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
     Route::post('/update/subagent/status', [SubAgentController::class, 'ajaxUpdateStatus'])->middleware('role_or_permission:Super Admin|Agent|Manage Sub Agent')->name('update.subagent.status');
     Route::post('/update/backgrouond/status', [BackgroundImageController::class, 'ajaxUpdateStatus'])->name('update.backgroundImage.status');
     Route::post('/update/payment/status', [PaymentController::class, 'ajaxUpdateStatus'])->name('update.payment.status');
+
+    Route::post('/update/cashmanage/status', [WithdrawController::class, 'ajaxUpdateStatus'])->name('update.cashmanage.status');
     Route::post('/update/deposit/status', [DepositController::class, 'ajaxUpdateStatus'])->name('update.deposit.status');
   });
 
@@ -190,6 +194,16 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
     Route::get('/list', [RoleController::class, 'index'])->middleware('role_or_permission:Super Admin|List Of Role')->name('list');
   });
 
+    #Withdraw
+    Route::prefix('withdraw')->name('withdraw.')->group(function () {
+        Route::get('/create', [WithdrawController::class, 'create'])->middleware('role_or_permission:Agent|Sub Agent|Create Withdraw')->name('create');
+        Route::post('/store', [WithdrawController::class, 'store'])->middleware('role_or_permission:Agent|Sub Agent|Create Withdraw|Manage Withdraw')->name('store');
+//        Route::get('/manage/{id}', [WithdrawController::class, 'manage'])->middleware('role_or_permission:Super Admin|Manage Withdraw')->name('manage');
+//        Route::get('/{id}/view', [WithdrawController::class, 'view'])->middleware('role_or_permission:Super Admin|View Withdraw')->name('view');
+//        Route::delete('/destroy', [WithdrawController::class, 'destroy'])->middleware('role_or_permission:Super Admin|Delete Withdraw')->name('destroy');
+        Route::get('/list', [WithdrawController::class, 'list'])->middleware('role_or_permission:Super Admin|List of Withdraw')->name('list');
+    });
+
   #Permission
   Route::match(['get', 'post'], '/permission/manage', [PermissionController::class, 'managePermission'])->middleware('role_or_permission:Super Admin|Manage Permission')->name('permission.manage');
 
@@ -238,6 +252,12 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
   #Cash
   Route::match(['get', 'post'], '/deposit', [DepositController::class, 'createOrIndex'])->name('deposit');
 
+//   Route::get('/withdraw', function (){
+//        return view('admin.cash.withdraw');
+//    })->name('withdraw');
+
+//    Route::get('/withdraw', [SiteController::class, 'withdraw'])->middleware('role_or_permission:Super Admin|Agent|Sub Agent|Create withdraw')->name('withdraw');
+
   // Route::get('/deposit', function () {
   //   return view('admin.cash.deposit');
   // })->name('deposit');
@@ -246,9 +266,11 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
     return view('admin.cash.withdraw');
   })->name('withdraw');
 
-  Route::get('/transaction', function () {
-    return view('admin.cash.transaction');
-  })->name('transaction');
+//  Route::get('/transaction', function () {
+//    return view('admin.cash.transaction');
+//  })->name('transaction');
+
+  Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction');
 
   #deposit
   // Route::match(['get', 'post'], '/deposit', [BackgroundImageController::class, 'createOrIndex'])->name('deposit');
