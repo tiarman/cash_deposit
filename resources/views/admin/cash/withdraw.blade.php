@@ -111,6 +111,7 @@
                                             <th>Mobile/AC Number</th>
                                             <th>Amount</th>
                                             <th>Date</th>
+                                            <th>Status</th>
 
                                             @if(\App\Helper\CustomHelper::canView('Manage User|Delete User', 'Super Admin'))
                                                 <th class="hidden-phone" width="40">Option</th>
@@ -126,8 +127,22 @@
                                                 <td class="p-1">{{ $val->amount }}</td>
                                                 <td width="200" class="p-1">{{ date('F d, Y h:i A', strtotime($val->created_at)) }}</td>
                                                     <td class="p-1 text-capitalize">{{ $val->status }}</td>
-                                            </tr>
+
                                         @endforeach
+                                            </tr>
+                                        <thead>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+
+                                                    <td></td>
+
+                                                <td>Total = <strong style="color: green">{{$sum_total}}</strong></td>
+                                                <td></td>
+                                                <td></td>
+
+                                            </tr>
+                                        </thead>
                                         </tbody>
                                     </table>
 
@@ -229,8 +244,39 @@
 
 
 @section('script')
+    <!-- Required datatable js -->
+    <script src="{{ asset('assets/admin/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/plugins/datatables/dataTables.bootstrap4.min.js') }}"></script>
+    <!-- Buttons examples -->
+    <script src="{{ asset('assets/admin/plugins/datatables/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/plugins/datatables/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/plugins/datatables/jszip.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/plugins/datatables/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/plugins/datatables/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('assets/admin/plugins/datatables/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/plugins/datatables/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/plugins/datatables/buttons.colVis.min.js') }}"></script>
+    <!-- Responsive examples -->
+    <script src="{{ asset('assets/admin/plugins/datatables/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/plugins/datatables/responsive.bootstrap4.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+
+        <script>
+            $(document).ready(function () {
+            $('#datatable-buttons').DataTable();
+
+            // var table = $('#datatable-buttons').DataTable({
+            //   lengthChange: false,
+            //   buttons: ['copy', 'excel', 'pdf', 'colvis']
+            // });
+            //
+            // table.buttons().container()
+            //   .appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
+
+        })
+    </script>
     <script>
         $(document).ready(function () {
             $('#datatable-buttons').DataTable();
