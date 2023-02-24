@@ -65,14 +65,14 @@ class SubAgentController extends Controller
         if ($request->has('id')) {
             $user = User::find($request->id);
             $rules['email'] = 'nullable|email|unique:' . with(new User)->getTable() . ',email,' . $request->id;
-            $rules['username'] = 'nullable|string|min:6|max:8|unique:'.with(new user)->getTable().',username';
+            $rules['username'] = 'nullable|string|min:5|max:12|unique:'.with(new user)->getTable().',username';
             $rules['phone'] = 'nullable|string|min:11|max:11|unique:' . with(new User)->getTable() . ',phone,' . $request->id;
             $rules['password'] = 'nullable|string|min:' . User::$minimumPasswordLength;
             $message = $message . ' updated';
         } else {
             $user = new User();
             $rules['email'] = 'required|email|unique:' . with(new User)->getTable() . ',email';
-            $rules['username'] = 'required|string|min:6|max:8|unique:'.with(new user)->getTable().',username';
+            $rules['username'] = 'required|string|min:5|max:12|unique:'.with(new user)->getTable().',username';
             // $rules['phone'] = 'required|string|min:11|max:11|unique:' . with(new User)->getTable() . ',phone';
             $message = $message . ' created';
         }

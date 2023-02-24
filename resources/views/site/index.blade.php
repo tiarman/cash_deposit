@@ -133,8 +133,8 @@
                         <p class="mt-3">Focus on your business and avoid all the web hosting managed hosting guarantees unmatched performance, reliability and choice with 24/7 support that acts as your extended team guarantees unmatched performance.</p>
                         <div class="hm2-service-tab mt-30 mb-40">
                             <ul class="nav nav-tabs">
-                                <li><button class="active" data-bs-toggle="tab" data-bs-target="#domain_service" type="button"><i class="fa-solid fa-globe"></i>Domain Services</button></li>
-                                <li><button data-bs-toggle="tab" data-bs-target="#hosting_service" type="button"><i class="fa-solid fa-earth-asia"></i>Web Hosting Services</button></li>
+                                <li><button class="active" data-bs-toggle="tab" data-bs-target="#domain_service" type="button"><i class="fa-solid fa-globe"></i>Cash Deposite</button></li>
+                                <li><button data-bs-toggle="tab" data-bs-target="#hosting_service" type="button"><i class="fa-solid fa-earth-asia"></i>Cash Withdraw</button></li>
                             </ul>
                             <div class="tab-content mt-4">
                                 <div class="tab-pane fade show active" id="domain_service">
@@ -432,64 +432,7 @@
 {{--    </section>--}}
     <!--pricing section end-->
 
-    <!--domain search area-->
-    <section class="hm2-domain-search bg-primary-gradient pt-30 position-relative zindex-1 overflow-hidden">
-        <img src="{{asset('assets/frontend/img/home2/shape/circle.svg')}}" alt="circle" class="position-absolute circle-shape">
-        <img src="{{asset('assets/frontend/img/home2/shape/circle-half.png')}}" alt="circle" class="position-absolute circle-half">
-        <img src="{{asset('assets/frontend/img/home2/shape/red-object.svg')}}" alt="red object" class="position-absolute red-object">
-        <img src="{{asset('assets/frontend/img/home2/shape/blue-circle.svg')}}" alt="blue circle" class="position-absolute blue-circle">
-        <img src="{{asset('assets/frontend/img/home2/shape/wave-lines.svg')}}" alt="wave line" class="position-absolute wave-line">
-        <img src="{{asset('assets/frontend/img/home2/shape/blue-object.svg')}}" alt="blue object" class="position-absolute blue-object">
-        <div class="container">
-            <div class="row justify-content-between align-items-center">
-                <div class="col-lg-6 order-2 order-lg-1">
-                    <div class="hm3-domain-left text-center text-lg-start">
-                        <h2>Choose Your Domain Today!</h2>
-                        <form action="#" class="mt-4 hm2-dm-search-form position-relative d-flex align-items-center justify-content-between">
-                            <input type="text" placeholder="Search Domain Name">
-                            <select class="form-select">
-                                <option value="1">.com</option>
-                                <option value="1">.info</option>
-                                <option value="1">.org</option>
-                                <option value="1">.biz</option>
-                                <option value="1">.xyz</option>
-                            </select>
-                            <button type="submit" class="template-btn hm2-primary-btn border-0 flex-shrink-0">Search Now</button>
-                        </form>
-                        <div class="domain-info mt-4 d-flex align-items-center justify-content-center justify-content-lg-start">
-                            <div class="info-box border-0">
-                                <h5 class="primary-text mb-0">.com</h5>
-                                <span class="text-white">$2.44/Year</span>
-                            </div>
-                            <div class="info-box border-0">
-                                <h5 class="danger-text mb-0">.info</h5>
-                                <span class="text-white">$3.44/Year</span>
-                            </div>
-                            <div class="info-box border-0">
-                                <h5 class="success-text mb-0">.org</h5>
-                                <span class="text-white">$2.55/Year</span>
-                            </div>
-                            <div class="info-box border-0">
-                                <h5 class="blue-text mb-0">.biz</h5>
-                                <span class="text-white">$1.90/Year</span>
-                            </div>
-                            <div class="info-box border-0">
-                                <h5 class="info-text mb-0">.xyz</h5>
-                                <span class="text-white">$0.99/Year</span>
-                            </div>
-                        </div>
 
-                    </div>
-                </div>
-                <div class="col-lg-4 order-1 order-lg-2">
-                    <div class="feature-img text-center">
-                        <img src="{{asset('assets/frontend/img/home2/laptop.png')}}" alt="laptop" class="img-fluid">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--domain search area end-->
 
     <!--hosting server start-->
     <section class="hosting-server ptb-120 position-relative overflow-hidden light-bg zindex-1">
@@ -658,95 +601,6 @@
     </section>
     <!--data center end-->
 
-    <!--application area start-->
-    <section class="hm2-applications overflow-hidden">
-        <div class="container position-relative zindex-1">
-            <img src="{{asset('assets/frontend/img/shapes/app-shape.svg')}}" alt="not found" class="position-absolute app-shape">
-            <div class="row justify-content-center">
-                <div class="col-lg-5">
-                    <div class="section-title text-center">
-                        <h2 class="text-white">Install Applications Easily with cPanel</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="app-wrapper mt-40">
-                <div class="row g-4 justify-content-center">
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10">
-                        <div class="hm2-app-item text-center bg-white deep-shadow rounded-2">
-                            <div class="feagure-img">
-                                <img src="{{asset('assets/frontend/img/brands/wp.png')}}" alt="wordpress" class="img-fluid">
-                            </div>
-                            <div class="app-content mt-4">
-                                <a href="wp-hosting.html">
-                                    <h3 class="h6 mb-3">WordPress Hosting</h3>
-                                </a>
-                                <p class="mb-20">WordPress has grown to become the most popular which also makes it the number hackers.</p>
-                                <a href="wp-hosting.html" class="explore-btn">Read More<i class="fa-solid fa-plus"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10">
-                        <div class="hm2-app-item text-center bg-white deep-shadow rounded-2">
-                            <div class="feagure-img">
-                                <img src="{{asset('assets/frontend/img/brands/zoomla.png')}}" alt="wordpress" class="img-fluid">
-                            </div>
-                            <div class="app-content mt-4">
-                                <a href="shared-hosting.html">
-                                    <h3 class="h6 mb-3">Shared Hosting</h3>
-                                </a>
-                                <p class="mb-20">Shared Hosting has grown to become the most popular which also makes it the number hackers.</p>
-                                <a href="shared-hosting.html" class="explore-btn">Read More<i class="fa-solid fa-plus"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10">
-                        <div class="hm2-app-item text-center bg-white deep-shadow rounded-2">
-                            <div class="feagure-img">
-                                <img src="{{asset('assets/frontend/img/brands/drupal.png')}}" alt="wordpress" class="img-fluid">
-                            </div>
-                            <div class="app-content mt-4">
-                                <a href="index-3.html">
-                                    <h3 class="h6 mb-3">Game Hosting</h3>
-                                </a>
-                                <p class="mb-20">Game Hosting has grown to become the most popular which also makes it the number hackers.</p>
-                                <a href="index-3.html" class="explore-btn">Read More<i class="fa-solid fa-plus"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-10">
-                        <div class="hm2-app-item text-center bg-white deep-shadow rounded-2">
-                            <div class="feagure-img">
-                                <img src="{{asset('assets/frontend/img/brands/hosting.png')}}" alt="wordpress" class="img-fluid">
-                            </div>
-                            <div class="app-content mt-4">
-                                <a href="vps-hosting.html">
-                                    <h3 class="h6 mb-3">VPS Hosting</h3>
-                                </a>
-                                <p class="mb-20">VPS hosting has grown to become the most popular which also makes it the number hackers.</p>
-                                <a href="vps-hosting.html" class="explore-btn">Read More<i class="fa-solid fa-plus"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="app-explore d-flex align-items-center justify-content-center mt-5">
-                <div class="app-thumbs">
-                    <img src="{{asset('assets/frontend/img/brands/app-sm-1.png')}}" class="img-fluid rounded-circle img-transparent" data-bs-toggle="tooltip" data-bs-placement="top" title="Joomla">
-                    <img src="{{asset('assets/frontend/img/brands/app-sm-2.png')}}" class="img-fluid rounded-circle img-transparent" data-bs-toggle="tooltip" data-bs-placement="top" title="WordPress">
-                    <img src="{{asset('assets/frontend/img/brands/app-sm-3.png')}}" class="img-fluid rounded-circle img-transparent" data-bs-toggle="tooltip" data-bs-placement="top" title="Drupal">
-                    <img src="{{asset('assets/frontend/img/brands/app-sm-4.png')}}" class="img-fluid rounded-circle img-transparent" data-bs-toggle="tooltip" data-bs-placement="top" title="VPS Hosting">
-                </div>
-                <div class="app-info ms-3">
-                    <a href="application.html">
-                        <h6 class="text-decoration-underline">More Application</h6>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--application area end-->
 
     <!--feedback area start-->
     <section class="hm2-feedback pt-120 pb-120 overflow-hidden">
@@ -840,205 +694,205 @@
     <!--feedback area end-->
 
     <!--faq section start-->
-    <section class="faq-section pt-120 pb-120">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="text-center">
-                        <h2>Frequently Asked Questions</h2>
-                        <p>We are regularly rated 5 stars by our customers and with over reviews on Trustpilot and Facebook, see for yourself why you can trust us to power your website.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="faq-tab hm2-faq-tab mt-5">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="tab-left">
-                            <ul class="hm2-server-tab-control nav nav-tabs border-0">
-                                <li><button class="active" data-bs-toggle="tab" data-bs-target="#faq_shared_hosting"><i class="fa-solid fa-server"></i><span class="ms-3">Shared Hosting</span></button></li>
-                                <li><button data-bs-toggle="tab" data-bs-target="#faq_wp_hosting"><i class="fa-brands fa-wordpress"></i><span class="ms-3">WordPress Hosting</span></button></li>
-                                <li><button data-bs-toggle="tab" data-bs-target="#faq_vps_hosting"><i class="fa-solid fa-database"></i><span class="ms-3">Vps Hosting</span></button></li>
-                                <li><button data-bs-toggle="tab" data-bs-target="#faq_could_hosting"><i class="fa-solid fa-cloud-meatball"></i><span class="ms-3">Dedicated Hosting</span></button></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-8">
-                        <div class="tab-content mt-5 mt-lg-0">
-                            <div class="tab-pane fade show active" id="faq_shared_hosting">
-                                <div class="accordion hm2-accordion rounded-2 deep-shadow bg-white" id="accordion_1">
-                                    <div class="accordion-item">
-                                        <div class="accordion-header">
-                                            <a href="#sh_1" data-bs-toggle="collapse">What is Shared hosting?</a>
-                                        </div>
-                                        <div class="accordion-collapse collapse show" id="sh_1" data-bs-parent="#accordion_1">
-                                            <div class="accordion-body">
-                                                <p class="mb-0">We care about safety big time — and so do your site's visitors. With a Shared Hosting account, you get an SSL certificate for free to add to your site. In this day and age, having an SSL for your site is a no-brainer best practice. Not only does an SSL help your visitors feel safe interacting with your site — this is particularly important if you run an e-commerce site.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="accordion-item">
-                                        <div class="accordion-header">
-                                            <a href="#sh_2" data-bs-toggle="collapse" class="collapsed">How many websites can I host?</a>
-                                        </div>
-                                        <div class="accordion-collapse collapse" id="sh_2" data-bs-parent="#accordion_1">
-                                            <div class="accordion-body">
-                                                <p class="mb-0">We care about safety big time — and so do your site's visitors. With a Shared Hosting account, you get an SSL certificate for free to add to your site. In this day and age, having an SSL for your site is a no-brainer best practice. Not only does an SSL help your visitors feel safe interacting with your site — this is particularly important if you run an e-commerce site.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="accordion-item">
-                                        <div class="accordion-header">
-                                            <a href="#sh_3" data-bs-toggle="collapse" class="collapsed">Does Shared Hosting include email?</a>
-                                        </div>
-                                        <div class="accordion-collapse collapse" id="sh_3" data-bs-parent="#accordion_1">
-                                            <div class="accordion-body">
-                                                <p class="mb-0">We care about safety big time — and so do your site's visitors. With a Shared Hosting account, you get an SSL certificate for free to add to your site. In this day and age, having an SSL for your site is a no-brainer best practice. Not only does an SSL help your visitors feel safe interacting with your site — this is particularly important if you run an e-commerce site.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="accordion-item">
-                                        <div class="accordion-header">
-                                            <a href="#sh_4" data-bs-toggle="collapse" class="collapsed">What's the difference between a domain name and web hosting?</a>
-                                        </div>
-                                        <div class="accordion-collapse collapse" id="sh_4" data-bs-parent="#accordion_1">
-                                            <div class="accordion-body">
-                                                <p class="mb-0">We care about safety big time — and so do your site's visitors. With a Shared Hosting account, you get an SSL certificate for free to add to your site. In this day and age, having an SSL for your site is a no-brainer best practice. Not only does an SSL help your visitors feel safe interacting with your site — this is particularly important if you run an e-commerce site.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="accordion-item">
-                                        <div class="accordion-header">
-                                            <a href="#sh_5" data-bs-toggle="collapse" class="collapsed">What's the difference between a domain name and web hosting?</a>
-                                        </div>
-                                        <div class="accordion-collapse collapse" id="sh_5" data-bs-parent="#accordion_1">
-                                            <div class="accordion-body">
-                                                <p class="mb-0">We care about safety big time — and so do your site's visitors. With a Shared Hosting account, you get an SSL certificate for free to add to your site. In this day and age, having an SSL for your site is a no-brainer best practice. Not only does an SSL help your visitors feel safe interacting with your site — this is particularly important if you run an e-commerce site.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="accordion-item">
-                                        <div class="accordion-header">
-                                            <a href="#sh_6" data-bs-toggle="collapse" class="collapsed">Can I upgrade to a more powerful hosting plan later?</a>
-                                        </div>
-                                        <div class="accordion-collapse collapse" id="sh_6" data-bs-parent="#accordion_1">
-                                            <div class="accordion-body">
-                                                <p class="mb-0">We care about safety big time — and so do your site's visitors. With a Shared Hosting account, you get an SSL certificate for free to add to your site. In this day and age, having an SSL for your site is a no-brainer best practice. Not only does an SSL help your visitors feel safe interacting with your site — this is particularly important if you run an e-commerce site.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="accordion-item">
-                                        <div class="accordion-header">
-                                            <a href="#sh_7" data-bs-toggle="collapse" class="collapsed">Do you include SSL Certificates?</a>
-                                        </div>
-                                        <div class="accordion-collapse collapse" id="sh_7" data-bs-parent="#accordion_1">
-                                            <div class="accordion-body">
-                                                <p class="mb-0">We care about safety big time — and so do your site's visitors. With a Shared Hosting account, you get an SSL certificate for free to add to your site. In this day and age, having an SSL for your site is a no-brainer best practice. Not only does an SSL help your visitors feel safe interacting with your site — this is particularly important if you run an e-commerce site.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="accordion-item">
-                                        <div class="accordion-header">
-                                            <a href="#sh_8" data-bs-toggle="collapse" class="collapsed">What if I have a domain at another company? Can I transfer it?</a>
-                                        </div>
-                                        <div class="accordion-collapse collapse" id="sh_8" data-bs-parent="#accordion_1">
-                                            <div class="accordion-body">
-                                                <p class="mb-0">We care about safety big time — and so do your site's visitors. With a Shared Hosting account, you get an SSL certificate for free to add to your site. In this day and age, having an SSL for your site is a no-brainer best practice. Not only does an SSL help your visitors feel safe interacting with your site — this is particularly important if you run an e-commerce site.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+{{--    <section class="faq-section pt-120 pb-120">--}}
+{{--        <div class="container">--}}
+{{--            <div class="row justify-content-center">--}}
+{{--                <div class="col-lg-6">--}}
+{{--                    <div class="text-center">--}}
+{{--                        <h2>Frequently Asked Questions</h2>--}}
+{{--                        <p>We are regularly rated 5 stars by our customers and with over reviews on Trustpilot and Facebook, see for yourself why you can trust us to power your website.</p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="faq-tab hm2-faq-tab mt-5">--}}
+{{--                <div class="row">--}}
+{{--                    <div class="col-lg-4">--}}
+{{--                        <div class="tab-left">--}}
+{{--                            <ul class="hm2-server-tab-control nav nav-tabs border-0">--}}
+{{--                                <li><button class="active" data-bs-toggle="tab" data-bs-target="#faq_shared_hosting"><i class="fa-solid fa-server"></i><span class="ms-3">Shared Hosting</span></button></li>--}}
+{{--                                <li><button data-bs-toggle="tab" data-bs-target="#faq_wp_hosting"><i class="fa-brands fa-wordpress"></i><span class="ms-3">WordPress Hosting</span></button></li>--}}
+{{--                                <li><button data-bs-toggle="tab" data-bs-target="#faq_vps_hosting"><i class="fa-solid fa-database"></i><span class="ms-3">Vps Hosting</span></button></li>--}}
+{{--                                <li><button data-bs-toggle="tab" data-bs-target="#faq_could_hosting"><i class="fa-solid fa-cloud-meatball"></i><span class="ms-3">Dedicated Hosting</span></button></li>--}}
+{{--                            </ul>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="col-lg-8">--}}
+{{--                        <div class="tab-content mt-5 mt-lg-0">--}}
+{{--                            <div class="tab-pane fade show active" id="faq_shared_hosting">--}}
+{{--                                <div class="accordion hm2-accordion rounded-2 deep-shadow bg-white" id="accordion_1">--}}
+{{--                                    <div class="accordion-item">--}}
+{{--                                        <div class="accordion-header">--}}
+{{--                                            <a href="#sh_1" data-bs-toggle="collapse">What is Shared hosting?</a>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="accordion-collapse collapse show" id="sh_1" data-bs-parent="#accordion_1">--}}
+{{--                                            <div class="accordion-body">--}}
+{{--                                                <p class="mb-0">We care about safety big time — and so do your site's visitors. With a Shared Hosting account, you get an SSL certificate for free to add to your site. In this day and age, having an SSL for your site is a no-brainer best practice. Not only does an SSL help your visitors feel safe interacting with your site — this is particularly important if you run an e-commerce site.</p>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="accordion-item">--}}
+{{--                                        <div class="accordion-header">--}}
+{{--                                            <a href="#sh_2" data-bs-toggle="collapse" class="collapsed">How many websites can I host?</a>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="accordion-collapse collapse" id="sh_2" data-bs-parent="#accordion_1">--}}
+{{--                                            <div class="accordion-body">--}}
+{{--                                                <p class="mb-0">We care about safety big time — and so do your site's visitors. With a Shared Hosting account, you get an SSL certificate for free to add to your site. In this day and age, having an SSL for your site is a no-brainer best practice. Not only does an SSL help your visitors feel safe interacting with your site — this is particularly important if you run an e-commerce site.</p>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="accordion-item">--}}
+{{--                                        <div class="accordion-header">--}}
+{{--                                            <a href="#sh_3" data-bs-toggle="collapse" class="collapsed">Does Shared Hosting include email?</a>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="accordion-collapse collapse" id="sh_3" data-bs-parent="#accordion_1">--}}
+{{--                                            <div class="accordion-body">--}}
+{{--                                                <p class="mb-0">We care about safety big time — and so do your site's visitors. With a Shared Hosting account, you get an SSL certificate for free to add to your site. In this day and age, having an SSL for your site is a no-brainer best practice. Not only does an SSL help your visitors feel safe interacting with your site — this is particularly important if you run an e-commerce site.</p>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="accordion-item">--}}
+{{--                                        <div class="accordion-header">--}}
+{{--                                            <a href="#sh_4" data-bs-toggle="collapse" class="collapsed">What's the difference between a domain name and web hosting?</a>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="accordion-collapse collapse" id="sh_4" data-bs-parent="#accordion_1">--}}
+{{--                                            <div class="accordion-body">--}}
+{{--                                                <p class="mb-0">We care about safety big time — and so do your site's visitors. With a Shared Hosting account, you get an SSL certificate for free to add to your site. In this day and age, having an SSL for your site is a no-brainer best practice. Not only does an SSL help your visitors feel safe interacting with your site — this is particularly important if you run an e-commerce site.</p>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="accordion-item">--}}
+{{--                                        <div class="accordion-header">--}}
+{{--                                            <a href="#sh_5" data-bs-toggle="collapse" class="collapsed">What's the difference between a domain name and web hosting?</a>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="accordion-collapse collapse" id="sh_5" data-bs-parent="#accordion_1">--}}
+{{--                                            <div class="accordion-body">--}}
+{{--                                                <p class="mb-0">We care about safety big time — and so do your site's visitors. With a Shared Hosting account, you get an SSL certificate for free to add to your site. In this day and age, having an SSL for your site is a no-brainer best practice. Not only does an SSL help your visitors feel safe interacting with your site — this is particularly important if you run an e-commerce site.</p>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="accordion-item">--}}
+{{--                                        <div class="accordion-header">--}}
+{{--                                            <a href="#sh_6" data-bs-toggle="collapse" class="collapsed">Can I upgrade to a more powerful hosting plan later?</a>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="accordion-collapse collapse" id="sh_6" data-bs-parent="#accordion_1">--}}
+{{--                                            <div class="accordion-body">--}}
+{{--                                                <p class="mb-0">We care about safety big time — and so do your site's visitors. With a Shared Hosting account, you get an SSL certificate for free to add to your site. In this day and age, having an SSL for your site is a no-brainer best practice. Not only does an SSL help your visitors feel safe interacting with your site — this is particularly important if you run an e-commerce site.</p>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="accordion-item">--}}
+{{--                                        <div class="accordion-header">--}}
+{{--                                            <a href="#sh_7" data-bs-toggle="collapse" class="collapsed">Do you include SSL Certificates?</a>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="accordion-collapse collapse" id="sh_7" data-bs-parent="#accordion_1">--}}
+{{--                                            <div class="accordion-body">--}}
+{{--                                                <p class="mb-0">We care about safety big time — and so do your site's visitors. With a Shared Hosting account, you get an SSL certificate for free to add to your site. In this day and age, having an SSL for your site is a no-brainer best practice. Not only does an SSL help your visitors feel safe interacting with your site — this is particularly important if you run an e-commerce site.</p>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="accordion-item">--}}
+{{--                                        <div class="accordion-header">--}}
+{{--                                            <a href="#sh_8" data-bs-toggle="collapse" class="collapsed">What if I have a domain at another company? Can I transfer it?</a>--}}
+{{--                                        </div>--}}
+{{--                                        <div class="accordion-collapse collapse" id="sh_8" data-bs-parent="#accordion_1">--}}
+{{--                                            <div class="accordion-body">--}}
+{{--                                                <p class="mb-0">We care about safety big time — and so do your site's visitors. With a Shared Hosting account, you get an SSL certificate for free to add to your site. In this day and age, having an SSL for your site is a no-brainer best practice. Not only does an SSL help your visitors feel safe interacting with your site — this is particularly important if you run an e-commerce site.</p>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
     <!--faq section end-->
 
     <!--blog section start-->
-    <section class="hm2-blog-section pt-120 pb-120">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="section-title text-center">
-                        <h2>Our Latest News & Blog</h2>
-                        <p>Choose from data centers worldwide to store your content close to your website visitors Cloudflare, has a network </p>
-                    </div>
-                </div>
-            </div>
-            <div class="hm2-blog-wrapper mt-5 hm2-blog-slider swiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide hm2-blog-card bg-white">
-                        <div class="feature-img rounded-top overflow-hidden">
-                            <a href="blog-details.html"><img src="{{asset('assets/frontend/img/home2/blog-1.jpg')}}" alt="feature" class="img-fluid"></a>
-                        </div>
-                        <div class="hm2-blog-card-content position-relative">
-                            <a href="vps-hosting-2.html" class="tag-btn rounded-pill position-absolute">Cloud Hosting</a>
-                            <a href="blog-details.html">
-                                <h3 class="h5 mb-3">Improving Website Performance with LiteSpeed.</h3>
-                            </a>
-                            <p>Many desktop publishing packages & will uncover many web sites.</p>
-                            <hr class="spacer mt-20 mb-20">
-                            </hr>
-                            <div class="bog-author d-flex align-items-center justify-content-between">
-                                <div class="d-inline-flex align-items-center">
-                                    <img src="{{asset('assets/frontend/img/home2/client-1.png')}}" alt="author" class="img-fluid rounded-circle">
-                                    <h6 class="ms-2 mb-0">Wade Warren</h6>
-                                </div>
-                                <span class="date">2 Days Ago</span>
-                            </div>
+{{--    <section class="hm2-blog-section pt-120 pb-120">--}}
+{{--        <div class="container">--}}
+{{--            <div class="row justify-content-center">--}}
+{{--                <div class="col-lg-6">--}}
+{{--                    <div class="section-title text-center">--}}
+{{--                        <h2>Our Latest News & Blog</h2>--}}
+{{--                        <p>Choose from data centers worldwide to store your content close to your website visitors Cloudflare, has a network </p>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="hm2-blog-wrapper mt-5 hm2-blog-slider swiper">--}}
+{{--                <div class="swiper-wrapper">--}}
+{{--                    <div class="swiper-slide hm2-blog-card bg-white">--}}
+{{--                        <div class="feature-img rounded-top overflow-hidden">--}}
+{{--                            <a href="blog-details.html"><img src="{{asset('assets/frontend/img/home2/blog-1.jpg')}}" alt="feature" class="img-fluid"></a>--}}
+{{--                        </div>--}}
+{{--                        <div class="hm2-blog-card-content position-relative">--}}
+{{--                            <a href="vps-hosting-2.html" class="tag-btn rounded-pill position-absolute">Cloud Hosting</a>--}}
+{{--                            <a href="blog-details.html">--}}
+{{--                                <h3 class="h5 mb-3">Improving Website Performance with LiteSpeed.</h3>--}}
+{{--                            </a>--}}
+{{--                            <p>Many desktop publishing packages & will uncover many web sites.</p>--}}
+{{--                            <hr class="spacer mt-20 mb-20">--}}
+{{--                            </hr>--}}
+{{--                            <div class="bog-author d-flex align-items-center justify-content-between">--}}
+{{--                                <div class="d-inline-flex align-items-center">--}}
+{{--                                    <img src="{{asset('assets/frontend/img/home2/client-1.png')}}" alt="author" class="img-fluid rounded-circle">--}}
+{{--                                    <h6 class="ms-2 mb-0">Wade Warren</h6>--}}
+{{--                                </div>--}}
+{{--                                <span class="date">2 Days Ago</span>--}}
+{{--                            </div>--}}
 
-                        </div>
-                    </div>
-                    <div class="swiper-slide hm2-blog-card bg-white">
-                        <div class="feature-img rounded-top overflow-hidden">
-                            <a href="blog-details.html"><img src="{{asset('assets/frontend/img/home2/blog-2.jpg')}}" alt="feature" class="img-fluid"></a>
-                        </div>
-                        <div class="hm2-blog-card-content position-relative">
-                            <a href="vps-hosting.html" class="tag-btn rounded-pill position-absolute">Cloud Hosting</a>
-                            <a href="blog-details.html">
-                                <h3 class="h5 mb-3">The definitive list of digital products you can sell</h3>
-                            </a>
-                            <p>Many desktop publishing packages & will uncover many web sites.</p>
-                            <hr class="spacer mt-20 mb-20">
-                            </hr>
-                            <div class="bog-author d-flex align-items-center justify-content-between">
-                                <div class="d-inline-flex align-items-center">
-                                    <img src="{{asset('assets/frontend/img/home2/client-2.png')}}" alt="author" class="img-fluid rounded-circle">
-                                    <h6 class="ms-2 mb-0">Jani Moilanen</h6>
-                                </div>
-                                <span class="date">2 Days Ago</span>
-                            </div>
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="swiper-slide hm2-blog-card bg-white">--}}
+{{--                        <div class="feature-img rounded-top overflow-hidden">--}}
+{{--                            <a href="blog-details.html"><img src="{{asset('assets/frontend/img/home2/blog-2.jpg')}}" alt="feature" class="img-fluid"></a>--}}
+{{--                        </div>--}}
+{{--                        <div class="hm2-blog-card-content position-relative">--}}
+{{--                            <a href="vps-hosting.html" class="tag-btn rounded-pill position-absolute">Cloud Hosting</a>--}}
+{{--                            <a href="blog-details.html">--}}
+{{--                                <h3 class="h5 mb-3">The definitive list of digital products you can sell</h3>--}}
+{{--                            </a>--}}
+{{--                            <p>Many desktop publishing packages & will uncover many web sites.</p>--}}
+{{--                            <hr class="spacer mt-20 mb-20">--}}
+{{--                            </hr>--}}
+{{--                            <div class="bog-author d-flex align-items-center justify-content-between">--}}
+{{--                                <div class="d-inline-flex align-items-center">--}}
+{{--                                    <img src="{{asset('assets/frontend/img/home2/client-2.png')}}" alt="author" class="img-fluid rounded-circle">--}}
+{{--                                    <h6 class="ms-2 mb-0">Jani Moilanen</h6>--}}
+{{--                                </div>--}}
+{{--                                <span class="date">2 Days Ago</span>--}}
+{{--                            </div>--}}
 
-                        </div>
-                    </div>
-                    <div class="swiper-slide hm2-blog-card bg-white">
-                        <div class="feature-img rounded-top overflow-hidden">
-                            <a href="blog-details.html"><img src="{{asset('assets/frontend/img/home2/blog-3.jpg')}}" alt="feature" class="img-fluid"></a>
-                        </div>
-                        <div class="hm2-blog-card-content position-relative">
-                            <a href="vps-hosting.html" class="tag-btn rounded-pill position-absolute">Cloud Hosting</a>
-                            <a href="blog-details.html">
-                                <h3 class="h5 mb-3">25 Best Hosting Company All Over the World</h3>
-                            </a>
-                            <p>Many desktop publishing packages & will uncover many web sites.</p>
-                            <hr class="spacer mt-20 mb-20">
-                            </hr>
-                            <div class="bog-author d-flex align-items-center justify-content-between">
-                                <div class="d-inline-flex align-items-center">
-                                    <img src="{{asset('assets/frontend/img/home2/client-3.png')}}" alt="author" class="img-fluid rounded-circle">
-                                    <h6 class="ms-2 mb-0">Devon Lane</h6>
-                                </div>
-                                <span class="date">2 Days Ago</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-pagination slider-pagination"></div>
-            </div>
-        </div>
-    </section>
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="swiper-slide hm2-blog-card bg-white">--}}
+{{--                        <div class="feature-img rounded-top overflow-hidden">--}}
+{{--                            <a href="blog-details.html"><img src="{{asset('assets/frontend/img/home2/blog-3.jpg')}}" alt="feature" class="img-fluid"></a>--}}
+{{--                        </div>--}}
+{{--                        <div class="hm2-blog-card-content position-relative">--}}
+{{--                            <a href="vps-hosting.html" class="tag-btn rounded-pill position-absolute">Cloud Hosting</a>--}}
+{{--                            <a href="blog-details.html">--}}
+{{--                                <h3 class="h5 mb-3">25 Best Hosting Company All Over the World</h3>--}}
+{{--                            </a>--}}
+{{--                            <p>Many desktop publishing packages & will uncover many web sites.</p>--}}
+{{--                            <hr class="spacer mt-20 mb-20">--}}
+{{--                            </hr>--}}
+{{--                            <div class="bog-author d-flex align-items-center justify-content-between">--}}
+{{--                                <div class="d-inline-flex align-items-center">--}}
+{{--                                    <img src="{{asset('assets/frontend/img/home2/client-3.png')}}" alt="author" class="img-fluid rounded-circle">--}}
+{{--                                    <h6 class="ms-2 mb-0">Devon Lane</h6>--}}
+{{--                                </div>--}}
+{{--                                <span class="date">2 Days Ago</span>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <div class="swiper-pagination slider-pagination"></div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </section>--}}
     <!--blog section end-->
 
     <!--subscribe area start-->
