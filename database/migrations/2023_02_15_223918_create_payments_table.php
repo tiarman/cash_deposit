@@ -18,6 +18,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('name')->nullable();
+            $table->string('name_key')->nullable();
             $table->string('mobile')->nullable();
             $table->string('status')->default(Payment::$statusArray[0])->nullable();
             $table->string('image')->nullable();
