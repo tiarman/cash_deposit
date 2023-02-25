@@ -113,11 +113,12 @@ class SubAgentController extends Controller
     {
         $id = $request->post('id');
         try {
-            $user = SubAgent::find($id);
+            $user = User::find($id);
             if ($user->delete()) {
                 return 'success';
             }
         } catch (\Exception $e) {
+//            return $e;
         }
     }
 
@@ -126,21 +127,17 @@ class SubAgentController extends Controller
      * @param Request $request
      * @return string|void
      */
-    public function ajaxUpdateStatus(Request $request)
-    {
+    public function ajaxUpdateStatus(Request $request) {
         if ($request->isMethod("POST")) {
             $id = $request->post('id');
             $postStatus = $request->post('status');
             $status = strtolower($postStatus);
-            $user = SubAgent::find($id);
+            $user = User::find($id);
             if ($user->update(['status' => $status])) {
                 return "success";
             }
         }
     }
-
-
-
 
 
 

@@ -154,9 +154,10 @@
       //   .appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
 
 
-              $(document).on('change', 'input[name="onoffswitch"]', function () {
+     $(document).on('change', 'input[name="onoffswitch"]', function () {
         var status = 'inactive';
         var id = $(this).data('id')
+                   console.log(id);
         var isChecked = $(this).is(":checked");
         if (isChecked) {
           status = 'active';
@@ -176,6 +177,7 @@
 
       $(document).on('click', '.yes-btn', function () {
         var pid = $(this).data('id');
+        console.log(pid);
         var $this = $('.delete_' + pid)
         $.ajax({
           url: "{{ route('admin.subagent.destroy') }}",
