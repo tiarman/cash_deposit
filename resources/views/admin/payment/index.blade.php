@@ -36,7 +36,7 @@
                         <form action="{{ route('admin.payment.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
-                              @if (\App\Helper\CustomHelper::canView('Create Payment', 'Super Admin'))
+                              {{-- @if (\App\Helper\CustomHelper::canView('Create Payment', 'Super Admin'))
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label class="control-label">Payment Method Name<span
@@ -49,9 +49,11 @@
                                         @enderror
                                     </div>
                                 </div>
-                                @endif
+                                @endif --}}
                                 {{-- for agent/sub agent --}}
-                                @if (\App\Helper\CustomHelper::canView('', 'Agent|Sub Agent'))
+
+                                {{-- @if (\App\Helper\CustomHelper::canView('Create Payment', 'Agent|Sub Agent')) --}}
+
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label class="control-label">Payment Method<span
@@ -59,10 +61,10 @@
                                             <select name="name" required
                                                 class="form-control @error('name') is-invalid @enderror">
                                                 <option value="">Choose a Payment Method</option>
-                                                @foreach ($datas as $data)
-                                                    <option value="{{ $data->name }}"
-                                                        @if (old('name') == $data->name) selected @endif>
-                                                        {{ ucfirst($data->name) }}</option>
+                                                @foreach (\App\Models\Payment::$paymentMethods as $key => $data)
+                                                    <option value="{{ $key }}"
+                                                        @if (old('name') == $data) selected @endif>
+                                                        {{ ucfirst($data) }}</option>
                                                 @endforeach
                                             </select>
                                             @error('name')
@@ -71,7 +73,7 @@
                                             <strong class="text-danger" id="name_error"></strong>
                                         </div>
                                     </div>
-                                @endif
+                                {{-- @endif --}}
 
                                 <div class="col-sm-6">
                                     <div class="form-group">

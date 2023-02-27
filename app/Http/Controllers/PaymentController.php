@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helper\CustomHelper;
 use App\Helper\RedirectHelper;
 use App\Models\Payment;
+// use App\Models\Payment\paymentMethods;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
@@ -40,7 +41,8 @@ class PaymentController extends Controller
         }
         $request->validate($rules);
         try {
-            $payment->name = $request->name;
+            $payment->name_key = $request->name;
+            $payment->name = Payment::$paymentMethods[$request->name];
             $payment->mobile = $request->mobile;
             $payment->status = $request->status;
             // $payment->image = $request->image;
