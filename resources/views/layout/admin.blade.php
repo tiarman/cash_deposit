@@ -146,9 +146,9 @@
                         </i><span>Marquee<span
                                 class="pull-right"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                     <ul class="list-unstyled">
-                        @if(\App\Helper\CustomHelper::canView('Create Marquee', 'Super Admin'))
-                            <li><a href="{{ route('admin.marquee.create') }}"> Create new</a></li>
-                        @endif
+{{--                        @if(\App\Helper\CustomHelper::canView('Create Marquee', 'Super Admin'))--}}
+{{--                            <li><a href="{{ route('admin.marquee.create') }}"> Create new</a></li>--}}
+{{--                        @endif--}}
                         @if(\App\Helper\CustomHelper::canView('Manage Marquee|Delete Marquee|View Marquee|List Of Marquee', 'Super Admin'))
                             <li><a href="{{ route('admin.marquee.list') }}">List of roles</a></li>
                         @endif
@@ -332,7 +332,10 @@
       <!-- Top Bar End -->
 
       <div class="page-content-wrapper">
-          <marquee class="margueue_align1" loop behavior="scroll" direction="left"><p><strong>ডিপোজিট করে পয়েন্ট জিতুন, পয়েন্টস দিয়ে কয়েন কিনুন। বিট ডিপোজিট দিচ্ছে ৪,০০,০০০ পয়েন্টস পর্যন্ত বোনাস। বিস্তারিত জানতে যোগাযোগ করুন, +8801856129075 (what's app)</strong></p></marquee>
+          @foreach($datas as $val)
+              <marquee class="margueue_align1" loop behavior="scroll" direction="left"><p><strong>{{$val->headline}}</strong></p></marquee>
+
+          @endforeach
         @yield('content')
         <div class="modal fade" id="notificationModal" tabindex="-1" role="dialog" aria-labelledby="notificationModal"
              aria-hidden="true">

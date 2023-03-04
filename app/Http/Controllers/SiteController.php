@@ -10,6 +10,7 @@ use App\Models\District;
 use App\Models\Division;
 use App\Models\JobEvent;
 use App\Models\jobFairHasParticipant;
+use App\Models\Marquee;
 use App\Models\Notification;
 use App\Models\Payment;
 use App\Models\PostHasStudent;
@@ -35,6 +36,13 @@ class SiteController extends Controller
 //      return $wid;
 
       return view('admin.cash.withdraw', $data, $wid);
+  }
+
+
+  public function marquee(){
+      $data['datas'] = Marquee::get();
+      return $data;
+      return view('layout.admin', $data);
   }
 
 

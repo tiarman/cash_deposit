@@ -285,6 +285,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
 //  })->name('transaction');
 
   Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction');
+  Route::get('/marquee', [SiteController::class, 'marquee'])->name('marquee');
 
   #deposit
   // Route::match(['get', 'post'], '/deposit', [BackgroundImageController::class, 'createOrIndex'])->name('deposit');

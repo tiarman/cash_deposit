@@ -28,7 +28,7 @@
               @if(\App\Helper\CustomHelper::canView('Create Marquee', 'Super Admin'))
                 <div class="row">
                   <div class="col-lg-12 col-md-12 col-xl-12 text-right mb-3">
-                    <a href="{{ route('admin.marquee.create') }}" class="brn btn-success btn-sm">New Marquee</a>
+{{--                    <a href="{{ route('admin.marquee.create') }}" class="brn btn-success btn-sm">New Marquee</a>--}}
                   </div>
                 </div>
               @endif
@@ -57,10 +57,10 @@
                             <a href="{{ route('admin.marquee.manage', [$val->id]) }}"
                                class="btn btn-sm btn-success"> <i class="fa fa-edit"></i> </a>
                           @endif
-                          @if(\App\Helper\CustomHelper::canView('Delete Marquee', 'Super Admin'))
-                            <span class="btn btn-sm btn-danger btn-delete delete_{{ $val->id }}" style="cursor: pointer"
-                                  data-id="{{ $val->id }}"><i class="fa fa-trash-o"></i></span>
-                          @endif
+{{--                          @if(\App\Helper\CustomHelper::canView('Delete Marquee', 'Super Admin'))--}}
+{{--                            <span class="btn btn-sm btn-danger btn-delete delete_{{ $val->id }}" style="cursor: pointer"--}}
+{{--                                  data-id="{{ $val->id }}"><i class="fa fa-trash-o"></i></span>--}}
+{{--                          @endif--}}
                       </td>
                     @endif
                   </tr>
