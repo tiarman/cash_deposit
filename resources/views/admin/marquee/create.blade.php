@@ -30,11 +30,11 @@
                   <div class="col-sm-6">
                     <div class="form-group">
                       <label class="control-label">Head Line<span class="text-danger">*</span></label>
-                      <input type="text" name="name" placeholder="Name" autocomplete="off" required
-                             value="{{ old('name') }}"
-                             class="form-control @error('name') is-invalid @enderror">
-                      @error('name')
-                      <strong class="text-danger">{{ $errors->first('name') }}</strong>
+                      <input type="text" name="headline" placeholder="Name" autocomplete="off" required
+                             value="{{ old('headline') }}"
+                             class="form-control @error('headline') is-invalid @enderror">
+                      @error('headline')
+                      <strong class="text-danger">{{ $errors->first('headline') }}</strong>
                       @enderror
                     </div>
                   </div>

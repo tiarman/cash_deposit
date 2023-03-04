@@ -19,16 +19,16 @@
         <div class="card-body">
           <section class="panel">
             <header class="panel-heading">
-              <h2 class="panel-title">Division list</h2>
+              <h2 class="panel-title">Marquee list</h2>
             </header>
             <div class="panel-body">
               @if(session()->has('status'))
                 {!! session()->get('status') !!}
               @endif
-              @if(\App\Helper\CustomHelper::canView('Create Division', 'Super Admin'))
+              @if(\App\Helper\CustomHelper::canView('Create Marquee', 'Super Admin'))
                 <div class="row">
                   <div class="col-lg-12 col-md-12 col-xl-12 text-right mb-3">
-                    <a href="{{ route('admin.division.create') }}" class="brn btn-success btn-sm">New Division</a>
+                    <a href="{{ route('admin.marquee.create') }}" class="brn btn-success btn-sm">New Marquee</a>
                   </div>
                 </div>
               @endif
@@ -38,11 +38,9 @@
                 <thead>
                 <tr>
                   <th width="50">#</th>
-                  <th>Name</th>
-                  <th>Name Bn</th>
-                  <th>Url</th>
+                  <th>Head Line</th>
                   <th width="200">Created at</th>
-                  @if(\App\Helper\CustomHelper::canView('Manage Division|Delete Division', 'Super Admin'))
+                  @if(\App\Helper\CustomHelper::canView('Manage Marquee|Delete Marquee', 'Super Admin'))
                     <th class="hidden-phone" width="40">Option</th>
                   @endif
                 </tr>
@@ -51,17 +49,15 @@
                 @foreach($datas as $key => $val)
                   <tr class="@if(($key%2) == 0)gradeX @else gradeC @endif">
                     <td class="p-1">{{ ($key+1) }}</td>
-                    <td class="p-1 text-capitalize">{{ $val->name }}</td>
-                    <td class="p-1">{{ $val->name_bn }}</td>
-                    <td class="p-1">{{ $val->url }}</td>
+                    <td class="p-1 text-capitalize">{{ $val->headline }}</td>
                     <td width="200" class="p-1">{{ date('F d, Y h:i A', strtotime($val->created_at)) }}</td>
-                    @if(\App\Helper\CustomHelper::canView('Manage Division|Delete Division', 'Super Admin'))
+                    @if(\App\Helper\CustomHelper::canView('Manage Marquee|Delete Marquee', 'Super Admin'))
                       <td class="center hidden-phone p-1" width="100">
-                          @if(\App\Helper\CustomHelper::canView('Manage Division', 'Super Admin'))
-                            <a href="{{ route('admin.division.manage', [$val->id]) }}"
+                          @if(\App\Helper\CustomHelper::canView('Manage Marquee', 'Super Admin'))
+                            <a href="{{ route('admin.marquee.manage', [$val->id]) }}"
                                class="btn btn-sm btn-success"> <i class="fa fa-edit"></i> </a>
                           @endif
-                          @if(\App\Helper\CustomHelper::canView('Delete Division', 'Super Admin'))
+                          @if(\App\Helper\CustomHelper::canView('Delete Marquee', 'Super Admin'))
                             <span class="btn btn-sm btn-danger btn-delete delete_{{ $val->id }}" style="cursor: pointer"
                                   data-id="{{ $val->id }}"><i class="fa fa-trash-o"></i></span>
                           @endif
@@ -85,10 +81,10 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h4>Delete Division</h4>
+          <h4>Delete Marquee</h4>
         </div>
         <div class="modal-body">
-          <strong>Are you sure to delete this division?</strong>
+          <strong>Are you sure to delete this marquee?</strong>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">No</button>
@@ -155,7 +151,7 @@
         var pid = $(this).data('id');
         var $this = $('.delete_' + pid)
         $.ajax({
-          url: "{{ route('admin.division.destroy') }}",
+          url: "{{ route('admin.marquee.destroy') }}",
           method: "DELETE",
           dataType: "html",
           data: {id: pid},

@@ -10,49 +10,48 @@ use Illuminate\Http\Request;
 class MarqueeController extends Controller
 {
     public function index() {
-        $data['datas'] = Marquee::with('division:id,name')->orderby('name', 'desc')->get();
-        return view('admin.district.list', $data);
+        $data['datas'] = Marquee::orderby('id', 'desc')->get();
+        return view('admin.marquee.list', $data);
     }
 
 
     public function create() {
-        $data['divisions'] = Marquee::select('id', 'name')->orderBy('name')->get();
+        $data['divisions'] = Marquee::select('id', 'headline')->orderBy('headline')->get();
         return view('admin.marquee.create', $data);
     }
 
 
     public function manage($id = null) {
-        if (in_array($id, [1, 2, 3])) {
-            return RedirectHelper::routeWarning('admin.district.list', '<strong>Sorry!!!</strong> Marquee update not possible');
+        if ($data['marquee'] = Marquee::find($id)) {
+            return view('admin.marquee.manage', $data);
         }
-        if ($data['district'] = Marquee::find($id)) {
-            $data['divisions'] = Marquee::select('id', 'name')->orderBy('name')->get();
-            return view('admin.district.manage', $data);
-        }
-        return RedirectHelper::routeWarning('admin.district.list', '<strong>Sorry!!!</strong> Marquee not found');
+        return RedirectHelper::routeWarning('admin.marquee.list', '<strong>Sorry!!!</strong> Marquee not found');
     }
 
 
     public function store(Request $request) {
+
         $message = '<strong>Congratulations!!!</strong> Marquee successfully ';
         if ($request->has('id')) {
             $marquee = Marquee::find($request->id);
-            $rules['headline'] = 'nullable|longText' . with(new Marquee)->getTable() . ',headline,' . $request->id;
+            $rules['headline'] = 'nullable|string';
             $message = $message . ' updated';
         } else {
             $marquee = new Marquee();
-            $rules['headline'] = 'required|longText' . with(new Marquee)->getTable() . ',headline';
+            $rules['headline'] = 'required|string';
             $message = $message . ' created';
         }
+
         $request->validate($rules);
 
         try {
             $marquee->headline = $request->headline;
             if ($marquee->save()) {
-                return RedirectHelper::routeSuccess('admin.district.list', $message);
+                return RedirectHelper::routeSuccess('admin.marquee.list', $message);
             }
             return RedirectHelper::backWithInput();
         } catch (QueryException $e) {
+            return $e;
             return RedirectHelper::backWithInputFromException();
         }
 
