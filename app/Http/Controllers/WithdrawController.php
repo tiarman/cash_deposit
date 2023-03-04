@@ -43,7 +43,21 @@ public function list(){
         $wid['wid'] = Withdraw::where('user_id',$user_id)->get();
 //        return $datas;
         $data['roles'] = Role::select('id', 'name')->orderby('name', 'asc')->get();
-        return view('admin.cash.withdraw', $data, $wid);
+
+        $payments = Payment::get();
+        $data['payments'] = Payment::get();
+        $data['paymentss'] = $payments->groupBy('name_key');
+
+
+        $total = Payment::groupBy('name')
+            ->selectRaw('count(*) as count, name')
+            ->pluck('count', 'name');
+        return $total;
+
+
+//        @foreach($students->groupBy('teacher_name') as $teacherName => $subStudents)
+
+            return view('admin.cash.withdraw', $data, $wid);
     }
 
 

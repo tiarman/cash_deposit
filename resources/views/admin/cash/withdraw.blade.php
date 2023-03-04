@@ -24,63 +24,64 @@
                             @endif
 
                             <div class="row">
-{{--                                <div class="col-md-3 col-lg-3">--}}
-{{--                                    <div class="product-list-box">--}}
-{{--                                        <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">--}}
-{{--                                            <img src="{{asset('assets/admin/images/cash/1.png')}}" class="img-fluid" alt="work-thumbnail">--}}
-{{--                                        </a>--}}
-{{--                                        <div class="detail">--}}
-{{--                                            <h4 class="font-16 text-center"><a href="" class="text-dark">bKash Agent</a> </h4>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
+                                @foreach($payments as $val)
 
                                 <div class="col-md-3 col-lg-3">
                                     <div class="product-list-box">
-                                        <a data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat" href="javascript:void(0);">
-                                            <img src="{{asset('assets/admin/images/cash/2.png')}}" class="img-fluid" alt="work-thumbnail">
+                                        <a data-bs-toggle="modal" data-bs-target="#exampleModal{{$val->id}}" data-bs-whatever="@fat" href="javascript:void(0);">
+                                            <img src="{{$val->image}}" class="img-fluid" alt="work-thumbnail">
                                         </a>
                                         <div class="detail">
-                                            <h4 class="font-16 text-center"><a href="" class="text-dark">bKash Personal</a> </h4>
+                                            <h4 class="font-16 text-center"><a href="" class="text-dark">{{$val->name}}</a> </h4>
                                         </div>
                                     </div>
                                 </div>
-
-{{--                                <div class="col-md-3 col-lg-3">--}}
-{{--                                    <div class="product-list-box">--}}
-{{--                                        <a href="javascript:void(0);">--}}
-{{--                                            <img src="{{asset('assets/admin/images/cash/3.png')}}" class="img-fluid" alt="work-thumbnail">--}}
-{{--                                        </a>--}}
-{{--                                        <div class="detail">--}}
-{{--                                            <h4 class="font-16 text-center"><a href="" class="text-dark">Nagad Personal</a> </h4>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-
-{{--                                <div class="col-md-3 col-lg-3">--}}
-{{--                                    <div class="product-list-box">--}}
-{{--                                        <a href="javascript:void(0);">--}}
-{{--                                            <img src="{{asset('assets/admin/images/cash/4.png')}}" class="img-fluid" alt="work-thumbnail">--}}
-{{--                                        </a>--}}
-{{--                                        <div class="detail">--}}
-{{--                                            <h4 class="font-16 text-center"><a href="" class="text-dark">Rocket Personal</a> </h4>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-
-{{--                                <div class="col-md-3 col-lg-3">--}}
-{{--                                    <div class="product-list-box">--}}
-{{--                                        <a href="javascript:void(0);">--}}
-{{--                                            <img src="{{asset('assets/admin/images/cash/5.png')}}" class="img-fluid" alt="work-thumbnail">--}}
-{{--                                        </a>--}}
-{{--                                        <div class="detail">--}}
-{{--                                            <h4 class="font-16 text-center text-center"><a href="" class="text-dark">Upay Personal</a> </h4>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
+                                @endforeach
                             </div>
 
-                            {{--                            <form action="{{ route('admin.user.store') }}" method="post" enctype="multipart/form-data">--}}
+
+
+{{--                                kkkkkkkkkkkkkkkk--}}
+                                @php
+                                    $index = 1;
+                                @endphp
+
+                                @foreach($payments->groupBy('name_key') as $teacherName => $subStudents)
+                                    <h1> This is:{{$teacherName}}</h1>
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Name</th>
+                                            <th>Class</th>
+                                            <th>Subject</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($subStudents as $student)
+                                            <tr>
+                                                <td>{{$index }}</td>
+                                                <td>{{$student->name }}</td>
+                                                <td>{{$student->mobile}} </td>
+                                                <td>{{$student->subject }} </td>
+                                            </tr>
+                                            @php
+                                                $index++;
+                                            @endphp
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                @endforeach
+
+
+
+
+
+
+
+
+
+
 
 
                             <header class="panel-heading">
@@ -155,11 +156,17 @@
 
 
                                 {{--Model Start--}}
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                @foreach($payments as $val)
+                                @foreach($paymentss as $valss => $vals)
+
+{{--                                @foreach($payments->groupBy('name_key') as $teacherName => $subStudents)--}}
+
+
+                            <div class="modal fade" id="exampleModal{{$val->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel"><strong>bKash Agent</strong></h5>
+                                            <h5 class="modal-title" id="exampleModalLabel"><strong>{{$val->name}}</strong></h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
@@ -175,7 +182,7 @@
                                                                     class="text-danger">*</span></label>
                                                             <select name="transaction_type"
                                                                     class="form-control @error('transaction_type') is-invalid @enderror">
-                                                                <option value="bkash personal">bKash</option>
+                                                                <option value="bkash personal">{{$val->name_key}}</option>
                                                                 /
                                                             </select>
                                                             @error('transaction_type')
@@ -194,10 +201,11 @@
                                                             <label class="control-label">Mobile Number:<span class="text-danger">*</span></label>
                                                             <select name="withdraw_id" required class="form-control @error('withdraw_id') is-invalid @enderror">
                                                                  <option value="">Choose a mobile number</option>
-                                                                 @foreach($bkash as $data)
-                                                                <option value="{{ $data->mobile }}"
-                                                                        @if(old('data') == $data->mobile) selected @endif>{{ ucfirst($data->mobile) }}</option>
-                                                                 @endforeach
+
+{{--                                                                    @foreach($subStudents as $student)--}}
+                                                                <option value="{{ $val->mobile }}"
+                                                                        @if(old('data') == $val->mobile) selected @endif>{{ ucfirst($val->mobile) }}</option>
+{{--                                                                @endforeach--}}
                                                             </select>
                                                             @error('data')
                                                             <strong class="text-danger">{{ $errors->first('withdraw_id') }}</strong>
@@ -233,7 +241,8 @@
                                     </div>
                                 </div>
                             </div>
-
+                        @endforeach
+                        @endforeach
 
 </section>
                 </div>
@@ -264,6 +273,10 @@
 
 
         <script>
+            $(document).on("click", ".edit", function () {
+                // Use $(this) to reference the clicked button
+                $(".modal-body #value").val($(this).data('id'));
+            });
             $(document).ready(function () {
             $('#datatable-buttons').DataTable();
 
