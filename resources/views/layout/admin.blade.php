@@ -139,6 +139,24 @@
             @endif
 
 
+            @if(\App\Helper\CustomHelper::canView('Create Marquee|Manage Marquee|Delete Marquee|View Marquee|List Of Marquee', 'Super Admin'))
+                <li class="has_sub">
+                    <a class="waves-effect"><i>
+                            <iconify-icon icon="eos-icons:cluster-role-binding"></iconify-icon>
+                        </i><span>Marquee<span
+                                class="pull-right"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+                    <ul class="list-unstyled">
+                        @if(\App\Helper\CustomHelper::canView('Create Marquee', 'Super Admin'))
+                            <li><a href="{{ route('admin.marquee.create') }}"> Create new</a></li>
+                        @endif
+                        @if(\App\Helper\CustomHelper::canView('Manage Marquee|Delete Marquee|View Marquee|List Of Marquee', 'Super Admin'))
+                            <li><a href="{{ route('admin.marquee.list') }}">List of roles</a></li>
+                        @endif
+                    </ul>
+                </li>
+            @endif
+
+
             @if(\App\Helper\CustomHelper::canView('', 'Agent|Sub Agent'))
                 <li class="has_sub">
                     <a class="waves-effect"><i>
