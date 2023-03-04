@@ -24,7 +24,8 @@
                             @endif
 
                             <div class="row">
-                                @foreach($payments as $val)
+
+@foreach($payments as $val)
 
                                 <div class="col-md-3 col-lg-3">
                                     <div class="product-list-box">
@@ -32,57 +33,14 @@
                                             <img src="{{$val->image}}" class="img-fluid" alt="work-thumbnail">
                                         </a>
                                         <div class="detail">
-                                            <h4 class="font-16 text-center"><a href="" class="text-dark">{{$val->name}}</a> </h4>
+
+                                            <h4 class="font-16 text-center"><a href="" class="text-dark">{{$val->name_key}}</a> </h4>
                                         </div>
                                     </div>
                                 </div>
                                 @endforeach
+
                             </div>
-
-
-
-{{--                                kkkkkkkkkkkkkkkk--}}
-                                @php
-                                    $index = 1;
-                                @endphp
-
-                                @foreach($payments->groupBy('name_key') as $teacherName => $subStudents)
-                                    <h1> This is:{{$teacherName}}</h1>
-                                    <table class="table">
-                                        <thead>
-                                        <tr>
-                                            <th>No.</th>
-                                            <th>Name</th>
-                                            <th>Class</th>
-                                            <th>Subject</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach($subStudents as $student)
-                                            <tr>
-                                                <td>{{$index }}</td>
-                                                <td>{{$student->name }}</td>
-                                                <td>{{$student->mobile}} </td>
-                                                <td>{{$student->subject }} </td>
-                                            </tr>
-                                            @php
-                                                $index++;
-                                            @endphp
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                @endforeach
-
-
-
-
-
-
-
-
-
-
-
 
                             <header class="panel-heading">
                                 <h2 class="panel-title">Withdraw List</h2>
@@ -157,16 +115,13 @@
 
                                 {{--Model Start--}}
                                 @foreach($payments as $val)
-                                @foreach($paymentss as $valss => $vals)
-
-{{--                                @foreach($payments->groupBy('name_key') as $teacherName => $subStudents)--}}
-
 
                             <div class="modal fade" id="exampleModal{{$val->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel"><strong>{{$val->name}}</strong></h5>
+
+                                            <h5 class="modal-title" id="exampleModalLabel"><strong>{{$val->name_key}}</strong></h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
@@ -241,7 +196,6 @@
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
                         @endforeach
 
 </section>

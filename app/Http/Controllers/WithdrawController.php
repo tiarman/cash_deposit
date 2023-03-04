@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helper\CustomHelper;
 use App\Helper\RedirectHelper;
 use App\Models\Payment;
+use App\Models\Payment_number;
 use App\Models\SubAgent;
 use App\Models\User;
 use App\Models\Withdraw;
@@ -44,20 +45,11 @@ public function list(){
 //        return $datas;
         $data['roles'] = Role::select('id', 'name')->orderby('name', 'asc')->get();
 
-        $payments = Payment::get();
+
         $data['payments'] = Payment::get();
-        $data['paymentss'] = $payments->groupBy('name_key');
-
-
-        $total = Payment::groupBy('name')
-            ->selectRaw('count(*) as count, name')
-            ->pluck('count', 'name');
-        return $total;
-
-
-//        @foreach($students->groupBy('teacher_name') as $teacherName => $subStudents)
-
-            return view('admin.cash.withdraw', $data, $wid);
+//        return $datas;
+        $data['datas'] = Payment_number::orderby('id', 'desc')->get();
+        return view('admin.cash.withdraw', $data, $wid);
     }
 
 
