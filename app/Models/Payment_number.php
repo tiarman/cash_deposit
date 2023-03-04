@@ -14,5 +14,9 @@ class Payment_number extends Model
         'user_id',
         'method_id'
     ];
-    
+
+    public function methods(){
+        return $this->belongsTo(Payment::class,'method_id','id');
+    }
+
 }

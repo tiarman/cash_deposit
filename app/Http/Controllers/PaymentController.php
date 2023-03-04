@@ -15,6 +15,10 @@ class PaymentController extends Controller
     public function create()
     {
         $data['datas'] = Payment::where('user_id',auth()->id())->with('numbers')->orderby('id', 'desc')->get();
+//        $data['datas'] = Payment::where('user_id',auth()->id())->with('numbers')->orderby('id', 'desc')->get();
+        $user_id=app('request')->user()->id;
+        $data['agent_datas'] = Payment_number::with('methods')->where('user_id',auth()->id())->get();
+//        $data['methods'] = Payment::where('id',$user_id)->get();
 //        return $data;
         return view('admin.payment.index', $data);
     }

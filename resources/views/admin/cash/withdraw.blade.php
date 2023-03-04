@@ -24,18 +24,19 @@
                             @endif
 
                             <div class="row">
-
+@foreach($payments as $val)
 
                                 <div class="col-md-3 col-lg-3">
                                     <div class="product-list-box">
-                                        <a data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat" href="javascript:void(0);">
-                                            <img src="{{asset('assets/admin/images/cash/2.png')}}" class="img-fluid" alt="work-thumbnail">
+                                        <a data-bs-toggle="modal" data-bs-target="#exampleModal{{$val->id}}" data-bs-whatever="@fat" href="javascript:void(0);">
+                                            <img src="{{$val->image}}" class="img-fluid" alt="work-thumbnail">
                                         </a>
                                         <div class="detail">
-                                            <h4 class="font-16 text-center"><a href="" class="text-dark">bKash Personal</a> </h4>
+                                            <h4 class="font-16 text-center"><a href="" class="text-dark">{{$val->name_key}}</a> </h4>
                                         </div>
                                     </div>
                                 </div>
+                                @endforeach
 
                             </div>
 
@@ -112,11 +113,12 @@
 
 
                                 {{--Model Start--}}
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                @foreach($payments as $val)
+                            <div class="modal fade" id="exampleModal{{$val->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel"><strong>bKash Agent</strong></h5>
+                                            <h5 class="modal-title" id="exampleModalLabel"><strong>{{$val->name_key}}</strong></h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
@@ -190,7 +192,7 @@
                                     </div>
                                 </div>
                             </div>
-
+                        @endforeach
 
 </section>
                 </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helper\CustomHelper;
 use App\Helper\RedirectHelper;
 use App\Models\Payment;
+use App\Models\Payment_number;
 use App\Models\SubAgent;
 use App\Models\User;
 use App\Models\Withdraw;
@@ -45,6 +46,8 @@ public function list(){
         $data['roles'] = Role::select('id', 'name')->orderby('name', 'asc')->get();
 
         $data['payments'] = Payment::get();
+//        return $datas;
+        $data['datas'] = Payment_number::orderby('id', 'desc')->get();
         return view('admin.cash.withdraw', $data, $wid);
     }
 
