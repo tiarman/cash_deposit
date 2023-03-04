@@ -17,9 +17,11 @@ class PaymentController extends Controller
         $data['datas'] = Payment::where('user_id',auth()->id())->with('numbers')->orderby('id', 'desc')->get();
 //        $data['datas'] = Payment::where('user_id',auth()->id())->with('numbers')->orderby('id', 'desc')->get();
         $user_id=app('request')->user()->id;
-        $data['agent_datas'] = Payment_number::with('methods')->where('user_id',auth()->id())->get();
+        $dataaa = Payment_number::with('methods')->where('user_id',auth()->id())->get();
+        $data['agent_datas'] = $dataaa;
+
 //        $data['methods'] = Payment::where('id',$user_id)->get();
-//        return $data;
+//        return $datass;
         return view('admin.payment.index', $data);
     }
     public function store(Request $request)
@@ -89,7 +91,7 @@ class PaymentController extends Controller
             }
             return RedirectHelper::backWithInput();
         } catch (QueryException $e) {
-            return $e;
+//            return $e;
             return RedirectHelper::backWithInputFromException();
         }
     }

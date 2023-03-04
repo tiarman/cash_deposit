@@ -131,6 +131,9 @@
         </div>
     </div>
 </div>
+
+
+@if (\App\Helper\CustomHelper::canView('', 'Super Admin'))
 {{-- payment method list --}}
 <div class="row mt-5">
     <div class="col-12">
@@ -226,6 +229,107 @@
         </div>
     </div>
 </div>
+@endif
+
+
+
+
+
+
+
+
+
+
+@if (\App\Helper\CustomHelper::canView('', 'Agent|Sub Agent'))
+{{--For Agents--}}
+{{-- payment method list --}}
+<div class="row mt-5">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <section class="panel">
+                    <header class="panel-heading">
+                        <h2 class="panel-title">Payment Method List</h2>
+                    </header>
+                    <div class="panel-body">
+                        @if (session()->has('status'))
+                            {!! session()->get('status') !!}
+                        @endif
+                        @if (\App\Helper\CustomHelper::canView('Create Payment', 'Super Admin|Agent|Sub Agent'))
+                        @endif
+                        <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap"
+                               cellspacing="0" width="100%" style="font-size: 14px">
+
+                            <thead>
+                            <tr>
+                                <th width="50">#</th>
+                                <th>Name</th>
+                                <th>Payment Number</th>
+                                <th>Status</th>
+                                @if (\App\Helper\CustomHelper::canView('Manage Payment|Delete Payment', 'Super Admin|Agent|Sub Agent'))
+                                    <th class="hidden-phone" width="40">Option</th>
+                                @endif
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach ($agent_datas as $key => $val)
+                                <tr class="@if ($key % 2 == 0) gradeX @else gradeC @endif">
+                                    <td class="p-1">{{ $key + 1 }}</td>
+                                    @if (\App\Helper\CustomHelper::canView('create Payment', 'Super Admin'))
+                                        <td class="p-1 text-capitalize" width="100">
+                                            <img class="p-1" width="80px" style="height:75px"
+                                                 src="{{ $val->image }}" alt="">
+                                        </td>
+                                    @endif
+                                    <td class="p-1 text-capitalize">{{ $val->methods->name }}</td>
+                                    <td class="p-1 text-capitalize">{{ $val->number }}</td>
+                                    @if (\App\Helper\CustomHelper::canView('Manage Institute', 'Super Admin|Agent|Sub Agent'))
+                                        <td class="text-capitalize p-1" width="100">
+                                            <div class="onoffswitch">
+                                                <input type="checkbox" name="onoffswitch"
+                                                       class="onoffswitch-checkbox" @checked($val->status == \App\Models\Payment::$statusArray[0])
+                                                       data-id="{{ $val->id }}"
+                                                       id="myonoffswitch{{ $key + 1 }}">
+                                                <label class="onoffswitch-label"
+                                                       for="myonoffswitch{{ $key + 1 }}">
+                                                    <span class="onoffswitch-inner"></span>
+                                                    <span class="onoffswitch-switch"></span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                    @else
+                                        <td class="p-1 text-capitalize">{{ $val->status }}</td>
+                                    @endif
+
+                                    @if (\App\Helper\CustomHelper::canView('Manage Payment|Delete Payment', 'Super Admin|Agent|Sub Agent'))
+                                        <td class="center hidden-phone p-1" width="100">
+                                            @if (\App\Helper\CustomHelper::canView('Manage Payment', 'Super Admin|Agent|Sub Agent'))
+                                                <span
+                                                    class="btn btn-sm btn-success btn-manage manage_{{ $val->id }}"
+                                                    style="cursor: pointer" data-id="{{ $val->id }}"
+                                                    data-name="{{ $val->name }}"><i
+                                                        class="fa fa-edit"></i></span>
+                                            @endif
+                                            @if (\App\Helper\CustomHelper::canView('Delete Payment', 'Super Admin|Agent|Sub Agent'))
+                                                <span
+                                                    class="btn btn-sm btn-danger btn-delete delete_{{ $val->id }}"
+                                                    style="cursor: pointer" data-id="{{ $val->id }}"><i
+                                                        class="fa fa-trash-o"></i></span>
+                                            @endif
+                                        </td>
+                                    @endif
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+@endif
+
 
 
 {{-- manage modal --}}
