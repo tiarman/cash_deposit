@@ -24,16 +24,7 @@
                             @endif
 
                             <div class="row">
-{{--                                <div class="col-md-3 col-lg-3">--}}
-{{--                                    <div class="product-list-box">--}}
-{{--                                        <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">--}}
-{{--                                            <img src="{{asset('assets/admin/images/cash/1.png')}}" class="img-fluid" alt="work-thumbnail">--}}
-{{--                                        </a>--}}
-{{--                                        <div class="detail">--}}
-{{--                                            <h4 class="font-16 text-center"><a href="" class="text-dark">bKash Agent</a> </h4>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
+
 
                                 <div class="col-md-3 col-lg-3">
                                     <div class="product-list-box">
@@ -46,41 +37,7 @@
                                     </div>
                                 </div>
 
-{{--                                <div class="col-md-3 col-lg-3">--}}
-{{--                                    <div class="product-list-box">--}}
-{{--                                        <a href="javascript:void(0);">--}}
-{{--                                            <img src="{{asset('assets/admin/images/cash/3.png')}}" class="img-fluid" alt="work-thumbnail">--}}
-{{--                                        </a>--}}
-{{--                                        <div class="detail">--}}
-{{--                                            <h4 class="font-16 text-center"><a href="" class="text-dark">Nagad Personal</a> </h4>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-
-{{--                                <div class="col-md-3 col-lg-3">--}}
-{{--                                    <div class="product-list-box">--}}
-{{--                                        <a href="javascript:void(0);">--}}
-{{--                                            <img src="{{asset('assets/admin/images/cash/4.png')}}" class="img-fluid" alt="work-thumbnail">--}}
-{{--                                        </a>--}}
-{{--                                        <div class="detail">--}}
-{{--                                            <h4 class="font-16 text-center"><a href="" class="text-dark">Rocket Personal</a> </h4>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-
-{{--                                <div class="col-md-3 col-lg-3">--}}
-{{--                                    <div class="product-list-box">--}}
-{{--                                        <a href="javascript:void(0);">--}}
-{{--                                            <img src="{{asset('assets/admin/images/cash/5.png')}}" class="img-fluid" alt="work-thumbnail">--}}
-{{--                                        </a>--}}
-{{--                                        <div class="detail">--}}
-{{--                                            <h4 class="font-16 text-center text-center"><a href="" class="text-dark">Upay Personal</a> </h4>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
                             </div>
-
-                            {{--                            <form action="{{ route('admin.user.store') }}" method="post" enctype="multipart/form-data">--}}
 
 
                             <header class="panel-heading">

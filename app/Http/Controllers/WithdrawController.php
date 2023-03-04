@@ -43,6 +43,8 @@ public function list(){
         $wid['wid'] = Withdraw::where('user_id',$user_id)->get();
 //        return $datas;
         $data['roles'] = Role::select('id', 'name')->orderby('name', 'asc')->get();
+
+        $data['payments'] = Payment::get();
         return view('admin.cash.withdraw', $data, $wid);
     }
 
