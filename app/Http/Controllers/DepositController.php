@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helper\RedirectHelper;
 use App\Models\Deposit;
 use App\Models\Payment;
+use App\Models\Payment_number;
 use App\Models\User;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
@@ -17,10 +18,14 @@ class DepositController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function createOrIndex(Request $request)
-    {
+    {   
+        
         // for deposit only admin selected method can be load
            $data['user'] = User::whereHas('roles',function( $user){$user->where('roles.name','Super Admin');})->first();
            $adminId = $data['user']->id;
+
+           $data['payment_numbers'] = Payment::with('numbers')->where('user_id',$adminId)->get();
+        // return $data;
 
         //   get numbers for specific payment method
            $data['bkash_agents'] = Payment::where('user_id', $adminId)->where('name','bkash agent')->get();
@@ -29,7 +34,6 @@ class DepositController extends Controller
            $data['rocket_personals'] = Payment::where('user_id', $adminId)->where('name','rocket personal')->get();
            $data['upay_personals'] = Payment::where('user_id', $adminId)->where('name','upay personal')->get();
         //    user wise deposit data
-//        return $data;
            $data['deposits'] = Deposit::where('user_id', auth()->id())->get();
         // total deposit
         $data['total_deposits'] = Deposit::select('amount')->where('user_id', auth()->id())->where('status','accepted')->get();
