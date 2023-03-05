@@ -28,7 +28,12 @@ class Payment extends Model
     'upay_personal' => 'Upay Personal',
    ];
    public function numbers(){
-    return $this->hasMany(Payment_number::class,'method_id','id');
+       $data['user'] = User::whereHas('roles',function( $user){$user->where('roles.name','Super Admin');})->first();
+       $adminId = $data['user']->id;
+    return $this->hasMany(Payment_number::class,'method_id','id')->where('user_id',$adminId);
+   }
+   public function agentsNumbers(){
+    return $this->hasMany(Payment_number::class,'method_id','id')->where('user_id', auth()->id());
    }
 
 

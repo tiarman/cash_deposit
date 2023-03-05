@@ -25,7 +25,7 @@
 
                             <div class="row">
 
-@foreach($payments as $val)
+                                @foreach ($agent_payment_numbers as $val)
 
                                 <div class="col-md-3 col-lg-3">
                                     <div class="product-list-box">
@@ -114,7 +114,7 @@
 
 
                                 {{--Model Start--}}
-                                @foreach($payments as $val)
+                                @foreach (json_decode($agent_payment_numbers) as $val)
 
                             <div class="modal fade" id="exampleModal{{$val->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
@@ -157,10 +157,11 @@
                                                             <select name="withdraw_id" required class="form-control @error('withdraw_id') is-invalid @enderror">
                                                                  <option value="">Choose a mobile number</option>
 
-{{--                                                                    @foreach($subStudents as $student)--}}
-                                                                <option value="{{ $val->mobile }}"
-                                                                        @if(old('data') == $val->mobile) selected @endif>{{ ucfirst($val->mobile) }}</option>
-{{--                                                                @endforeach--}}
+                                                                @foreach (($val->agents_numbers) as $num)
+                                                                    <option value="{{ $num->number }}"
+                                                                            @if (old('mobile') == $num->user_id) selected @endif>
+                                                                        {{ ucfirst($num->number) }}</option>
+                                                                @endforeach
                                                             </select>
                                                             @error('data')
                                                             <strong class="text-danger">{{ $errors->first('withdraw_id') }}</strong>

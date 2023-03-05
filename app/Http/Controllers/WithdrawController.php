@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helper\CustomHelper;
 use App\Helper\RedirectHelper;
+use App\Models\Deposit;
 use App\Models\Payment;
 use App\Models\Payment_number;
 use App\Models\SubAgent;
@@ -36,20 +37,34 @@ public function list(){
 
 
         $user_id=app('request')->user()->id;
-        $activewith = Withdraw::select(DB::raw("SUM(`amount`) as `sum_total`"))
-            ->where('status', '=', Withdraw::$statusArrays[1])->groupby('withdraw_id')->where('user_id',$user_id)->get();
-        $data['sum_total'] = $activewith[0]['sum_total'] ?? "";
-        $data['user'] = User::whereHas('roles',function( $user){$user->where('roles.name','Agent','Sub Agent');})->first();
-        $data['bkash'] = Payment::where('user_id',$user_id)->where('name','bkash personal')->get();
-        $wid['wid'] = Withdraw::where('user_id',$user_id)->get();
-//        return $datas;
-        $data['roles'] = Role::select('id', 'name')->orderby('name', 'asc')->get();
+//        $activewith = Withdraw::select(DB::raw("SUM(`amount`) as `sum_total`"))
+//            ->where('status', '=', Withdraw::$statusArrays[1])->groupby('withdraw_id')->where('user_id',$user_id)->get();
+//        $data['sum_total'] = $activewith[0]['sum_total'] ?? "";
+//        $data['user'] = User::whereHas('roles',function( $user){$user->where('roles.name','Agent','Sub Agent');})->first();
+//        $data['bkash'] = Payment::where('user_id',$user_id)->where('name','bkash personal')->get();
+        $datas['wid'] = Withdraw::where('user_id',$user_id)->get();
+////        return $datas;
+//        $data['roles'] = Role::select('id', 'name')->orderby('name', 'asc')->get();
+//
+//
+//        $data['payments'] = Payment::get();
+////        return $datas;
+//        $data['datas'] = Payment_number::orderby('id', 'desc')->get();
+//
 
 
-        $data['payments'] = Payment::get();
-//        return $datas;
-        $data['datas'] = Payment_number::orderby('id', 'desc')->get();
-        return view('admin.cash.withdraw', $data, $wid);
+
+        $data['user'] = User::whereHas('roles',function( $user){$user->where('roles.name','Super Admin');})->first();
+        $adminId = $data['user']->id;
+
+
+
+        $datas['agent_payment_numbers'] = Payment::with('agentsNumbers')->where('user_id',$adminId)->get();
+
+//return $datas;
+//        return json_decode($datas['payment_numbers'][0])->agents_numbers;
+
+        return view('admin.cash.withdraw', $datas);
     }
 
 
@@ -94,7 +109,7 @@ public function list(){
             }
             return RedirectHelper::backWithInput();
         } catch (QueryException $e) {
-//            return $e;
+            return $e;
             return RedirectHelper::backWithInputFromException();
         }
 

@@ -18,7 +18,6 @@ return new class extends Migration
             $table->unsignedBigInteger('method_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->string('number')->nullable();
-            $table->string('status')->default(\App\Models\Payment_number::$statusArray[0])->nullable();
             $table->timestamps();
         });
     }

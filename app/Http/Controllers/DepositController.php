@@ -18,8 +18,8 @@ class DepositController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function createOrIndex(Request $request)
-    {   
-        
+    {
+
         // for deposit only admin selected method can be load
            $data['user'] = User::whereHas('roles',function( $user){$user->where('roles.name','Super Admin');})->first();
            $adminId = $data['user']->id;
@@ -67,7 +67,7 @@ class DepositController extends Controller
             }
             // return $request;
         }
-        // return $data;
+//         return $data;
         return view('admin.cash.deposit',$data);
     }
 

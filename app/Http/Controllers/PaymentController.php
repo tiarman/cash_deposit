@@ -40,9 +40,9 @@ class PaymentController extends Controller
             $payment = new Payment();
 
             $payment->user_id = auth()->id();
-            $rules['name'] = 'required|string';
-            $rules['mobile'] = 'required|string';
-            $rules['status'] = 'required|string';
+            $rules['name'] = 'nullable|string';
+            $rules['mobile'] = 'nullable|string';
+            $rules['status'] = 'nullable|string';
             $rules['image'] = 'nullable|file|mimes:jpeg,png,jpg';
             $message = $message . ' created';
         }
@@ -56,7 +56,6 @@ class PaymentController extends Controller
                 $payment_number->user_id = auth()->id();
                 $payment_number->method_id = $method_id;
                 $payment_number->number =$request->mobile;
-                $payment_number->status = $request->status;
                 if($payment_number->save()){
                 return RedirectHelper::routeSuccess('admin.payment.create', $message);
             }
