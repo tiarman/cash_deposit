@@ -19,19 +19,21 @@
 
                                     <div class="row">
                                         <div class="col-md-6 col-xl-6">
+
+
                                             <div class="card">
                                                 <div class="card-body">
-                                                    <div class="mini-stat">
-                                                        <span class="mini-stat-icon bg-primary float-start"><i class="mdi mdi-currency-usd"></i></span>
+                                                    <div class="mini-stat clearfix">
+                                                        <span class="mini-stat-icon bg-pink float-start"><i class="mdi mdi-currency-usd"></i></span>
                                                         <div class="mini-stat-info text-end">
-                                                            <span class="counter text-primary">Withdraw Total</span>
+                                                            <span class="counter text-pink">Withdraw Total</span>
                                                             <?php
                                                             $total = 0;
                                                             foreach ($total_withdraw as $item) {
                                                                 $total += intval($item->amount);
                                                             }
                                                             ?>
-                                                            <strong>Total: {{$total ?? " "}}</strong>
+                                                            <strong style="font-size: 18px">Total: {{$total ?? " "}}</strong>
                                                         </div>
                                                     </div>
                                                 </div>

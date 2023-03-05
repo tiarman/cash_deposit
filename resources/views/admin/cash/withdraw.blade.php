@@ -34,7 +34,7 @@
                                         </a>
                                         <div class="detail">
 
-                                            <h4 class="font-16 text-center"><a href="" class="text-dark">{{$val->name_key}}</a> </h4>
+                                            <h4 class="font-16 text-center"><a href="" class="text-dark">{{$val->name}}</a> </h4>
                                         </div>
                                     </div>
                                 </div>
@@ -143,7 +143,7 @@
                                                                     class="text-danger">*</span></label>
                                                             <select name="transaction_type"
                                                                     class="form-control @error('transaction_type') is-invalid @enderror">
-                                                                <option value="bkash personal">{{$val->name_key}}</option>
+                                                                <option >{{$val->name}}</option>
                                                                 /
                                                             </select>
                                                             @error('transaction_type')

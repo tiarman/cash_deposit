@@ -94,7 +94,7 @@ public function list(){
             $withdraw = new Withdraw();
             $rules['withdraw_id'] = 'required|string';
             $rules['amount'] = 'nullable|string';
-
+            $rules['transaction_type'] = 'required|string';
             $message = $message . ' created';
         }
         $request->validate($rules);
@@ -110,7 +110,7 @@ public function list(){
             }
             return RedirectHelper::backWithInput();
         } catch (QueryException $e) {
-            return $e;
+//            return $e;
             return RedirectHelper::backWithInputFromException();
         }
 

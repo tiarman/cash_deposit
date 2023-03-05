@@ -21,6 +21,10 @@ class TransactionController extends Controller
         $wid['wid'] = Withdraw::where('user_id',$user_id)->get();
         $data['total_withdraw'] = Withdraw::select('amount')->where('user_id', auth()->id())->where('status','accepted')->get();
 
+
+//        Transaction
+
+
         return view('admin.cash.transaction', $data, $wid);
 
     }
