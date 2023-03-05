@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helper\RedirectHelper;
+use App\Models\AgentInterest;
 use App\Models\Deposit;
 use App\Models\Marquee;
 use App\Models\Payment;
@@ -25,7 +26,7 @@ class DepositController extends Controller
            $data['user'] = User::whereHas('roles',function( $user){$user->where('roles.name','Super Admin');})->first();
            $adminId = $data['user']->id;
 
-           $data['payment_numbers'] = Payment::with('numbers')->where('user_id',$adminId)->get();
+           $data['payment_numbers'] = Payment::with('numbers')->where('user_id',$adminId)->where('status','active')->get();
         // return $data;
 
         //   get numbers for specific payment method
@@ -58,8 +59,17 @@ class DepositController extends Controller
                 $deposit->amount = $request->amount;
                 $deposit->status = \App\Models\Deposit::$statusArrays[1];
 
+                // user data load to handle interest
+                $agentInfo = User::with('agent')->where('id', auth()->id())->first();
+                $agent_id = $agentInfo->agent->id;
+                $agent_interest_percentage = $agentInfo->agent->interest_percentage;
+                
+                $agent_interest = new AgentInterest();
+                $agent_interest->agent_id = $agent_id;
+                $agent_interest->interest_amount = ($deposit->amount *($agent_interest_percentage/100));
+
                 // return $deposit;
-                if ($deposit->save()) {
+                if ($deposit->save() && $agent_interest->save()) {
                     return RedirectHelper::routeSuccess('admin.deposit', $message);
                 }
                 return RedirectHelper::backWithInput();
