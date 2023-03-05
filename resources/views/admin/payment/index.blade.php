@@ -1,15 +1,9 @@
 @extends('layout.admin')
 
 @section('stylesheet')
-@section('stylesheet')
-    <!-- DataTables -->
-    <link href="{{ asset('assets/admin/plugins/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
-        type="text/css" />
-    <link href="{{ asset('assets/admin/plugins/datatables/buttons.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
-
-    <link href="{{ asset('assets/admin/plugins/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet"
-        type="text/css" />
-@endsection
+    <link href="{{ asset('assets/admin/plugins/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('assets/admin/plugins/datatables/buttons.bootstrap4.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('assets/admin/plugins/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet" type="text/css"/>
 @endsection
 
 @section('content')
@@ -259,8 +253,9 @@
                         @endif
                         @if (\App\Helper\CustomHelper::canView('Create Payment', 'Super Admin|Agent|Sub Agent'))
                         @endif
-                        <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap"
-                               cellspacing="0" width="100%" style="font-size: 14px">
+                            <div class="table-rep-plugin">
+                                <div class="table-responsive mb-0" data-bs-pattern="priority-columns">
+                                    <table id="datatable-buttons" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%" style="font-size: 14px">
 
                             <thead>
                             <tr>
@@ -300,6 +295,8 @@
                             @endforeach
                             </tbody>
                         </table>
+                                </div>
+                            </div>
                     </div>
                 </section>
             </div>
@@ -432,21 +429,21 @@
 @endsection
 
 @section('script')
-<!-- Required datatable js -->
-<script src="{{ asset('assets/admin/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('assets/admin/plugins/datatables/dataTables.bootstrap4.min.js') }}"></script>
-<!-- Buttons examples -->
-<script src="{{ asset('assets/admin/plugins/datatables/dataTables.buttons.min.js') }}"></script>
-<script src="{{ asset('assets/admin/plugins/datatables/buttons.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('assets/admin/plugins/datatables/jszip.min.js') }}"></script>
-<script src="{{ asset('assets/admin/plugins/datatables/pdfmake.min.js') }}"></script>
-<script src="{{ asset('assets/admin/plugins/datatables/vfs_fonts.js') }}"></script>
-<script src="{{ asset('assets/admin/plugins/datatables/buttons.html5.min.js') }}"></script>
-<script src="{{ asset('assets/admin/plugins/datatables/buttons.print.min.js') }}"></script>
-<script src="{{ asset('assets/admin/plugins/datatables/buttons.colVis.min.js') }}"></script>
-<!-- Responsive examples -->
-<script src="{{ asset('assets/admin/plugins/datatables/dataTables.responsive.min.js') }}"></script>
-<script src="{{ asset('assets/admin/plugins/datatables/responsive.bootstrap4.min.js') }}"></script>
+    <!-- Required datatable js -->
+    <script src="{{ asset('assets/admin/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/plugins/datatables/dataTables.bootstrap4.min.js') }}"></script>
+    <!-- Buttons examples -->
+    <script src="{{ asset('assets/admin/plugins/datatables/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/plugins/datatables/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/plugins/datatables/jszip.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/plugins/datatables/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/plugins/datatables/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('assets/admin/plugins/datatables/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/plugins/datatables/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/plugins/datatables/buttons.colVis.min.js') }}"></script>
+    <!-- Responsive examples -->
+    <script src="{{ asset('assets/admin/plugins/datatables/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/plugins/datatables/responsive.bootstrap4.min.js') }}"></script>
 
 
 <script>

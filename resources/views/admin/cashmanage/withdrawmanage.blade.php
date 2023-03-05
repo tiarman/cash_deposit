@@ -1,15 +1,9 @@
 @extends('layout.admin')
 
 @section('stylesheet')
-    <!-- DataTables -->
-    <link href="{{ asset('assets/admin/plugins/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet"
-          type="text/css"/>
-    <link href="{{ asset('assets/admin/plugins/datatables/buttons.bootstrap4.min.css') }}" rel="stylesheet"
-          type="text/css"/>
-
-    <link href="{{ asset('assets/admin/plugins/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet"
-          type="text/css"/>
-
+    <link href="{{ asset('assets/admin/plugins/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('assets/admin/plugins/datatables/buttons.bootstrap4.min.css') }}" rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('assets/admin/plugins/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet" type="text/css"/>
 @endsection
 
 @section('content')
@@ -25,8 +19,9 @@
                             @if(session()->has('status'))
                                 {!! session()->get('status') !!}
                             @endif
-                                <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap"
-                                       cellspacing="0" width="100%" style="font-size: 14px">
+                                <div class="table-rep-plugin">
+                                    <div class="table-responsive mb-0" data-bs-pattern="priority-columns">
+                                        <table id="datatable-buttons" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%" style="font-size: 14px">
 
                                     <thead>
                                     <tr>
@@ -46,40 +41,11 @@
                                     @foreach($wid as $key => $val)
                                         <tr class="@if(($key%2) == 0)gradeX @else gradeC @endif">
                                             <td class="p-1">{{ ($key+1) }}</td>
-                                            <td class="p-1 text-capitalize">trtype</td>
+                                            <td class="p-1 text-capitalize">{{$val->transaction_type}}</td>
                                             <td class="p-1 text-capitalize">{{ $val->withdraw_id }}</td>
                                             <td class="p-1">{{ $val->amount }}</td>
                                             <td width="200" class="p-1">{{ date('F d, Y h:i A', strtotime($val->created_at)) }}</td>
-                                            {{--                                                @if(\App\Helper\CustomHelper::canView('Manage User', 'Super Admin'))--}}
-                                            {{--                                                    <td class="text-capitalize p-1" width="100">--}}
-                                            {{--                                                        <div class="onoffswitch">--}}
-                                            {{--                                                            <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox"--}}
-                                            {{--                                                                   @checked($val->status == \App\Models\User::$statusArrays[1])--}}
-                                            {{--                                                                   data-id="{{ $val->id }}"--}}
-                                            {{--                                                                   id="myonoffswitch{{ ($key+1) }}">--}}
-                                            {{--                                                            <label class="onoffswitch-label" for="myonoffswitch{{ ($key+1) }}">--}}
-                                            {{--                                                                <span class="onoffswitch-inner"></span>--}}
-                                            {{--                                                                <span class="onoffswitch-switch"></span>--}}
-                                            {{--                                                            </label>--}}
-                                            {{--                                                        </div>--}}
-                                            {{--                                                    </td>--}}
-                                            {{--                                                @else--}}
-{{--=================--}}
-{{--                                            <td class="text-capitalize p-1" width="150">--}}
-{{--                                                <div class="form-group">--}}
-{{--                                                    <select name="status" required class="form-control @error('status') is-invalid @enderror">--}}
-{{--                                                        <option value="">Choose a status</option>--}}
-{{--                                                        @foreach(\App\Models\Withdraw::$statusArrays as $status)--}}
-{{--                                                            <option value="{{ $status }}"--}}
-{{--                                                                    @if(old('status', $val->status) == $status) selected @endif>{{ ucfirst($status) }}</option>--}}
-{{--                                                        @endforeach--}}
-{{--                                                    </select>--}}
-{{--                                                    @error('status')--}}
-{{--                                                    <strong class="text-danger">{{ $errors->first('status') }}</strong>--}}
-{{--                                                    @enderror--}}
-{{--                                                </div>--}}
-{{--                                            </td>--}}
-{{--                                            ================--}}
+
                                             @if(\App\Helper\CustomHelper::canView('Manage Withdraw', 'Super Admin|Agent'))
                                                 <td class="text-capitalize p-1" width="100">
                                                     <div class="onoffswitch2">
@@ -114,6 +80,8 @@
                                     @endforeach
                                     </tbody>
                                 </table>
+                                    </div>
+                                </div>
                         </div>
                     </section>
                 </div>
@@ -159,11 +127,6 @@
     <!-- Responsive examples -->
     <script src="{{ asset('assets/admin/plugins/datatables/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('assets/admin/plugins/datatables/responsive.bootstrap4.min.js') }}"></script>
-
-
-
-    <script src="{{ asset('assets/admin/plugins/select2/js/select2.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/plugins/sweetalert2/sweetalert2.all.min.js') }}"></script>
 
 {{--    <script>--}}
 

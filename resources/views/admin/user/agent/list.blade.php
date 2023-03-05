@@ -28,8 +28,11 @@
                 </div>
                 @endif
               {{--<table class="table table-bordered table-striped mb-none" id="data-table">--}}
-              <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap"
-                     cellspacing="0" width="100%" style="font-size: 14px">
+                  <div class="table-rep-plugin">
+                      <div class="table-responsive mb-0" data-bs-pattern="priority-columns">
+                          <table id="datatable-buttons" class="table table-striped table-bordered nowrap">
+{{--                              <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap"--}}
+{{--                                     cellspacing="0" width="100%" style="font-size: 14px">--}}
 
                 <thead>
                 <tr>
@@ -87,6 +90,8 @@
                 @endforeach
                 </tbody>
               </table>
+                      </div>
+                  </div>
               <div class="row">
                 <div class="col-sm-12">{{ $users->links('vendor.pagination.bootstrap-4') }}</div>
               </div>
@@ -139,7 +144,7 @@
 
   <script>
     $(document).ready(function () {
-      // $('#datatable-buttons').DataTable();
+      $('#datatable-buttons').DataTable();
 
       // var table = $('#datatable-buttons').DataTable({
       //   lengthChange: false,
