@@ -12,8 +12,11 @@ class Payment_number extends Model
     protected $fillable = [
         'number',
         'user_id',
-        'method_id'
+        'method_id',
+        'status',
     ];
+
+    public static $statusArray = ['active','inactive'];
 
     public function methods(){
         return $this->belongsTo(Payment::class,'method_id','id');

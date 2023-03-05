@@ -87,6 +87,7 @@
                                         @enderror
                                     </div>
                                 </div>
+                                @if (\App\Helper\CustomHelper::canView('Create Payment', 'Super Admin'))
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label class="control-label">Status<span class="text-danger">*</span></label>
@@ -105,6 +106,7 @@
                                         <strong class="text-danger" id="status_error"></strong>
                                     </div>
                                 </div>
+                                @endif
                                 @if (\App\Helper\CustomHelper::canView('create Payment', 'Super Admin'))
                                     <div class="col-sm-6">
                                         <div class="form-group">
@@ -265,7 +267,6 @@
                                 <th width="50">#</th>
                                 <th>Name</th>
                                 <th>Payment Number</th>
-                                <th>Status</th>
                                 @if (\App\Helper\CustomHelper::canView('Manage Payment|Delete Payment', 'Super Admin|Agent|Sub Agent'))
                                     <th class="hidden-phone" width="40">Option</th>
                                 @endif
@@ -283,33 +284,10 @@
                                     @endif
                                     <td class="p-1 text-capitalize">{{ $val->methods->name }}</td>
                                     <td class="p-1 text-capitalize">{{ $val->number }}</td>
-                                    @if (\App\Helper\CustomHelper::canView('Manage Institute', 'Super Admin|Agent|Sub Agent'))
-                                        <td class="text-capitalize p-1" width="100">
-                                            <div class="onoffswitch">
-                                                <input type="checkbox" name="onoffswitch"
-                                                       class="onoffswitch-checkbox" @checked($val->status == \App\Models\Payment::$statusArray[0])
-                                                       data-id="{{ $val->id }}"
-                                                       id="myonoffswitch{{ $key + 1 }}">
-                                                <label class="onoffswitch-label"
-                                                       for="myonoffswitch{{ $key + 1 }}">
-                                                    <span class="onoffswitch-inner"></span>
-                                                    <span class="onoffswitch-switch"></span>
-                                                </label>
-                                            </div>
-                                        </td>
-                                    @else
-                                        <td class="p-1 text-capitalize">{{ $val->status }}</td>
-                                    @endif
+
 
                                     @if (\App\Helper\CustomHelper::canView('Manage Payment|Delete Payment', 'Super Admin|Agent|Sub Agent'))
                                         <td class="center hidden-phone p-1" width="100">
-                                            @if (\App\Helper\CustomHelper::canView('Manage Payment', 'Super Admin|Agent|Sub Agent'))
-                                                <span
-                                                    class="btn btn-sm btn-success btn-manage manage_{{ $val->id }}"
-                                                    style="cursor: pointer" data-id="{{ $val->id }}"
-                                                    data-name="{{ $val->name }}"><i
-                                                        class="fa fa-edit"></i></span>
-                                            @endif
                                             @if (\App\Helper\CustomHelper::canView('Delete Payment', 'Super Admin|Agent|Sub Agent'))
                                                 <span
                                                     class="btn btn-sm btn-danger btn-delete delete_{{ $val->id }}"
@@ -508,6 +486,30 @@
                 }
             });
         })
+
+
+
+        $(document).on('click', '.yes-btn', function() {
+            var pid = $(this).data('id');
+            var $this = $('.delete_' + pid)
+            $.ajax({
+                url: "{{ route('admin.payment.destroy2') }}",
+                method: "DELETE",
+                dataType: "html",
+                data: {
+                    id: pid
+                },
+                success: function(data) {
+                    if (data === "success") {
+                        $('#userDeleteModal').modal('hide')
+                        $this.closest('tr').css('background-color', 'red').fadeOut();
+                    }
+                }
+            });
+        })
+
+
+
 
         $(document).on('click', '.btn-delete', function() {
             var pid = $(this).data('id');

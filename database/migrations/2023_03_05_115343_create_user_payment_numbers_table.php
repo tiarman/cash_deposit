@@ -13,13 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('payment_number', function (Blueprint $table) {
+        Schema::create('user_payment_numbers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('method_id');
-            $table->unsignedBigInteger('user_id');
-            $table->string('number');
+            $table->unsignedBigInteger('method_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->string('number')->nullable();
             $table->string('status')->default(\App\Models\Payment_number::$statusArray[0])->nullable();
-
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payment_number');
+        Schema::dropIfExists('user_payment_numbers');
     }
 };

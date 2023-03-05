@@ -56,6 +56,7 @@ class PaymentController extends Controller
                 $payment_number->user_id = auth()->id();
                 $payment_number->method_id = $method_id;
                 $payment_number->number =$request->mobile;
+                $payment_number->status = $request->status;
                 if($payment_number->save()){
                 return RedirectHelper::routeSuccess('admin.payment.create', $message);
             }
@@ -91,7 +92,7 @@ class PaymentController extends Controller
             }
             return RedirectHelper::backWithInput();
         } catch (QueryException $e) {
-//            return $e;
+            return $e;
             return RedirectHelper::backWithInputFromException();
         }
     }
@@ -107,6 +108,22 @@ class PaymentController extends Controller
         } catch (\Exception $e) {
         }
     }
+
+
+    public function destroy2(Request $request)
+    {
+        $id = $request->post('id');
+        try {
+            $semester = Payment_number::find($id);
+            if ($semester->delete()) {
+                return 'success';
+            }
+        } catch (\Exception $e) {
+        }
+    }
+
+
+
 
     public function ajaxUpdateStatus(Request $request)
     {

@@ -19,6 +19,7 @@ use App\Http\Controllers\SubAgentController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UpazilaController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserPaymentNumberController;
 use App\Http\Controllers\VoucherController;
 use App\Http\Controllers\VoucherTypeController;
 use App\Http\Controllers\WithdrawController;
@@ -120,6 +121,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
     Route::post('/update/subagent/status', [SubAgentController::class, 'ajaxUpdateStatus'])->middleware('role_or_permission:Super Admin|Agent|Manage Sub Agent')->name('update.subagent.status');
     Route::post('/update/backgrouond/status', [BackgroundImageController::class, 'ajaxUpdateStatus'])->name('update.backgroundImage.status');
     Route::post('/update/payment/status', [PaymentController::class, 'ajaxUpdateStatus'])->name('update.payment.status');
+    Route::post('/update/user_payment/status', [UserPaymentNumberController::class, 'ajaxUpdateStatus'])->name('update.user_payment.status');
     Route::post('/update/marquee/status', [MarqueeController::class, 'ajaxUpdateStatus'])->name('update.marquee.status');
 
     Route::post('/update/cashmanage/status', [WithdrawController::class, 'ajaxUpdateStatus'])->name('update.cashmanage.status');
@@ -226,7 +228,18 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
     Route::get('/create', [PaymentController::class, 'create'])->middleware('role_or_permission:Super Admin|Agent|Sub Agent|Create payment')->name('create');
     Route::post('/store', [PaymentController::class, 'store'])->middleware('role_or_permission:Super Admin|Agent|Sub Agent|Create payment|Manage payment')->name('store');
     Route::delete('/destroy', [PaymentController::class, 'destroy'])->middleware('role_or_permission:Super Admin|Agent|Sub Agent|Delete payment')->name('destroy');
+      Route::delete('/destroy2', [PaymentController::class, 'destroy2'])->middleware('role_or_permission:Agent|Sub Agent|Delete payment')->name('destroy2');
+
   });
+
+
+    // User Payment
+    Route::prefix('/user_payment')->name('user_payment.')->group(function () {
+        Route::get('/create', [UserPaymentNumberController::class, 'create'])->middleware('role_or_permission:Agent|Sub Agent|Create payment')->name('create');
+        Route::post('/store', [UserPaymentNumberController::class, 'store'])->middleware('role_or_permission:Agent|Sub Agent|Create payment|Manage payment')->name('store');
+        Route::delete('/destroy', [UserPaymentNumberController::class, 'destroy'])->middleware('role_or_permission:Agent|Sub Agent|Delete payment')->name('destroy');
+        Route::delete('/destroy2', [UserPaymentNumberController::class, 'destroy2'])->middleware('role_or_permission:Agent|Sub Agent|Delete payment')->name('destroy2');
+    });
 
 
   //  Route::get('trainee/certificate/create', [CertificateController::class, 'create'])->middleware('role_or_permission:Super Admin|Create Certificate')->name('trainee.certificate.create');
