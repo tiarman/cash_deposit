@@ -332,10 +332,12 @@
       <!-- Top Bar End -->
 
       <div class="page-content-wrapper">
-          @foreach($datas as $val)
-              <marquee class="margueue_align1" loop behavior="scroll" direction="left"><p><strong>{{$val->headline}}</strong></p></marquee>
-          @endforeach
-        @yield('content')
+{{--          @foreach($datas as $val)--}}
+{{--              <marquee class="margueue_align1" loop behavior="scroll" direction="left"><p><strong>{{$val->headline}}</strong></p></marquee>--}}
+{{--          @endforeach--}}
+              <marquee class="margueue_align1" loop behavior="scroll" direction="left"><p><strong>Marquee</strong></p></marquee>
+
+              @yield('content')
         <div class="modal fade" id="notificationModal" tabindex="-1" role="dialog" aria-labelledby="notificationModal"
              aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
