@@ -39,7 +39,8 @@ public function list(){
         $user_id=app('request')->user()->id;
 //        $activewith = Withdraw::select(DB::raw("SUM(`amount`) as `sum_total`"))
 //            ->where('status', '=', Withdraw::$statusArrays[1])->groupby('withdraw_id')->where('user_id',$user_id)->get();
-//        $data['sum_total'] = $activewith[0]['sum_total'] ?? "";
+//        return $activewith;
+//        $datas['sum_total'] = $activewith[0]['sum_total'] ?? "";
 //        $data['user'] = User::whereHas('roles',function( $user){$user->where('roles.name','Agent','Sub Agent');})->first();
 //        $data['bkash'] = Payment::where('user_id',$user_id)->where('name','bkash personal')->get();
         $datas['wid'] = Withdraw::where('user_id',$user_id)->get();
@@ -52,7 +53,7 @@ public function list(){
 //        $data['datas'] = Payment_number::orderby('id', 'desc')->get();
 //
 
-
+        $datas['total_withdraw'] = Withdraw::select('amount')->where('user_id', auth()->id())->where('status','accepted')->get();
 
         $data['user'] = User::whereHas('roles',function( $user){$user->where('roles.name','Super Admin');})->first();
         $adminId = $data['user']->id;

@@ -95,8 +95,14 @@
                                                 <td></td>
 
                                                     <td></td>
+                                                <?php
+                                                $total = 0;
+                                                foreach ($total_withdraw as $item) {
+                                                    $total += intval($item->amount);
+                                                }
+                                                ?>
 
-                                                <td><strong>Total = </strong><strong style="color: green">{{$sum_total ?? ""}}</strong></td>
+                                                <td><strong>Total = </strong><strong style="color: green">{{$total ?? ""}}</strong></td>
                                                 <td></td>
                                                 <td></td>
 

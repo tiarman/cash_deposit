@@ -45,6 +45,32 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col-md-6 col-xl-6">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="mini-stat">
+                                                        <span class="mini-stat-icon bg-primary float-start"><i class="mdi mdi-currency-usd"></i></span>
+                                                        <div class="mini-stat-info text-end">
+                                                            <span class="counter text-primary">Curent Balance</span>
+                                                            <strong>Total: 100</strong>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-xl-6">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="mini-stat">
+                                                        <span class="mini-stat-icon bg-primary float-start"><i class="mdi mdi-currency-usd"></i></span>
+                                                        <div class="mini-stat-info text-end">
+                                                            <span class="counter text-primary">Interest</span>
+                                                            <strong>Total: 200</strong>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
                         </div>
 
