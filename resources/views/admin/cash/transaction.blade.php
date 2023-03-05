@@ -45,7 +45,7 @@
                                                     <div class="mini-stat clearfix">
                                                         <span class="mini-stat-icon bg-success float-start"><i class="mdi mdi-currency-usd"></i></span>
                                                         <div class="mini-stat-info text-end">
-                                                            <span class="counter text-success">Withdraw Total</span>
+                                                            <span class="counter text-success">Deposit Total</span>
                                                             <?php
                                                             $total = 0;
                                                             foreach ($total_deposits as $item) {
