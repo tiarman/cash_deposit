@@ -45,10 +45,15 @@
                                                     <div class="mini-stat clearfix">
                                                         <span class="mini-stat-icon bg-success float-start"><i class="mdi mdi-currency-usd"></i></span>
                                                         <div class="mini-stat-info text-end">
-                                                            <span class="counter text-success">Deposit Total</span>
-                                                            New Orders
+                                                            <span class="counter text-success">Withdraw Total</span>
+                                                            <?php
+                                                            $total = 0;
+                                                            foreach ($total_deposits as $item) {
+                                                                $total += intval($item->amount);
+                                                            }
+                                                            ?>
+                                                            <strong style="font-size: 18px">Total: {{$total ?? " "}}</strong>
                                                         </div>
-                                                        <div class="clearfix"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -59,8 +64,20 @@
                                                     <div class="mini-stat">
                                                         <span class="mini-stat-icon bg-primary float-start"><i class="mdi mdi-currency-usd"></i></span>
                                                         <div class="mini-stat-info text-end">
+                                                            <?php
+                                                            $total1 = 0;
+                                                            foreach ($total_deposits as $item) {
+                                                                $total1 += intval($item->amount);
+                                                            }
+                                                            $total2 = 0;
+                                                            foreach ($total_withdraw as $item) {
+                                                                $total2 += intval($item->amount);
+                                                            }
+
+
+                                                            ?>
                                                             <span class="counter text-primary">Curent Balance</span>
-                                                            <strong>Total: 100</strong>
+                                                            <strong style="font-size: 18px"> Total: {{$total1+$total2 ?? " "}}</strong>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -107,10 +124,11 @@
 
                                     <thead>
                                     <tr>
-                                        <th width="10">#</th>
+{{--                                        <th width="10">#</th>--}}
                                         <th>Transaction Type</th>
                                         <th>Mobile/AC Number</th>
                                         <th>Amount</th>
+                                        <th>Transaction ID</th>
                                         <th>Date</th>
                                         <th>Status</th>
 
@@ -122,15 +140,26 @@
                                     <tbody>
                                     @foreach($wid as $key => $val)
                                         <tr class="@if(($key%2) == 0)gradeX @else gradeC @endif">
-                                            <td class="p-1">{{ ($key+1) }}</td>
                                             <td class="p-1 text-capitalize">{{$val->transaction_type}}</td>
                                             <td class="p-1 text-capitalize">{{ $val->withdraw_id }}</td>
                                             <td class="p-1">{{ $val->amount }}</td>
+                                            <td class="p-1"></td>
                                             <td width="200" class="p-1">{{ date('F d, Y h:i A', strtotime($val->created_at)) }}</td>
                                             <td class="p-1 text-capitalize "><button class="btn text-capitalize @if($val->status == 'pending') btn-warning @else btn-success @endif">{{ $val->status }}</button></td>
+                                        </tr>
 
                                             @endforeach
+                                    @foreach($allDeposits as $vals)
+                                        <tr class="@if(($key%2) == 0)gradeX @else gradeC @endif">
+                                            <td class="p-1 text-capitalize">{{$vals->transaction_type}}</td>
+                                            <td class="p-1 text-capitalize">{{ $vals->payment_no }}</td>
+                                            <td class="p-1">{{ $vals->amount }}</td>
+                                            <td class="p-1">{{ $vals->transaction_id}}</td>
+                                            <td width="200" class="p-1">{{ date('F d, Y h:i A', strtotime($vals->created_at)) }}</td>
+                                            <td class="p-1 text-capitalize "><button class="btn text-capitalize @if($vals->status == 'pending') btn-warning @else btn-success @endif">{{ $val->status }}</button></td>
                                         </tr>
+                                    @endforeach
+
                                     <thead>
                                     <tr>
                                         <td></td>
