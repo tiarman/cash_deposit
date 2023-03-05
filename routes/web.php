@@ -93,6 +93,7 @@ Route::post('/post/apply', [SiteController::class, 'postApply'])->name('ajax.pos
 Route::get('/admin/logout', [AdminController::class, 'logout'])->middleware('auth')->name('admin.logout');
 Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function () {
   Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+//    Route::get('/dashboard', [SiteController::class, 'marquee3'])->name('dashboard')->name('marquee');
   Route::get('/profile', [AdminController::class, 'profile'])->name('profile.show');
   Route::post('/profile/update', [AdminController::class, 'profileUpdate'])->name('profile.update');
   Route::post('/password/update', [AdminController::class, 'passwordUpdate'])->name('password.update');

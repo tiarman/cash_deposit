@@ -334,7 +334,6 @@
       <div class="page-content-wrapper">
           @foreach($datas as $val)
               <marquee class="margueue_align1" loop behavior="scroll" direction="left"><p><strong>{{$val->headline}}</strong></p></marquee>
-
           @endforeach
         @yield('content')
         <div class="modal fade" id="notificationModal" tabindex="-1" role="dialog" aria-labelledby="notificationModal"

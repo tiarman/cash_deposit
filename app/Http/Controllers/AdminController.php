@@ -7,6 +7,7 @@ use App\Helper\RedirectHelper;
 use App\Models\District;
 use App\Models\Division;
 use App\Models\Institute;
+use App\Models\Marquee;
 use App\Models\Notification;
 use App\Models\Training;
 use App\Models\Upazila;
@@ -23,13 +24,16 @@ class AdminController extends Controller {
   }
 
   public function index() {
+      $data['datas'] = Marquee::get();
     $today = (date('Y-m-d'));
     $today = date('Y-m-d', strtotime($today . ' +1 day'));
 
     // $data['name'] = User::with('institute')->where('id', auth()->id())->get();
     //  $data['name'][0]->institute->name;
-    return view('admin.index');
+//      return $data;
+    return view('admin.index', $data);
   }
+
 
   public function profile() {
     $data['divisions'] = Division::Select('name', 'id')->orderby('name', 'asc')->get();

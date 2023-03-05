@@ -41,7 +41,7 @@ class SiteController extends Controller
 
   public function marquee(){
       $data['datas'] = Marquee::get();
-      return $data;
+//      return $data;
       return view('layout.admin', $data);
   }
 

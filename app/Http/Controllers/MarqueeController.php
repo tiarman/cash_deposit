@@ -51,7 +51,7 @@ class MarqueeController extends Controller
             }
             return RedirectHelper::backWithInput();
         } catch (QueryException $e) {
-            return $e;
+//            return $e;
             return RedirectHelper::backWithInputFromException();
         }
 
