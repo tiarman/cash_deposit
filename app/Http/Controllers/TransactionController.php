@@ -19,6 +19,7 @@ class TransactionController extends Controller
         $data['user'] = User::whereHas('roles',function( $user){$user->where('roles.name','Agent','Sub Agent');})->first();
         $data['bkash'] = Payment::where('name','bkash personal')->get();
         $wid['wid'] = Withdraw::where('user_id',$user_id)->get();
+        $data['total_withdraw'] = Withdraw::select('amount')->where('user_id', auth()->id())->where('status','accepted')->get();
 
         return view('admin.cash.transaction', $data, $wid);
 

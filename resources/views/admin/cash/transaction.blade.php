@@ -25,7 +25,13 @@
                                                         <span class="mini-stat-icon bg-primary float-start"><i class="mdi mdi-currency-usd"></i></span>
                                                         <div class="mini-stat-info text-end">
                                                             <span class="counter text-primary">Withdraw Total</span>
-                                                            <strong>Total: {{$sum_total ?? " "}}</strong>
+                                                            <?php
+                                                            $total = 0;
+                                                            foreach ($total_withdraw as $item) {
+                                                                $total += intval($item->amount);
+                                                            }
+                                                            ?>
+                                                            <strong>Total: {{$total ?? " "}}</strong>
                                                         </div>
                                                     </div>
                                                 </div>
