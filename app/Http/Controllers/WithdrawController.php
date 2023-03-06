@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helper\CustomHelper;
 use App\Helper\RedirectHelper;
 use App\Models\Deposit;
+use App\Models\Marquee;
 use App\Models\Payment;
 use App\Models\Payment_number;
 use App\Models\SubAgent;
@@ -22,6 +23,7 @@ class WithdrawController extends Controller
 public function list(){
     $wid['wid'] = Withdraw::get();
     $data['datas'] = Payment::orderby('id', 'desc')->get();
+    $data['marquee1'] = Marquee::orderby('id', 'desc')->get();
 //        return $wid;
     return view('admin.cashmanage.withdrawmanage', $data, $wid);
 
@@ -58,6 +60,7 @@ public function list(){
         $data['user'] = User::whereHas('roles',function( $user){$user->where('roles.name','Super Admin');})->first();
         $adminId = $data['user']->id;
 
+        $datas['marquee1'] = Marquee::orderby('id', 'desc')->get();
 
 
         $datas['agent_payment_numbers'] = Payment::with('agentsNumbers')->where('user_id',$adminId)->get();

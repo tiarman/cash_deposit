@@ -24,7 +24,7 @@ class AdminController extends Controller {
   }
 
   public function index() {
-      $data['datas'] = Marquee::get();
+      $data['marquee1'] = Marquee::get();
     $today = (date('Y-m-d'));
     $today = date('Y-m-d', strtotime($today . ' +1 day'));
 
@@ -38,6 +38,7 @@ class AdminController extends Controller {
   public function profile() {
     $data['divisions'] = Division::Select('name', 'id')->orderby('name', 'asc')->get();
     $data['districts'] = District::Select('name', 'id')->orderby('name', 'asc')->get();
+      $data['marquee1'] = Marquee::orderby('id', 'desc')->get();
     return view('admin.profile', $data);
   }
 

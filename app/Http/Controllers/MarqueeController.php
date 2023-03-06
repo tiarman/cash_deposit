@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class MarqueeController extends Controller
 {
     public function index() {
-        $data['datas'] = Marquee::orderby('id', 'desc')->get();
+        $data['marquee1'] = Marquee::orderby('id', 'desc')->get();
         return view('admin.marquee.list', $data);
     }
 
@@ -23,6 +23,7 @@ class MarqueeController extends Controller
 
     public function manage($id = null) {
         if ($data['marquee'] = Marquee::find($id)) {
+            $data['marquee1'] = Marquee::orderby('id', 'desc')->get();
             return view('admin.marquee.manage', $data);
         }
         return RedirectHelper::routeWarning('admin.marquee.list', '<strong>Sorry!!!</strong> Marquee not found');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helper\RedirectHelper;
 use App\Models\Deposit;
+use App\Models\Marquee;
 use App\Models\Payment;
 use App\Models\Payment_number;
 use App\Models\User;
@@ -29,7 +30,7 @@ class DepositController extends Controller
 
         //   get numbers for specific payment method
            $data['bkash_agents'] = Payment::where('user_id', $adminId)->where('name','bkash agent')->get();
-           $data['bkash_personals'] = Payment::where('user_id', $adminId)->where('name','bkash personal')->get();
+        $data['bkash_personals'] = Payment::where('user_id', $adminId)->where('name','bkash personal')->get();
            $data['nagad_personals'] = Payment::where('user_id', $adminId)->where('name','nagad personal')->get();
            $data['rocket_personals'] = Payment::where('user_id', $adminId)->where('name','rocket personal')->get();
            $data['upay_personals'] = Payment::where('user_id', $adminId)->where('name','upay personal')->get();
@@ -37,6 +38,7 @@ class DepositController extends Controller
            $data['deposits'] = Deposit::where('user_id', auth()->id())->get();
         // total deposit
         $data['total_deposits'] = Deposit::select('amount')->where('user_id', auth()->id())->where('status','accepted')->get();
+        $data['marquee1'] = Marquee::orderby('id', 'desc')->get();
         // return $data['total_deposits'];
 
         if($request->isMethod('post')){
@@ -76,6 +78,7 @@ class DepositController extends Controller
     {
         $data['allDeposits'] = Deposit::get();
         $data['total_deposits'] = Deposit::select('amount')->where('status','accepted')->get();
+        $data['marquee1'] = Marquee::orderby('id', 'desc')->get();
         return view('admin.cashmanage.depositManage',$data);
     }
 

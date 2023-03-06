@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helper\CustomHelper;
 use App\Helper\RedirectHelper;
 use App\Models\BackgroundImage;
+use App\Models\Marquee;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
@@ -14,6 +15,7 @@ class BackgroundImageController extends Controller
         // return view('admin.backgroundImage.create');
         if($request->isMethod('get')){
             $data['images'] = BackgroundImage::get();
+            $data['marquee1'] = Marquee::orderby('id', 'desc')->get();
             return view('admin.backgroundImage.create',$data);
         }
         elseif($request->isMethod('post')){
@@ -50,21 +52,21 @@ class BackgroundImageController extends Controller
     public function destroy(Request $request) {
         $id = $request->post('id');
         try {
-    
+
           $backgroundImage = BackgroundImage::find($id);
-    
+
           if ($backgroundImage->delete()) {
             if ($backgroundImage !== null) {
               CustomHelper::deleteFile($backgroundImage->image);
             }
             return 'success';
           }
-    
+
         } catch (\Exception $e) {
-    
+
         }
-    
-    
+
+
       }
 
     public function ajaxUpdateStatus(Request $request){
@@ -76,8 +78,8 @@ class BackgroundImageController extends Controller
             if ($image->update(['status' => $status])) {
                 return "success";
               }
-              
+
             }
           }
-    
+
 }

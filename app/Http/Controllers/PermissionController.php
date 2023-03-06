@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Marquee;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -72,6 +73,7 @@ class PermissionController extends Controller
       ];
     }
     $permissions = collect($permissions);
-    return view('admin.permission.index', compact('roles', 'permissions'));
+      $data['marquee1'] = Marquee::orderby('id', 'desc')->get();
+      return view('admin.permission.index', $data, compact('roles', 'permissions'));
   }
 }

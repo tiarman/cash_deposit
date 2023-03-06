@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helper\CustomHelper;
 use App\Helper\RedirectHelper;
+use App\Models\Marquee;
 use App\Models\Payment;
 use App\Models\Payment_number;
 // use App\Models\Payment\paymentMethods;
@@ -22,6 +23,8 @@ class PaymentController extends Controller
 
 //        $data['methods'] = Payment::where('id',$user_id)->get();
 //        return $datass;
+        $data['marquee1'] = Marquee::orderby('id', 'desc')->get();
+
         return view('admin.payment.index', $data);
     }
     public function store(Request $request)

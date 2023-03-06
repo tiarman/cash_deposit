@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helper\CustomHelper;
 use App\Helper\RedirectHelper;
+use App\Models\Marquee;
 use App\Models\SubAgent;
 use App\Models\User;
 use Illuminate\Database\QueryException;
@@ -27,6 +28,8 @@ class SubAgentController extends Controller
 //        $data['users'] = User::with('roles')->orderby('id', 'desc')->paginate(100);
 //return $data;
 //        return $data['sub_agent'];
+        $data['marquee1'] = Marquee::orderby('id', 'desc')->get();
+
         return view('admin.user.subAgent.list', $data);
     }
 
@@ -34,6 +37,7 @@ class SubAgentController extends Controller
     public function create(){
         // return auth()->user()->roles->pluck('name')[0];
         if((auth()->user()->roles->pluck('name')[0] == "Super Admin")){
+            $data['marquee1'] = Marquee::orderby('id', 'desc')->get();
             $data['agents'] = User::whereHas('roles',function( $user){$user->where('roles.name','Agent');})->get();
             $data['isAdmin'] = true;
         }
@@ -46,6 +50,7 @@ class SubAgentController extends Controller
     public function manage($id = null)
     {
         $data['roles'] = Role::select('id', 'name')->orderby('name', 'asc')->get();
+        $data['marquee1'] = Marquee::orderby('id', 'desc')->get();
         if ($data['user'] = User::find($id)) {
             return view('admin.user.subAgent.manage', $data);
         }

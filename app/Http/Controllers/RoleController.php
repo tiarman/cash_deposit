@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helper\RedirectHelper;
+use App\Models\Marquee;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
@@ -12,11 +13,14 @@ class RoleController extends Controller
   public function index()
   {
     $data['roles'] = Role::orderby('created_at', 'desc')->get();
-    return view('admin.permission.role.list', $data);
+      $data['marquee1'] = Marquee::orderby('id', 'desc')->get();
+
+      return view('admin.permission.role.list', $data);
   }
   public function create()
   {
-    return view('admin.permission.role.create');
+      $data['marquee1'] = Marquee::orderby('id', 'desc')->get();
+      return view('admin.permission.role.create', $data);
   }
 
 

@@ -46,7 +46,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($datas as $key => $val)
+                @foreach($marquee1 as $key => $val)
                   <tr class="@if(($key%2) == 0)gradeX @else gradeC @endif">
                     <td class="p-1">{{ ($key+1) }}</td>
                     <td class="p-1 text-capitalize">{{ $val->headline }}</td>

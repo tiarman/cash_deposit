@@ -33,6 +33,7 @@ class SiteController extends Controller
   {
       $data['datas'] = Payment::orderby('id', 'desc')->get();
       $wid['wid'] = Withdraw::get();
+      $data['marquee1'] = Marquee::orderby('id', 'desc')->get();
 //      return $wid;
 
       return view('admin.cash.withdraw', $data, $wid);

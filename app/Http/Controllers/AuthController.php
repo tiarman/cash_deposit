@@ -9,6 +9,7 @@ use App\Models\District;
 use App\Models\Division;
 use App\Models\Institute;
 use App\Models\InstituteType;
+use App\Models\Marquee;
 use App\Models\Semester;
 use App\Models\Shift;
 use App\Models\Technology;
@@ -94,6 +95,7 @@ class AuthController extends Controller
             return RedirectHelper::backWithInput('<strong>Sorry!!!</strong> Your email or password is wrong.');
         }
         $data['images'] = BackgroundImage::where('status', BackgroundImage::$statusArray[0])->get();
+        $data['marquee1'] = Marquee::orderby('id', 'desc')->get();
         // return $data;
         return view('admin.auth.login', $data);
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Marquee;
 use App\Models\Voucher;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
@@ -9,7 +10,8 @@ use Illuminate\Http\Request;
 class AdminVoucherController extends Controller
 {
   public function index() {
-    $data['datas'] = Voucher::with('institute', 'year', 'type')->get();
+      $data['marquee1'] = Marquee::orderby('id', 'desc')->get();
+      $data['datas'] = Voucher::with('institute', 'year', 'type')->get();
     return view('admin.voucher.listAll', $data);
    }
 
