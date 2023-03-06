@@ -94,7 +94,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-3 col-5">
                     <div class="logo-wrapper">
-                        <a href="index.html"><img src="{{asset('assets/frontend/img/logo-white.png')}}" alt="logo" class="logo"></a>
+                        <a href="{{route('home')}}"><img src="{{asset('assets/frontend/img/logo-white.png')}}" alt="logo" class="logo"></a>
                     </div>
                 </div>
                 <div class="col-xl-7 col-lg-6 d-none d-lg-block">
@@ -128,8 +128,8 @@
     <!--mobile menu start-->
     <div class="mobile-menu position-fixed bg-white deep-shadow">
         <button class="close-menu position-absolute"><i class="fa-solid fa-xmark"></i></button>
-        <a href="index.html" class="logo-wrapper"><img style="background-color: springgreen; padding: 5px;border-radius: 5px" src="{{asset('assets/frontend/img/logo-white.png')}}" alt="logo" class="logo logo-black"></a>
-        <a href="index.html" class="logo-wrapper"><img src="{{asset('assets/frontend/img/logo-white.png')}}" alt="logo" class="logo logo-white"></a>
+        <a href="{{route('home')}}" class="logo-wrapper"><img style="background-color: springgreen; padding: 5px;border-radius: 5px" src="{{asset('assets/frontend/img/logo-white.png')}}" alt="logo" class="logo logo-black"></a>
+        <a href="{{route('home')}}" class="logo-wrapper"><img src="{{asset('assets/frontend/img/logo-white.png')}}" alt="logo" class="logo logo-white"></a>
         <nav class="mobile-menu-wrapper mt-40">
             <ul>
                 <li class="has-submenu"><a href="{{route('home')}}">Home</a>

@@ -165,7 +165,7 @@
                                                                 <label class="control-label">Transaction Number<span
                                                                         class="text-danger">*</span></label>
                                                                 <input type="text" name="transaction_id"
-                                                                    placeholder="017****" autocomplete="off" required
+                                                                    placeholder="TRX Number" autocomplete="off" required
                                                                     value="{{ old('transaction_id') }}"
                                                                     class="form-control @error('transaction_id') is-invalid @enderror">
                                                                 @error('transaction_id')
@@ -178,7 +178,7 @@
                                                             <div class="form-group">
                                                                 <label class="control-label">Amount<span
                                                                         class="text-danger">*</span></label>
-                                                                <input type="text" name="amount" placeholder="017****"
+                                                                <input type="number" name="amount" placeholder="00"
                                                                     autocomplete="off" required
                                                                     value="{{ old('amount') }}"
                                                                     class="form-control @error('amount') is-invalid @enderror">
@@ -224,6 +224,8 @@
     <!-- Responsive examples -->
     <script src="{{ asset('assets/admin/plugins/datatables/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('assets/admin/plugins/datatables/responsive.bootstrap4.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function() {
             $('#datatable-buttons').DataTable();

@@ -73,7 +73,7 @@
                                     <div class="form-group">
                                         <label class="control-label">Payment Number<span
                                                 class="text-danger">*</span></label>
-                                        <input type="text" name="mobile" placeholder="017****" autocomplete="off"
+                                        <input type="number" name="mobile" placeholder="017 xxxx xxxx" autocomplete="off"
                                             required value="{{ old('mobile') }}"
                                             class="form-control @error('mobile') is-invalid @enderror">
                                         @error('mobile')
