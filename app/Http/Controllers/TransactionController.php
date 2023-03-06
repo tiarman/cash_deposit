@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AgentInterest;
 use App\Models\Deposit;
 use App\Models\Marquee;
 use App\Models\Payment;
@@ -23,6 +24,10 @@ class TransactionController extends Controller
         $data['allDeposits'] = Deposit::where('user_id',$user_id)->get();
 //        return $datas;
         $data['total_deposits'] = Deposit::select('amount')->where('user_id', auth()->id())->where('status','accepted')->get();
+
+        // interest
+        $data['interest'] = AgentInterest::select('interest_amount')->where('agent_id', auth()->id())->get();
+        // return $data['interest'];
 
 
 
