@@ -276,21 +276,84 @@
           </div>
           <ul class="list-inline float-left mb-0">
             <li class="list-inline-item dropdown notification-list hidden-xs-down">
-              <a class="nav-link waves-effect text-start" href="#" id="btn-fullscreen">
+              <a class="nav-link waves-effect text-start" href="" id="btn-fullscreen">
+                  <strong><i class="mdi mdi-fullscreen noti-icon"></i></strong>
 {{--               @if (isset(auth()->user()->institute->name))--}}
 {{--               {{auth()->user()->institute->name}}--}}
 {{--               @endif--}}
               </a>
             </li>
+
           </ul>
+            <ul class="list-inline float-left mb-0">
+                <li class="list-inline-item dropdown notification-list hidden-xs-down">
+                    <a class="nav-link waves-effect text-start" href="{{route('admin.deposit')}}" id="btn-fullscreen">
+                        @if(\App\Helper\CustomHelper::canView('Create Deposit', 'Super Admin|Agent|Sub Agent'))
+                        <strong style="font-size: 18px; background-color: #20b2aa; color: white;padding: 4px;border-radius: 5px">Create Deposit</strong>
+                        @endif
+                        {{--               @if (isset(auth()->user()->institute->name))--}}
+                        {{--               {{auth()->user()->institute->name}}--}}
+                        {{--               @endif--}}
+                    </a>
+                </li>
+
+            </ul>
+            <ul class="list-inline float-left mb-0">
+                <li class="list-inline-item dropdown notification-list hidden-xs-down">
+                    <a class="nav-link waves-effect text-start" href="{{route('admin.withdraw.create')}}" id="btn-fullscreen">
+                        @if(\App\Helper\CustomHelper::canView('Create Withdraw', 'Agent|Sub Agent'))
+                        <strong style="font-size: 18px; background-color: #20b2aa; color: white;padding: 4px;border-radius: 5px">Create Withdraw</strong>
+                        @endif
+                    </a>
+                </li>
+
+            </ul>
+            <ul class="list-inline float-left mb-0">
+                <li class="list-inline-item dropdown notification-list hidden-xs-down">
+                    <a class="nav-link waves-effect text-start" href="{{route('admin.transaction')}}" id="btn-fullscreen">
+                        @if(\App\Helper\CustomHelper::canView('Create Transaction', 'Agent|Sub Agent'))
+                        <strong style="font-size: 18px; background-color: #20b2aa; color: white;padding: 4px;border-radius: 5px">Transaction History</strong>
+                        @endif
+                    </a>
+                </li>
+
+            </ul>
           <ul class="list-inline float-right mb-0">
 
             <!-- Fullscreen -->
             <li class="list-inline-item dropdown notification-list hidden-xs-down">
-              <a class="nav-link waves-effect" href="#" id="btn-fullscreen">
-                <i class="mdi mdi-fullscreen noti-icon"></i>
-              </a>
-            </li>
+{{--              <a class="nav-link waves-effect" href="#" id="btn-fullscreen">--}}
+{{--                <i class="mdi mdi-fullscreen noti-icon"></i>--}}
+{{--              </a>--}}
+              <li class="list-inline-item dropdown notification-list">
+                  <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user" data-toggle="dropdown" href="#"
+                     role="button"
+                     aria-haspopup="false" aria-expanded="false">
+                      <strong style="background-color: #20b2aa; color: white;padding: 4px;border-radius: 5px">Cash</strong>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+                      @if(\App\Helper\CustomHelper::canView('Create Deposit', 'Super Admin|Agent|Sub Agent'))
+                          <a class="dropdown-item" href="{{ route('admin.deposit') }}"><i
+                                  class="text-muted"></i>
+                              Create Deposit</a>
+                          <div class="dropdown-divider"></div>
+                      @endif
+                          @if(\App\Helper\CustomHelper::canView('Create Withdraw', 'Agent|Sub Agent'))
+                      <a class="dropdown-item" href="{{ route("admin.withdraw.create") }}"><i
+                              class="text-muted"></i>
+                          Create Withdraw</a>
+                          @endif
+                      <div class="dropdown-divider"></div>
+                          @if(\App\Helper\CustomHelper::canView('Create Transaction', 'Agent|Sub Agent'))
+                      <a class="dropdown-item" href="{{ route('admin.transaction') }}"><i class="text-muted"></i>
+                          Transaction History</a>
+                          @endif
+                  </div>
+              </li>
+
+
+
+
 
             <x-notification/>
             <li class="list-inline-item dropdown notification-list">
@@ -326,6 +389,7 @@
               </button>
             </li>
           </ul>
+
           <div class="clearfix"></div>
         </nav>
       </div>
@@ -358,7 +422,9 @@
       </div> <!-- Page content Wrapper -->
     </div>
     <footer class="footer">
-      © 2023 Touch and Solve
+        <a target="_blank" href="https://www.facebook.com/profile.php?id=100083976260843">
+            <strong>© 2023 UBPI Software Solution</strong>
+        </a>
       {{--      <span class="text-muted hidden-xs-down pull-right">Developed & Maintained by  <a href="https://touchandsolve.com"--}}
       {{--                                                                                       target="_blank">Touch & Solve</a></span>--}}
     </footer>

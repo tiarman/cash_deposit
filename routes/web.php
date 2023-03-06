@@ -280,15 +280,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
   Route::match(['get', 'post'], '/deposit', [DepositController::class, 'createOrIndex'])->name('deposit');
   Route::get('/deposit/list', [DepositController::class, 'depositList'])->name('deposit.list');
 
-//   Route::get('/withdraw', function (){
-//        return view('admin.cash.withdraw');
-//    })->name('withdraw');
 
-//    Route::get('/withdraw', [SiteController::class, 'withdraw'])->middleware('role_or_permission:Super Admin|Agent|Sub Agent|Create withdraw')->name('withdraw');
-
-  // Route::get('/deposit', function () {
-  //   return view('admin.cash.deposit');
-  // })->name('deposit');
 
   Route::get('/withdraw', function () {
     return view('admin.cash.withdraw');
@@ -301,7 +293,4 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
   Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction');
   Route::get('/marquee', [SiteController::class, 'marquee'])->name('marquee');
 
-  #deposit
-  // Route::match(['get', 'post'], '/deposit', [BackgroundImageController::class, 'createOrIndex'])->name('deposit');
-  // Route::delete('/background-image/destroy', [BackgroundImageController::class, 'destroy'])->name('deposit.destroy');
 });

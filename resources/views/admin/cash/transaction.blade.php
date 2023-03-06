@@ -178,6 +178,8 @@
                                         <td></td>
 
                                         <td></td>
+                                        <td></td>
+                                        <td></td>
 
                                         {{-- <td>Total = <strong style="color: green">{{$sum_total ?? " "}}</strong></td> --}}
                                         <td></td>
@@ -241,15 +243,16 @@
 
     <script>
         $(document).ready(function () {
-            $('#datatable-buttons').DataTable();
+            // $('#datatable-buttons').DataTable();
 
-            // var table = $('#datatable-buttons').DataTable({
-            //   lengthChange: false,
-            //   buttons: ['copy', 'excel', 'pdf', 'colvis']
-            // });
-            //
-            // table.buttons().container()
-            //   .appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
+            var table = $('#datatable-buttons').DataTable({
+              lengthChange: false,
+              buttons: ['copy', 'excel', 'pdf']
+                // buttons: ['copy', 'excel', 'pdf', 'colvis']
+            });
+
+            table.buttons().container()
+              .appendTo('#datatable-buttons_wrapper .col-md-6:eq(0)');
 
         })
     </script>
