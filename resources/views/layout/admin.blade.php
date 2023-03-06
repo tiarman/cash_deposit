@@ -288,7 +288,7 @@
             <ul class="list-inline float-left mb-0">
                 <li class="list-inline-item dropdown notification-list hidden-xs-down">
                     <a class="nav-link waves-effect text-start" href="{{route('admin.deposit')}}" id="btn-fullscreen">
-                        @if(\App\Helper\CustomHelper::canView('Create Deposit', 'Super Admin|Agent|Sub Agent'))
+                        @if(\App\Helper\CustomHelper::canView('Create Deposit', 'Agent|Sub Agent'))
                         <strong style="font-size: 18px; background-color: #20b2aa; color: white;padding: 4px;border-radius: 5px">Create Deposit</strong>
                         @endif
                         {{--               @if (isset(auth()->user()->institute->name))--}}
@@ -301,7 +301,7 @@
             <ul class="list-inline float-left mb-0">
                 <li class="list-inline-item dropdown notification-list hidden-xs-down">
                     <a class="nav-link waves-effect text-start" href="{{route('admin.withdraw.create')}}" id="btn-fullscreen">
-                        @if(\App\Helper\CustomHelper::canView('Create Withdraw', 'Agent|Sub Agent'))
+                        @if(\App\Helper\CustomHelper::canView('', 'Agent|Sub Agent'))
                         <strong style="font-size: 18px; background-color: #20b2aa; color: white;padding: 4px;border-radius: 5px">Create Withdraw</strong>
                         @endif
                     </a>
@@ -332,13 +332,13 @@
                       <strong style="background-color: #20b2aa; color: white;padding: 4px;border-radius: 5px">Cash</strong>
                   </a>
                   <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
-                      @if(\App\Helper\CustomHelper::canView('Create Deposit', 'Super Admin|Agent|Sub Agent'))
+                      @if(\App\Helper\CustomHelper::canView('Create Deposit', 'Agent|Sub Agent'))
                           <a class="dropdown-item" href="{{ route('admin.deposit') }}"><i
                                   class="text-muted"></i>
                               Create Deposit</a>
                           <div class="dropdown-divider"></div>
                       @endif
-                          @if(\App\Helper\CustomHelper::canView('Create Withdraw', 'Agent|Sub Agent'))
+                          @if(\App\Helper\CustomHelper::canView('', 'Agent|Sub Agent'))
                       <a class="dropdown-item" href="{{ route("admin.withdraw.create") }}"><i
                               class="text-muted"></i>
                           Create Withdraw</a>
