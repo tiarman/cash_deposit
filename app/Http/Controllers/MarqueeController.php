@@ -16,6 +16,7 @@ class MarqueeController extends Controller
 
 
     public function create() {
+        $data['marquee1'] = Marquee::orderby('id', 'desc')->get();
         $data['divisions'] = Marquee::select('id', 'headline')->orderBy('headline')->get();
         return view('admin.marquee.create', $data);
     }
