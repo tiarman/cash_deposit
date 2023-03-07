@@ -281,11 +281,21 @@
                                     <td class="p-1 text-capitalize">{{ $val->number }}</td>
 
 
-                                    @if (\App\Helper\CustomHelper::canView('Manage Payment|Delete Payment', 'Super Admin|Agent|Sub Agent'))
+                                    @if (\App\Helper\CustomHelper::canView('Manage Payment|Delete Payment', 'Super Admin'))
                                         <td class="center hidden-phone p-1" width="100">
                                             @if (\App\Helper\CustomHelper::canView('Delete Payment', 'Super Admin|Agent|Sub Agent'))
                                                 <span
                                                     class="btn btn-sm btn-danger btn-delete delete_{{ $val->id }}"
+                                                    style="cursor: pointer" data-id="{{ $val->id }}"><i
+                                                        class="fa fa-trash-o"></i></span>
+                                            @endif
+                                        </td>
+                                    @endif
+                                    @if (\App\Helper\CustomHelper::canView('Manage Payment|Delete Payment', 'Agent|Sub Agent'))
+                                        <td class="center hidden-phone p-1" width="100">
+                                            @if (\App\Helper\CustomHelper::canView('Delete Payment', 'Super Admin|Agent|Sub Agent'))
+                                                <span
+                                                    class="btn btn-sm btn-danger btn-delete delete_number_{{ $val->id }}"
                                                     style="cursor: pointer" data-id="{{ $val->id }}"><i
                                                         class="fa fa-trash-o"></i></span>
                                             @endif
@@ -419,10 +429,18 @@
             <div class="modal-body">
                 <strong>Are you sure to delete this Payment Method?</strong>
             </div>
+            @if (\App\Helper\CustomHelper::canView('Manage Payment|Delete Payment', 'Super Admin'))
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">No</button>
                 <button type="button" class="btn btn-success btn-sm yes-btn">Yes</button>
             </div>
+            @endif
+            @if (\App\Helper\CustomHelper::canView('', 'Agent|Sub Agent'))
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-success btn-sm yes-btn2">Yes</button>
+                </div>
+            @endif
         </div>
     </div>
 </div>
@@ -486,24 +504,24 @@
 
 
 
-        {{--$(document).on('click', '.yes-btn', function() {--}}
-        {{--    var pid = $(this).data('id');--}}
-        {{--    var $this = $('.delete_' + pid)--}}
-        {{--    $.ajax({--}}
-        {{--        url: "{{ route('admin.payment.destroy2') }}",--}}
-        {{--        method: "DELETE",--}}
-        {{--        dataType: "html",--}}
-        {{--        data: {--}}
-        {{--            id: pid--}}
-        {{--        },--}}
-        {{--        success: function(data) {--}}
-        {{--            if (data === "success") {--}}
-        {{--                $('#userDeleteModal').modal('hide')--}}
-        {{--                $this.closest('tr').css('background-color', 'red').fadeOut();--}}
-        {{--            }--}}
-        {{--        }--}}
-        {{--    });--}}
-        {{--})--}}
+        $(document).on('click', '.yes-btn2', function() {
+            var pid = $(this).data('id');
+            var $this = $('.delete_number_' + pid)
+            $.ajax({
+                url: "{{ route('admin.payment.destroy2') }}",
+                method: "DELETE",
+                dataType: "html",
+                data: {
+                    id: pid
+                },
+                success: function(data) {
+                    if (data === "success") {
+                        $('#userDeleteModal').modal('hide')
+                        $this.closest('tr').css('background-color', 'red').fadeOut();
+                    }
+                }
+            });
+        })
 
 
 

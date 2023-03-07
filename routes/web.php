@@ -228,7 +228,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
     Route::get('/create', [PaymentController::class, 'create'])->middleware('role_or_permission:Super Admin|Agent|Sub Agent|Create payment')->name('create');
     Route::post('/store', [PaymentController::class, 'store'])->middleware('role_or_permission:Super Admin|Agent|Sub Agent|Create payment|Manage payment')->name('store');
     Route::delete('/destroy', [PaymentController::class, 'destroy'])->middleware('role_or_permission:Super Admin|Agent|Sub Agent|Delete payment')->name('destroy');
-//      Route::delete('/destroy2', [PaymentController::class, 'destroy2'])->middleware('role_or_permission:Agent|Sub Agent|Delete payment')->name('destroy2');
+      Route::delete('/destroy2', [PaymentController::class, 'destroy2'])->middleware('role_or_permission:Agent|Sub Agent|Delete payment')->name('destroy2');
 
   });
 
@@ -237,7 +237,7 @@ Route::prefix('/admin')->name('admin.')->middleware(['auth'])->group(function ()
     Route::prefix('/user_payment')->name('user_payment.')->group(function () {
         Route::get('/create', [UserPaymentNumberController::class, 'create'])->middleware('role_or_permission:Agent|Sub Agent|Create payment')->name('create');
         Route::post('/store', [UserPaymentNumberController::class, 'store'])->middleware('role_or_permission:Agent|Sub Agent|Create payment|Manage payment')->name('store');
-        Route::delete('/destroy', [UserPaymentNumberController::class, 'destroy'])->middleware('role_or_permission:Agent|Sub Agent|Delete payment')->name('destroy');
+//        Route::delete('/destroy', [UserPaymentNumberController::class, 'destroy'])->middleware('role_or_permission:Agent|Sub Agent|Delete payment')->name('destroy');
         Route::delete('/destroy2', [UserPaymentNumberController::class, 'destroy2'])->middleware('role_or_permission:Agent|Sub Agent|Delete payment')->name('destroy2');
     });
 
