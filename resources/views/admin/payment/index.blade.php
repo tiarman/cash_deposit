@@ -281,7 +281,7 @@
                                     <td class="p-1 text-capitalize">{{ $val->number }}</td>
 
 
-                                    @if (\App\Helper\CustomHelper::canView('Manage Payment|Delete Payment', 'Super Admin'))
+                                    {{-- @if (\App\Helper\CustomHelper::canView('Manage Payment|Delete Payment', 'Super Admin'))
                                         <td class="center hidden-phone p-1" width="100">
                                             @if (\App\Helper\CustomHelper::canView('Delete Payment', 'Super Admin|Agent|Sub Agent'))
                                                 <span
@@ -290,17 +290,17 @@
                                                         class="fa fa-trash-o"></i></span>
                                             @endif
                                         </td>
-                                    @endif
-                                    @if (\App\Helper\CustomHelper::canView('Manage Payment|Delete Payment', 'Agent|Sub Agent'))
+                                    @endif --}}
+
+                                   
                                         <td class="center hidden-phone p-1" width="100">
-                                            @if (\App\Helper\CustomHelper::canView('Delete Payment', 'Super Admin|Agent|Sub Agent'))
+                                            @if (\App\Helper\CustomHelper::canView('Delete Payment', 'Agent|Sub Agent'))
                                                 <span
-                                                    class="btn btn-sm btn-danger btn-delete delete_number_{{ $val->id }}"
+                                                    class="btn btn-sm btn-danger btn-delete2 delete_number_{{ $val->id }}"
                                                     style="cursor: pointer" data-id="{{ $val->id }}"><i
                                                         class="fa fa-trash-o"></i></span>
                                             @endif
                                         </td>
-                                    @endif
                                 </tr>
                             @endforeach
                             </tbody>
@@ -529,6 +529,12 @@
         $(document).on('click', '.btn-delete', function() {
             var pid = $(this).data('id');
             $('.yes-btn').data('id', pid);
+            $('#userDeleteModal').modal('show')
+        });
+
+        $(document).on('click', '.btn-delete2', function() {
+            var pid = $(this).data('id');
+            $('.yes-btn2').data('id', pid);
             $('#userDeleteModal').modal('show')
         });
 
