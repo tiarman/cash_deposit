@@ -20,7 +20,7 @@ class PaymentController extends Controller
         $user_id=app('request')->user()->id;
         $dataaa = Payment_number::with('methods')->where('user_id',auth()->id())->get();
         $data['agent_datas'] = $dataaa;
-        return $data;
+        // return $data;
 
 //        $data['methods'] = Payment::where('id',$user_id)->get();
 //        return $datass;
@@ -116,7 +116,6 @@ class PaymentController extends Controller
 
     public function destroy2(Request $request)
     {
-        return  $request->post('id');
         $id = $request->post('id');
         try {
             $semester = Payment_number::find($id);
