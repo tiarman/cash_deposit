@@ -61,15 +61,20 @@ class DepositController extends Controller
 
                 // user data load to handle interest
                 $agentInfo = User::with('agent')->where('id', auth()->id())->first();
-                $agent_id = $agentInfo->agent->id;
-                $agent_interest_percentage = $agentInfo->agent->interest_percentage;
-                
-                $agent_interest = new AgentInterest();
-                $agent_interest->agent_id = $agent_id;
-                $agent_interest->interest_amount = ($deposit->amount *($agent_interest_percentage/100));
+                if($agentInfo->agent){
+                    $agent_id = $agentInfo?->agent?->id;
+                    $agent_interest_percentage = $agentInfo->agent->interest_percentage;
+
+                    $agent_interest = new AgentInterest();
+                    $agent_interest->agent_id = $agent_id;
+                    $agent_interest->interest_amount = ($deposit->amount *($agent_interest_percentage/100));
+                    if (!$agent_interest->save()) {
+                        return RedirectHelper::backWithInput();
+                    }
+                }
 
                 // return $deposit;
-                if ($deposit->save() && $agent_interest->save()) {
+                if ($deposit->save()) {
                     return RedirectHelper::routeSuccess('admin.deposit', $message);
                 }
                 return RedirectHelper::backWithInput();

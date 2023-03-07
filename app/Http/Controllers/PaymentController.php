@@ -103,8 +103,9 @@ class PaymentController extends Controller
     {
         $id = $request->post('id');
         try {
-            $semester = Payment::find($id);
-            if ($semester->delete()) {
+            $method = Payment::find($id);
+            $number = Payment_number::where('method_id',$id)->first();
+            if ($method->delete() && $number->delete()) {
                 return 'success';
             }
         } catch (\Exception $e) {

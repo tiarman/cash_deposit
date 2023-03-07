@@ -277,7 +277,7 @@
                                                  src="{{ $val->image }}" alt="">
                                         </td>
                                     @endif
-                                    <td class="p-1 text-capitalize">{{ $val->methods->name }}</td>
+                                    <td class="p-1 text-capitalize">{{ $val->methods->name ?? "" }}</td>
                                     <td class="p-1 text-capitalize">{{ $val->number }}</td>
 
 
@@ -486,24 +486,24 @@
 
 
 
-        $(document).on('click', '.yes-btn', function() {
-            var pid = $(this).data('id');
-            var $this = $('.delete_' + pid)
-            $.ajax({
-                url: "{{ route('admin.payment.destroy2') }}",
-                method: "DELETE",
-                dataType: "html",
-                data: {
-                    id: pid
-                },
-                success: function(data) {
-                    if (data === "success") {
-                        $('#userDeleteModal').modal('hide')
-                        $this.closest('tr').css('background-color', 'red').fadeOut();
-                    }
-                }
-            });
-        })
+        {{--$(document).on('click', '.yes-btn', function() {--}}
+        {{--    var pid = $(this).data('id');--}}
+        {{--    var $this = $('.delete_' + pid)--}}
+        {{--    $.ajax({--}}
+        {{--        url: "{{ route('admin.payment.destroy2') }}",--}}
+        {{--        method: "DELETE",--}}
+        {{--        dataType: "html",--}}
+        {{--        data: {--}}
+        {{--            id: pid--}}
+        {{--        },--}}
+        {{--        success: function(data) {--}}
+        {{--            if (data === "success") {--}}
+        {{--                $('#userDeleteModal').modal('hide')--}}
+        {{--                $this.closest('tr').css('background-color', 'red').fadeOut();--}}
+        {{--            }--}}
+        {{--        }--}}
+        {{--    });--}}
+        {{--})--}}
 
 
 

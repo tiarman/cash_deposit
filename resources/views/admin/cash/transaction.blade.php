@@ -156,7 +156,7 @@
                                             <td class="p-1">{{ $val->amount }}</td>
                                             <td class="p-1"></td>
                                             <td width="200" class="p-1">{{ date('F d, Y h:i A', strtotime($val->created_at)) }}</td>
-                                            <td class="p-1 text-capitalize "><button class="btn text-capitalize @if($val->status == 'pending') btn-warning @else btn-success @endif">{{ $vals->status }}</button></td>
+                                            <td class="p-1 text-capitalize "><button class="btn text-capitalize @if($val->status == 'pending') btn-warning @else btn-success @endif">{{ $val->status }}</button></td>
                                         </tr>
 
                                             @endforeach
