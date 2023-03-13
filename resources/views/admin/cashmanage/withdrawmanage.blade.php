@@ -27,6 +27,7 @@
                                     <tr>
                                         <th width="10">#</th>
                                         <th>Transaction Type</th>
+                                        <th>User ID</th>
                                         <th>Mobile/AC Number</th>
                                         <th>Amount</th>
                                         <th>Date</th>
@@ -42,6 +43,7 @@
                                         <tr class="@if(($key%2) == 0)gradeX @else gradeC @endif">
                                             <td class="p-1">{{ ($key+1) }}</td>
                                             <td class="p-1 text-capitalize">{{$val->transaction_type}}</td>
+                                            <td class="p-1">{{ $val->user_methods_id?->username }}</td>
                                             <td class="p-1 text-capitalize">{{ $val->withdraw_id }}</td>
                                             <td class="p-1">{{ $val->amount }}</td>
                                             <td width="200" class="p-1">{{ date('F d, Y h:i A', strtotime($val->created_at)) }}</td>
@@ -128,48 +130,48 @@
     <script src="{{ asset('assets/admin/plugins/datatables/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('assets/admin/plugins/datatables/responsive.bootstrap4.min.js') }}"></script>
 
-{{--    <script>--}}
-
-{{--        $(document).ready(function () {--}}
-{{--            $('#member-dropdown').select2()--}}
-{{--            const Toast = Swal.mixin({--}}
-{{--                toast: true,--}}
-{{--                position: 'top-end',--}}
-{{--                showConfirmButton: false,--}}
-{{--                timer: 3000--}}
-{{--            });--}}
-
-{{--            $(document).on('change', 'select[name="status"]', function () {--}}
-{{--                var id = $(this).data('id')--}}
-{{--                var status = $(this).val()--}}
-{{--                const $this = $(this);--}}
-{{--                $.ajax({--}}
-{{--                    url: "{{ route('admin.ajax.update.cashmanage.status') }}",--}}
-{{--                    method: "post",--}}
-{{--                    dataType: "html",--}}
-{{--                    data: {'id': id, 'status': status},--}}
-{{--                    success: function (data) {--}}
-{{--                        console.log(data);--}}
-{{--                        if (data === "exist") {--}}
-{{--                            Toast.fire({--}}
-{{--                                icon: 'warning',--}}
-{{--                                text: 'Sorry. '+ type +' type exist in this group.'--}}
-{{--                            })--}}
-{{--                            setTimeout(function () {--}}
-{{--                                document.location.reload(true)--}}
-{{--                            }, 3000)--}}
-{{--                        }--}}
-{{--                        if (data === "success") {--}}
-{{--                            Toast.fire({--}}
-{{--                                icon: 'success',--}}
-{{--                                text: 'Successfully changed.'--}}
-{{--                            })--}}
-{{--                        }--}}
-{{--                    }--}}
-{{--                });--}}
-{{--            })--}}
-{{--        })--}}
-{{--    </script>--}}
+<!--{{--    <script>--}}-->
+<!---->
+<!--{{--        $(document).ready(function () {--}}-->
+<!--{{--            $('#member-dropdown').select2()--}}-->
+<!--{{--            const Toast = Swal.mixin({--}}-->
+<!--{{--                toast: true,--}}-->
+<!--{{--                position: 'top-end',--}}-->
+<!--{{--                showConfirmButton: false,--}}-->
+<!--{{--                timer: 3000--}}-->
+<!--{{--            });--}}-->
+<!---->
+<!--{{--            $(document).on('change', 'select[name="status"]', function () {--}}-->
+<!--{{--                var id = $(this).data('id')--}}-->
+<!--{{--                var status = $(this).val()--}}-->
+<!--{{--                const $this = $(this);--}}-->
+<!--{{--                $.ajax({--}}-->
+<!--{{--                    url: "{{ route('admin.ajax.update.cashmanage.status') }}",--}}-->
+<!--{{--                    method: "post",--}}-->
+<!--{{--                    dataType: "html",--}}-->
+<!--{{--                    data: {'id': id, 'status': status},--}}-->
+<!--{{--                    success: function (data) {--}}-->
+<!--{{--                        console.log(data);--}}-->
+<!--{{--                        if (data === "exist") {--}}-->
+<!--{{--                            Toast.fire({--}}-->
+<!--{{--                                icon: 'warning',--}}-->
+<!--{{--                                text: 'Sorry. '+ type +' type exist in this group.'--}}-->
+<!--{{--                            })--}}-->
+<!--{{--                            setTimeout(function () {--}}-->
+<!--{{--                                document.location.reload(true)--}}-->
+<!--{{--                            }, 3000)--}}-->
+<!--{{--                        }--}}-->
+<!--{{--                        if (data === "success") {--}}-->
+<!--{{--                            Toast.fire({--}}-->
+<!--{{--                                icon: 'success',--}}-->
+<!--{{--                                text: 'Successfully changed.'--}}-->
+<!--{{--                            })--}}-->
+<!--{{--                        }--}}-->
+<!--{{--                    }--}}-->
+<!--{{--                });--}}-->
+<!--{{--            })--}}-->
+<!--{{--        })--}}-->
+<!--{{--    </script>--}}-->
     <script>
         $(document).ready(function () {
             $('#datatable-buttons').DataTable();
@@ -238,64 +240,64 @@
 
 
 
-            {{--$(document).ready(function () {--}}
-            {{--    $('#member-dropdown').select2()--}}
-            {{--    const Toast = Swal.mixin({--}}
-            {{--        toast: true,--}}
-            {{--        position: 'top-end',--}}
-            {{--        showConfirmButton: false,--}}
-            {{--        timer: 3000--}}
-            {{--    });--}}
-            {{--    --}}{{--$(document).on('click', '.btn-mail', function () {--}}
-            {{--    --}}{{--    var pid = $(this).data('id');--}}
-            {{--    --}}{{--    // var $this = $('.delete_' + pid)--}}
-            {{--    --}}{{--    $.ajax({--}}
-            {{--    --}}{{--        url: "{{ route('admin.ajax.send-mail') }}",--}}
-            {{--    --}}{{--        method: "Post",--}}
-            {{--    --}}{{--        dataType: "html",--}}
-            {{--    --}}{{--        data: {id: pid},--}}
-            {{--    --}}{{--        success: function (data) {--}}
-            {{--    --}}{{--            console.log(data);--}}
-            {{--    --}}{{--            if (data === "success") {--}}
-            {{--    --}}{{--                Toast.fire({--}}
-            {{--    --}}{{--                    icon: 'success',--}}
-            {{--    --}}{{--                    text: 'Successfully Mail Send.'--}}
-            {{--    --}}{{--                })--}}
-            {{--    --}}{{--            }--}}
-            {{--    --}}{{--        }--}}
-            {{--    --}}{{--    });--}}
-            {{--    --}}{{--})--}}
-            {{--    $(document).on('change', 'select[name="status"]', function () {--}}
-            {{--        console.log("click")--}}
-            {{--        var id = $(this).data('id')--}}
-            {{--        var status = $(this).val()--}}
-            {{--        const $this = $(this);--}}
-            {{--        $.ajax({--}}
-            {{--            url: "{{ route('admin.ajax.update.cashmanage.status') }}",--}}
-            {{--            method: "post",--}}
-            {{--            dataType: "html",--}}
-            {{--            data: {'id': id, 'status': status},--}}
-            {{--            success: function (data) {--}}
-            {{--                console.log(data);--}}
-            {{--                if (data === "exist") {--}}
-            {{--                    Toast.fire({--}}
-            {{--                        icon: 'warning',--}}
-            {{--                        text: 'Sorry. '+ type +' type exist in this group.'--}}
-            {{--                    })--}}
-            {{--                    setTimeout(function () {--}}
-            {{--                        document.location.reload(true)--}}
-            {{--                    }, 3000)--}}
-            {{--                }--}}
-            {{--                if (data === "success") {--}}
-            {{--                    Toast.fire({--}}
-            {{--                        icon: 'success',--}}
-            {{--                        text: 'Successfully changed.'--}}
-            {{--                    })--}}
-            {{--                }--}}
-            {{--            }--}}
-            {{--        });--}}
-            {{--    })--}}
-            {{--})--}}
+            // {{--$(document).ready(function () {--}}
+            // {{--    $('#member-dropdown').select2()--}}
+            // {{--    const Toast = Swal.mixin({--}}
+            // {{--        toast: true,--}}
+            // {{--        position: 'top-end',--}}
+            // {{--        showConfirmButton: false,--}}
+            // {{--        timer: 3000--}}
+            // {{--    });--}}
+            // {{--    --}}{{--$(document).on('click', '.btn-mail', function () {--}}
+            // {{--    --}}{{--    var pid = $(this).data('id');--}}
+            // {{--    --}}{{--    // var $this = $('.delete_' + pid)--}}
+            // {{--    --}}{{--    $.ajax({--}}
+            // {{--    --}}{{--        url: "{{ route('admin.ajax.send-mail') }}",--}}
+            // {{--    --}}{{--        method: "Post",--}}
+            // {{--    --}}{{--        dataType: "html",--}}
+            // {{--    --}}{{--        data: {id: pid},--}}
+            // {{--    --}}{{--        success: function (data) {--}}
+            // {{--    --}}{{--            console.log(data);--}}
+            // {{--    --}}{{--            if (data === "success") {--}}
+            // {{--    --}}{{--                Toast.fire({--}}
+            // {{--    --}}{{--                    icon: 'success',--}}
+            // {{--    --}}{{--                    text: 'Successfully Mail Send.'--}}
+            // {{--    --}}{{--                })--}}
+            // {{--    --}}{{--            }--}}
+            // {{--    --}}{{--        }--}}
+            // {{--    --}}{{--    });--}}
+            // {{--    --}}{{--})--}}
+            // {{--    $(document).on('change', 'select[name="status"]', function () {--}}
+            // {{--        console.log("click")--}}
+            // {{--        var id = $(this).data('id')--}}
+            // {{--        var status = $(this).val()--}}
+            // {{--        const $this = $(this);--}}
+            // {{--        $.ajax({--}}
+            // {{--            url: "{{ route('admin.ajax.update.cashmanage.status') }}",--}}
+            // {{--            method: "post",--}}
+            // {{--            dataType: "html",--}}
+            // {{--            data: {'id': id, 'status': status},--}}
+            // {{--            success: function (data) {--}}
+            // {{--                console.log(data);--}}
+            // {{--                if (data === "exist") {--}}
+            // {{--                    Toast.fire({--}}
+            // {{--                        icon: 'warning',--}}
+            // {{--                        text: 'Sorry. '+ type +' type exist in this group.'--}}
+            // {{--                    })--}}
+            // {{--                    setTimeout(function () {--}}
+            // {{--                        document.location.reload(true)--}}
+            // {{--                    }, 3000)--}}
+            // {{--                }--}}
+            // {{--                if (data === "success") {--}}
+            // {{--                    Toast.fire({--}}
+            // {{--                        icon: 'success',--}}
+            // {{--                        text: 'Successfully changed.'--}}
+            // {{--                    })--}}
+            // {{--                }--}}
+            // {{--            }--}}
+            // {{--        });--}}
+            // {{--    })--}}
+            // {{--})--}}
         })
     </script>
 

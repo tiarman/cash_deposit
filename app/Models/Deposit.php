@@ -21,4 +21,9 @@ class Deposit extends Model
     ];
 
     public static $statusArrays = ['accepted','pending'];
+
+
+    public function user_methods(){
+        return $this->belongsTo(User::class,'user_id','id');
+    }
 }

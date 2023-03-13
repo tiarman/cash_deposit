@@ -21,8 +21,9 @@ class WithdrawController extends Controller
 {
 
 public function list(){
-    $wid['wid'] = Withdraw::get();
+    $wid['wid'] = Withdraw::with('user_methods_id')->get();
     $data['datas'] = Payment::orderby('id', 'desc')->get();
+//    return $wid;
     $data['marquee1'] = Marquee::orderby('id', 'desc')->get();
 //        return $wid;
     return view('admin.cashmanage.withdrawmanage', $data, $wid);

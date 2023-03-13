@@ -46,6 +46,7 @@
                                         <tr>
                                             <th width="10">#</th>
                                             <th>Date</th>
+                                            <th>User ID</th>
                                             <th>Transaction Type</th>
                                             <th>Transaction ID</th>
                                             <th>Payment Number</th>
@@ -63,16 +64,16 @@
                                         @foreach ($allDeposits as $key => $val)
                                             <tr class="@if ($key % 2 == 0) gradeX @else gradeC @endif">
                                                 <td class="p-1">{{ $key + 1 }}</td>
-                                                <td width="200" class="p-1">
-                                                    {{ date('F d, Y h:i A', strtotime($val->created_at)) }}</td>
+                                                <td width="200" class="p-1">{{ date('F d, Y h:i A', strtotime($val->created_at)) }}</td>
+                                                <td class="p-1">{{ $val->user_methods->username }}</td>
                                                 <td class="p-1 text-capitalize">{{ $val->transaction_type }}</td>
                                                 <td class="p-1 text-capitalize">{{ $val->transaction_id }}</td>
                                                 <td class="p-1 text-capitalize">{{ $val->payment_no }}</td>
                                                 <td class="p-1">{{ $val->amount }}</td>
-                                                {{-- <td class="p-1">{{ $val->status }}</td> --}}
-                                                {{-- <td class="p-1">{{ $val->phone }}</td> --}}
-                                                {{-- <td class="p-1 text-capitalize"> --}}
-                                                {{-- {{ \App\Helper\CustomHelper::userRoleName($val) }}</td> --}}
+<!--                                                {{-- <td class="p-1">{{ $val->status }}</td> --}}-->
+<!--                                                {{-- <td class="p-1">{{ $val->phone }}</td> --}}-->
+<!--                                                {{-- <td class="p-1 text-capitalize"> --}}-->
+<!--                                                {{-- {{ \App\Helper\CustomHelper::userRoleName($val) }}</td> --}}-->
 
                                                 @if (\App\Helper\CustomHelper::canView('', 'Super Admin'))
                                                     <td class="text-capitalize p-1" width="100">
@@ -112,9 +113,9 @@
                                 </table>
                                         </div>
                                     </div>
-                                {{--                                    <div class="row"> --}}
-                                {{--                                        <div class="col-sm-12">{{ $sub_agent->links('vendor.pagination.bootstrap-4') }}</div> --}}
-                                {{--                                    </div> --}}
+<!--                                {{--                                    <div class="row"> --}}-->
+<!--                                {{--                                        <div class="col-sm-12">{{ $sub_agent->links('vendor.pagination.bootstrap-4') }}</div> --}}-->
+<!--                                {{--                                    </div> --}}-->
                             </div>
                         </div>
                     </section>
@@ -177,28 +178,28 @@
             })
 
 
-            {{-- $(document).on('click', '.yes-btn', function () { --}}
-            {{--    var pid = $(this).data('id'); --}}
-            {{--    var $this = $('.delete_' + pid) --}}
-            {{--    $.ajax({ --}}
-            {{--        url: "{{ route('admin.subagent.destroy') }}", --}}
-            {{--        method: "delete", --}}
-            {{--        dataType: "html", --}}
-            {{--        data: {id: pid}, --}}
-            {{--        success: function (data) { --}}
-            {{--            if (data === "success") { --}}
-            {{--                $('#userDeleteModal').modal('hide') --}}
-            {{--                $this.closest('tr').css('background-color', 'red').fadeOut(); --}}
-            {{--            } --}}
-            {{--        } --}}
-            {{--    }); --}}
-            {{-- }) --}}
-
-            {{-- $(document).on('click', '.btn-delete', function () { --}}
-            {{--    var pid = $(this).data('id'); --}}
-            {{--    $('.yes-btn').data('id', pid); --}}
-            {{--    $('#userDeleteModal').modal('show') --}}
-            {{-- }); --}}
+            // {{-- $(document).on('click', '.yes-btn', function () { --}}
+            // {{--    var pid = $(this).data('id'); --}}
+            // {{--    var $this = $('.delete_' + pid) --}}
+            // {{--    $.ajax({ --}}
+            // {{--        url: "{{ route('admin.subagent.destroy') }}", --}}
+            // {{--        method: "delete", --}}
+            // {{--        dataType: "html", --}}
+            // {{--        data: {id: pid}, --}}
+            // {{--        success: function (data) { --}}
+            // {{--            if (data === "success") { --}}
+            // {{--                $('#userDeleteModal').modal('hide') --}}
+            // {{--                $this.closest('tr').css('background-color', 'red').fadeOut(); --}}
+            // {{--            } --}}
+            // {{--        } --}}
+            // {{--    }); --}}
+            // {{-- }) --}}
+            //
+            // {{-- $(document).on('click', '.btn-delete', function () { --}}
+            // {{--    var pid = $(this).data('id'); --}}
+            // {{--    $('.yes-btn').data('id', pid); --}}
+            // {{--    $('#userDeleteModal').modal('show') --}}
+            // {{-- }); --}}
         })
     </script>
 @endsection

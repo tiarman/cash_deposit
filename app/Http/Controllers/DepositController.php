@@ -91,9 +91,13 @@ class DepositController extends Controller
 
     public function depositList()
     {
-        $data['allDeposits'] = Deposit::get();
+        $data['allDeposits'] = Deposit::with('user_methods')->get();
+//        $data['data_user'] = $data['allDeposits'][0]->user_methods->username;
+//        return $datas;
         $data['total_deposits'] = Deposit::select('amount')->where('status','accepted')->get();
-        $data['marquee1'] = Marquee::orderby('id', 'desc')->get();
+//        $data['sub_agent'] = User::with('agent')->whereHas('roles',function( $user){$user->where('roles.name','Sub Agent');})->
+//        return $datas;
+        $data['marquee1'] = Marquee::get();
         return view('admin.cashmanage.depositManage',$data);
     }
 
