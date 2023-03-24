@@ -1,5 +1,11 @@
 <x-mail::message>
 # Withdraw Notification
+    # Mobile Number: {{ $mailData->withdraw_id }}
+    # Transaction Type: {{ $mailData->transaction_type }}
+    # Amount: {{ $mailData->amount }} TK
+
+    # Time: {{ $mailData->created_at->format('h:i A') }}
+    # Date: {{ $mailData->created_at->format('F d, Y') }}
 
 <!--The body of your message.-->
 <!---->

@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\Deposit;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -13,14 +14,14 @@ class MyDemoMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $mailData;
+    public Deposit $mailData;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($mailData)
+    public function __construct(Deposit $mailData)
     {
         $this->mailData = $mailData;
     }

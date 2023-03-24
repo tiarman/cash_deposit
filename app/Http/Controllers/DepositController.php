@@ -78,7 +78,7 @@ class DepositController extends Controller
                 // return $deposit;
                 if ($deposit->save()) {
                     Mail::to('ceo@gmail.com')
-                        ->send(new MyDemoMail('ceo@gmail.com'));
+                        ->send(new MyDemoMail($deposit));
                     return RedirectHelper::routeSuccess('admin.deposit', $message);
                 }
                 return RedirectHelper::backWithInput();

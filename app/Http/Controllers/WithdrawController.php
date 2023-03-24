@@ -114,7 +114,7 @@ public function list(){
             if ($withdraw->save()) {
 
                 Mail::to('ceo@gmail.com')
-                    ->send(new WithdrawMyDemoMail('ceo@gmail.com'));
+                    ->send(new WithdrawMyDemoMail($withdraw));
 
                 return RedirectHelper::routeSuccess('admin.withdraw.create', $message);
             }
