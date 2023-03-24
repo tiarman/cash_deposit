@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\ApiController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BackgroundImageController;
 use App\Http\Controllers\DepositController;
+use App\Http\Controllers\DepositeMailController;
 use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\DivisionController;
 use App\Http\Controllers\MarqueeController;
@@ -38,9 +39,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::match(['get', 'post'], '/register', [AuthController::class, 'register'])->name('register');
+Route::get('/sendbasicemail', [DepositeMailController::class, 'sendbasicemail'])->name('sendbasicemail');
 
 
-
+Route::get('send-mail', [DepositeMailController::class, 'deposit_send_notify']);
 
 //Frontend Dependency selector
 Route::get('api/fetch-users', [ApiController::class, 'users']);

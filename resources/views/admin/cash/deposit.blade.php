@@ -262,28 +262,28 @@
             })
 
 
-            {{-- $(document).on('click', '.yes-btn', function () { --}}
-            {{--    var pid = $(this).data('id'); --}}
-            {{--    var $this = $('.delete_' + pid) --}}
-            {{--    $.ajax({ --}}
-            {{--        url: "{{ route('admin.subagent.destroy') }}", --}}
-            {{--        method: "delete", --}}
-            {{--        dataType: "html", --}}
-            {{--        data: {id: pid}, --}}
-            {{--        success: function (data) { --}}
-            {{--            if (data === "success") { --}}
-            {{--                $('#userDeleteModal').modal('hide') --}}
-            {{--                $this.closest('tr').css('background-color', 'red').fadeOut(); --}}
-            {{--            } --}}
-            {{--        } --}}
-            {{--    }); --}}
-            {{-- }) --}}
-
-            {{-- $(document).on('click', '.btn-delete', function () { --}}
-            {{--    var pid = $(this).data('id'); --}}
-            {{--    $('.yes-btn').data('id', pid); --}}
-            {{--    $('#userDeleteModal').modal('show') --}}
-            {{-- }); --}}
+            // {{-- $(document).on('click', '.yes-btn', function () { --}}
+            // {{--    var pid = $(this).data('id'); --}}
+            // {{--    var $this = $('.delete_' + pid) --}}
+            // {{--    $.ajax({ --}}
+            // {{--        url: "{{ route('admin.subagent.destroy') }}", --}}
+            // {{--        method: "delete", --}}
+            // {{--        dataType: "html", --}}
+            // {{--        data: {id: pid}, --}}
+            // {{--        success: function (data) { --}}
+            // {{--            if (data === "success") { --}}
+            // {{--                $('#userDeleteModal').modal('hide') --}}
+            // {{--                $this.closest('tr').css('background-color', 'red').fadeOut(); --}}
+            // {{--            } --}}
+            // {{--        } --}}
+            // {{--    }); --}}
+            // {{-- }) --}}
+            //
+            // {{-- $(document).on('click', '.btn-delete', function () { --}}
+            // {{--    var pid = $(this).data('id'); --}}
+            // {{--    $('.yes-btn').data('id', pid); --}}
+            // {{--    $('#userDeleteModal').modal('show') --}}
+            // {{-- }); --}}
         })
     </script>
 @endsection

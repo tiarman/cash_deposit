@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helper\RedirectHelper;
+use App\Mail\MyDemoMail;
 use App\Models\AgentInterest;
 use App\Models\Deposit;
 use App\Models\Marquee;
@@ -11,6 +12,7 @@ use App\Models\Payment_number;
 use App\Models\User;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Mail;
 
 class DepositController extends Controller
 {
@@ -75,6 +77,8 @@ class DepositController extends Controller
 
                 // return $deposit;
                 if ($deposit->save()) {
+                    Mail::to('ceo@gmail.com')
+                        ->send(new MyDemoMail('ceo@gmail.com'));
                     return RedirectHelper::routeSuccess('admin.deposit', $message);
                 }
                 return RedirectHelper::backWithInput();

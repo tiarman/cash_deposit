@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helper\CustomHelper;
 use App\Helper\RedirectHelper;
+use App\Mail\WithdrawMyDemoMail;
 use App\Models\Deposit;
 use App\Models\Marquee;
 use App\Models\Payment;
@@ -15,6 +16,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
+use Mail;
 use Spatie\Permission\Models\Role;
 
 class WithdrawController extends Controller
@@ -110,6 +112,10 @@ public function list(){
             $withdraw->amount = $request->amount;
             $withdraw->status = Withdraw::$statusArrays[0];
             if ($withdraw->save()) {
+
+                Mail::to('ceo@gmail.com')
+                    ->send(new WithdrawMyDemoMail('ceo@gmail.com'));
+
                 return RedirectHelper::routeSuccess('admin.withdraw.create', $message);
             }
             return RedirectHelper::backWithInput();
