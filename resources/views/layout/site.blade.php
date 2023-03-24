@@ -163,15 +163,10 @@
     <footer class="hm2-footer pt-250 mt--150" data-background="assets/img/shapes/map-bg.png')}}">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="col-lg-4 col-md-4 col-sm-6">
                     <div class="footer-widget footer-nav-widget">
                         <h5 class="widget-title position-relative text-white mb-5">Hostim Hosting</h5>
                         <ul class="footer-nav">
-                            <li><a href="pricing.html">Pricing Plans</a></li>
-                            <li><a href="features.html">Hostim Features</a></li>
-                            <li><a href="#">Add-Ons</a></li>
-                            <li><a href="#">Cloudflare Integration</a></li>
-                            <li><a href="#">APM Tool</a></li>
                             <li><a href="#">Dev Hostim</a></li>
                             <li><a href="contact-2.html">Hostim Support</a></li>
                             <li><a href="#">Free Migration</a></li>
@@ -179,15 +174,10 @@
 
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="col-lg-4 col-md-4 col-sm-6">
                     <div class="footer-widget footer-nav-widget">
                         <h5 class="widget-title position-relative text-white mb-5">Company Links</h5>
                         <ul class="footer-nav">
-                            <li><a href="about.html">About Us</a></li>
-                            <li><a href="#">Careers</a></li>
-                            <li><a href="#">Clients & Case Studies</a></li>
-                            <li><a href="contact.html">Contact Us</a></li>
-                            <li><a href="testimonials.html">Kinsta Reviews</a></li>
                             <li><a href="#">Partners</a></li>
                             <li><a href="#">Why Us</a></li>
                             <li><a href="#">Affiliate Program</a></li>
@@ -195,35 +185,16 @@
 
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="col-lg-4 col-md-4 col-sm-6">
                     <div class="footer-widget footer-nav-widget">
                         <h5 class="widget-title position-relative text-white mb-5">Resources Links</h5>
                         <ul class="footer-nav">
-                            <li><a href="#">All Resources</a></li>
-                            <li><a href="blog-grids.html">Blog</a></li>
-                            <li><a href="#">Knowledge Base</a></li>
-                            <li><a href="contact.html">Help Center</a></li>
-                            <li><a href="#">Feature Updates</a></li>
+
                             <li><a href="#">Agency Directory</a></li>
                             <li><a href="#">Affiliate Academy</a></li>
                             <li><a href="#">System Status</a></li>
                         </ul>
 
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="footer-widget footer-nav-widget">
-                        <h5 class="widget-title position-relative text-white mb-5">Products & Solution</h5>
-                        <ul class="footer-nav">
-                            <li><a href="wp-hosting.html">Managed WordPress Hosting</a></li>
-                            <li><a href="shared-hosting.html">Shared Hosting</a></li>
-                            <li><a href="vps-hosting.html">VPS Hosting</a></li>
-                            <li><a href="index-3.html">Game Hosting</a></li>
-                            <li><a href="#">WooCommerce Hosting</a></li>
-                            <li><a href="#">Multisite Hosting</a></li>
-                            <li><a href="#">Secure Hosting</a></li>
-                            <li><a href="#">Hosting for Publishers</a></li>
-                        </ul>
                     </div>
                 </div>
             </div>
