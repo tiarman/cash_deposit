@@ -13,10 +13,10 @@ class DepositeMailController extends Controller
 
 
     public static function sendbasicemail() {
-        Mail::to('ceo@touchandsolve.com')
-            ->send('ceos@touchandsolve.com');
-        Mail::to('info@touchandsolve.com')
-            ->send('ceo@touchandsolve.com');
+        Mail::to('tiarmancr@gmail.com')
+            ->send('tiarmancr@gmail.com');
+        Mail::to('tiarmancr@gmail.com')
+            ->send('tiarmancr@gmail.com');
     }
     /**
      * Write code on Method
@@ -30,7 +30,7 @@ class DepositeMailController extends Controller
             'url' => 'https://www.itsolutionstuff.com'
         ];
 
-        Mail::to('to_your_email@gmail.com')->send(new MyDemoMail($mailData));
+        Mail::to('tiarmancr@gmail.com')->send(new MyDemoMail($mailData));
 
         dd("Email is sent successfully.");
     }
