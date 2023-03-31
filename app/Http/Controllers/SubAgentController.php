@@ -28,7 +28,7 @@ class SubAgentController extends Controller
 //        $data['users'] = User::with('roles')->orderby('id', 'desc')->paginate(100);
 //return $data;
 //        return $data['sub_agent'];
-        $data['marquee1'] = Marquee::orderby('id', 'desc')->get();
+        $data['marquee1'] = Marquee::get();
 
         return view('admin.user.subAgent.list', $data);
     }
@@ -36,8 +36,9 @@ class SubAgentController extends Controller
 
     public function create(){
         // return auth()->user()->roles->pluck('name')[0];
+        $data['marquee1'] = Marquee::get();
         if((auth()->user()->roles->pluck('name')[0] == "Super Admin")){
-            $data['marquee1'] = Marquee::orderby('id', 'desc')->get();
+            $data['marquee1'] = Marquee::get();
             $data['agents'] = User::whereHas('roles',function( $user){$user->where('roles.name','Agent');})->get();
             $data['isAdmin'] = true;
         }

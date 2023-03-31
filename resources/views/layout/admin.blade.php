@@ -18,7 +18,7 @@
   <!-- Favicon -->
   <link href="{{asset('favicon.png')}}" rel="icon">
   <link href="{{asset('favicon.png')}}" rel="apple-touch-icon">
-  {{--  <link rel="shortcut icon" href="{{ asset("fav.jpg") }}" type="image/png">--}}
+<!--  {{--  <link rel="shortcut icon" href="{{ asset("fav.jpg") }}" type="image/png">--}}-->
   <link href="{{ asset('assets/admin/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
   <link href="{{ asset('assets/admin/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css') }}"
         rel="stylesheet" type="text/css">
@@ -399,7 +399,7 @@
           @foreach($marquee1 as $val)
               <marquee class="margueue_align1" loop behavior="scroll" direction="left"><p><strong>{{$val->headline ?? " "}}</strong></p></marquee>
           @endforeach
-{{--              <marquee class="margueue_align1" loop behavior="scroll" direction="left"><p><strong>Marquee</strong></p></marquee>--}}
+<!--{{--              <marquee class="margueue_align1" loop behavior="scroll" direction="left"><p><strong>Marquee</strong></p></marquee>--}}-->
 
               @yield('content')
         <div class="modal fade" id="notificationModal" tabindex="-1" role="dialog" aria-labelledby="notificationModal"
@@ -425,8 +425,8 @@
         <a target="_blank" href="https://www.facebook.com/profile.php?id=100083976260843">
             <strong>© 2023 UBPI Software Solution</strong>
         </a>
-      {{--      <span class="text-muted hidden-xs-down pull-right">Developed & Maintained by  <a href="https://touchandsolve.com"--}}
-      {{--                                                                                       target="_blank">Touch & Solve</a></span>--}}
+<!--      {{--      <span class="text-muted hidden-xs-down pull-right">Developed & Maintained by  <a href="https://touchandsolve.com"--}}-->
+<!--      {{--                                                                                       target="_blank">Touch & Solve</a></span>--}}-->
     </footer>
   </div>
 </div>
@@ -443,7 +443,7 @@
 
 <!-- App js -->
 <script src="{{ asset('assets/admin/js/app.js') }}"></script>
-{{--@include('sweetalert::alert')--}}
+<!--{{--@include('sweetalert::alert')--}}-->
 
 
 <script>
