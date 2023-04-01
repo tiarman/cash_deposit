@@ -15,7 +15,10 @@ use Spatie\Permission\Models\Role;
 class SubAgentController extends Controller
 {
     public function index() {
-            $data['sub_agent'] = User::with('agent')->whereHas('roles',function( $user){$user->where('roles.name','Sub Agent');})->paginate(100);
+        $data['marquee1'] = Marquee::get();
+        $user_id=app('request')->user()->id;
+        $data['sub_agent'] = User::where('agent_id',$user_id)->paginate(100);
+//            $data['sub_agent'] = User::with('agent')->whereHas('roles',function( $user){$user->where('roles.name','Sub Agent');})->paginate(100);
 //            $data['agent'] = User::select('name_en','id')->where('id', $data['sub_agent'][0]->agent_id)->get();
 //        $data['roles'] = Role::select('id', 'name')->orderby('name', 'asc')->get();
 //        $roleNames = auth()->user()->roles->pluck('name');
@@ -28,7 +31,13 @@ class SubAgentController extends Controller
 //        $data['users'] = User::with('roles')->orderby('id', 'desc')->paginate(100);
 //return $data;
 //        return $data['sub_agent'];
-        $data['marquee1'] = Marquee::get();
+        if((auth()->user()->roles->pluck('name')[0] == "Super Admin")){
+            $data['marquee1'] = Marquee::get();
+            $data['sub_agent'] = User::with('agent')->whereHas('roles',function( $user){$user->where('roles.name','Sub Agent');})->paginate(100);
+        }
+
+//        return $datas;
+
 
         return view('admin.user.subAgent.list', $data);
     }
