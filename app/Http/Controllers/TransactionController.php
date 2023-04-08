@@ -26,7 +26,7 @@ class TransactionController extends Controller
         $data['total_deposits'] = Deposit::select('amount')->where('user_id', auth()->id())->where('status','accepted')->get();
 
         // interest
-        $data['interest'] = AgentInterest::select('interest_amount')->where('agent_id', auth()->id())->get();
+        $data['interest'] = AgentInterest::select('interest_amount')->where('agent_id', auth()->id())->where('status','accepted')->get();
         // return $data['interest'];
 
 

@@ -13,7 +13,9 @@ class AgentInterest extends Model
 
     protected $fillable = [
         'agent_id',
-        'interest_amount'
+        'deposit_id',
+        'interest_amount',
+        'status'
     ];
 }
 
