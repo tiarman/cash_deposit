@@ -34,43 +34,35 @@ class UserSeeder extends Seeder
         'status' => User::$statusArrays[1],
       ]);
 
-      $agent = User::create([
-        'name_en' => 'Arif Hosen',
-        'username' => 'arif',
+      $agentOne = User::create([
+        'name_en' => 'Agent1',
+        'username' => 'agent1',
         'phone' => '01600000000',
         'email' => 'trainee@mail.com',
         'password' => bcrypt('12345600'),
         'status' => User::$statusArrays[1],
       ]);
-      $agentone = User::create([
-        'name_en' => 'Agent1',
-        'username' => 'agent1',
+      $agentTwo = User::create([
+        'name_en' => 'Agent2',
+        'username' => 'agent2',
         'phone' => '01860842421',
         'email' => 'agent1@mail.com',
         'password' => bcrypt('12345600'),
         'status' => User::$statusArrays[1],
       ]);
-        $agenttwo = User::create([
-            'name_en' => 'Agent2',
-            'username' => 'agent2',
-            'phone' => '01860842423',
-            'email' => 'agent2@mail.com',
-            'password' => bcrypt('12345600'),
-            'status' => User::$statusArrays[1],
-        ]);
-        $subagentone = User::create([
+        $subAgentOne = User::create([
             'agent_id' => '4',
-            'name_en' => 'Sagent',
-            'username' => 'sagent1',
+            'name_en' => 'sub Agent 1',
+            'username' => 'sAgent1',
             'phone' => '01860842422',
             'email' => 'sagent@mail.com',
             'password' => bcrypt('12345600'),
             'status' => User::$statusArrays[1],
         ]);
 
-        $subagent = User::create([
-            'name_en' => 'Arif Hosens',
-            'username' => 'arifs',
+        $subAgentTwo = User::create([
+            'name_en' => 'Sub Agent 2',
+            'username' => 'sAgent2',
             'phone' => '01600000100',
             'email' => 'traineee@mail.com',
             'password' => bcrypt('123456000'),
@@ -81,11 +73,10 @@ class UserSeeder extends Seeder
 
       $user->assignRole('Super Admin');
       $usertwo->assignRole('Super Admin');
-      $agent->assignRole('Agent');
-      $agentone->assignRole('Agent');
-      $agenttwo->assignRole('Agent');
-      $subagentone->assignRole('Sub Agent');
-      $subagent->assignRole('Sub Agent');
+      $agentOne->assignRole('Agent');
+      $agentTwo->assignRole('Agent');
+      $subAgentOne->assignRole('Sub Agent');
+      $subAgentTwo->assignRole('Sub Agent');
 
 
     }

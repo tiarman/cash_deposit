@@ -57,19 +57,19 @@
                                         </div>
                                     </div>
                                 @endif
-                              @if (\App\Helper\CustomHelper::canView('Create Payment', 'Super Admin'))
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label class="control-label">Payment Method Name<span
-                                                class="text-danger">*</span></label>
-                                        <input type="text" name="name" placeholder="Name" autocomplete="off"
-                                            required value="{{ old('name') }}"
-                                            class="form-control @error('name') is-invalid @enderror">
-                                        @error('name')
-                                            <strong class="text-danger">{{ $errors->first('name') }}</strong>
-                                        @enderror
+                                @if (\App\Helper\CustomHelper::canView('Create Payment', 'Super Admin'))
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="control-label">Payment Method Name<span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" name="name" placeholder="Name" autocomplete="off"
+                                                required value="{{ old('name') }}"
+                                                class="form-control @error('name') is-invalid @enderror">
+                                            @error('name')
+                                                <strong class="text-danger">{{ $errors->first('name') }}</strong>
+                                            @enderror
+                                        </div>
                                     </div>
-                                </div>
                                 @endif
                                 {{-- for agent/sub agent --}}
                                 @if (\App\Helper\CustomHelper::canView('Create Payment', 'Agent|Sub Agent'))
@@ -172,7 +172,7 @@
                                 <tr>
                                     <th width="50">#</th>
                                     @if (\App\Helper\CustomHelper::canView('create Payment', 'Super Admin'))
-                                    <th>Image</th>
+                                        <th>Image</th>
                                     @endif
                                     <th>Name</th>
                                     <th>Payment Number</th>
@@ -187,11 +187,11 @@
                                     <tr class="@if ($key % 2 == 0) gradeX @else gradeC @endif">
                                         <td class="p-1">{{ $key + 1 }}</td>
                                         @if (\App\Helper\CustomHelper::canView('create Payment', 'Super Admin'))
-                                        <td class="p-1 text-capitalize" width="100">
-                                          <img class="p-1" width="80px" style="height:75px"
-                                              src="{{ $val->image }}" alt="">
-                                      </td>
-                                    @endif
+                                            <td class="p-1 text-capitalize" width="100">
+                                                <img class="p-1" width="80px" style="height:75px"
+                                                    src="{{ $val->image }}" alt="">
+                                            </td>
+                                        @endif
                                         <td class="p-1 text-capitalize">{{ $val->name }}</td>
                                         <td class="p-1 text-capitalize">{{ $val->mobile }}</td>
 
@@ -263,18 +263,19 @@
                         <input type="hidden" class="dt form-control" name="id" id="manage-id" value="">
                         @if ($datas)
                             <div class="row">
-                              @if (\App\Helper\CustomHelper::canView('Create Payment', 'Super Admin'))
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label class="control-label">Payment Method Name<span class="text-danger">*</span></label>
-                                        <input type="text" id="manage-name" name="name" placeholder="Name"
-                                            autocomplete="off" value=""
-                                            class="form-control @error('name') is-invalid @enderror">
-                                        @error('name')
-                                            <strong class="text-danger">{{ $errors->first('name') }}</strong>
-                                        @enderror
+                                @if (\App\Helper\CustomHelper::canView('Create Payment', 'Super Admin'))
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="control-label">Payment Method Name<span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" id="manage-name" name="name" placeholder="Name"
+                                                autocomplete="off" value=""
+                                                class="form-control @error('name') is-invalid @enderror">
+                                            @error('name')
+                                                <strong class="text-danger">{{ $errors->first('name') }}</strong>
+                                            @enderror
+                                        </div>
                                     </div>
-                                </div>
                                 @endif
                                 {{-- for agent/sub agent --}}
                                 @if (\App\Helper\CustomHelper::canView('Create Payment', 'Agent|Sub Agent'))

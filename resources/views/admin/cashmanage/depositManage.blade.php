@@ -80,7 +80,7 @@
                                                         <div class="onoffswitch3">
                                                             <input type="checkbox" name="onoffswitch3"
                                                                 class="onoffswitch3-checkbox" @checked($val->status == \App\Models\Deposit::$statusArrays[0])
-                                                                data-id="{{ $val->id }}"
+                                                                data-id="{{ $val->id }}" userId="{{ $val->user_id }}"
                                                                 id="myonoffswitch{{ $key + 1 }}">
                                                             <label class="onoffswitch3-label"
                                                                 for="myonoffswitch{{ $key + 1 }}">
@@ -159,6 +159,8 @@
                 console.log('ttttt')
                 var status = 'pending';
                 var id = $(this).data('id')
+                var userId = $(this).attr('userId')
+                // console.log(id2)
                 var isChecked = $(this).is(":checked");
                 if (isChecked) {
                     status = 'accepted';
@@ -169,6 +171,7 @@
                     dataType: "html",
                     data: {
                         'id': id,
+                        'userId': userId,
                         'status': status
                     },
                     success: function(data) {
