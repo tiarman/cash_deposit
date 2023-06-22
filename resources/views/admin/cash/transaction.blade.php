@@ -79,6 +79,7 @@
                                                             $totalInterest = 0;
                                                             foreach ($interest as $key => $value) {
                                                                 $totalInterest += intval($value->interest_amount);
+                                                                $totalIn = $totalInterest- $totalWithdraw;
                                                             }
 
                                                             ?>
@@ -96,7 +97,7 @@
                                                         <span class="mini-stat-icon bg-primary float-start"><i class="mdi mdi-currency-usd"></i></span>
                                                         <div class="mini-stat-info text-end">
                                                             <span class="counter text-primary">Interest</span>
-                                                            <strong>Total: {{$totalInterest}}</strong>
+                                                            <strong>Total: {{$totalIn}}</strong>
                                                         </div>
                                                     </div>
                                                 </div>

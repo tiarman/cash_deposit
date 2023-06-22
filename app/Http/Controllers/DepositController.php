@@ -154,7 +154,9 @@ class DepositController extends Controller
                 if ($agentInfo->agent) {
                     $agent_id = $agentInfo?->agent?->id;
                     $agent_interest_percentage = $agentInfo->agent->interest_percentage;
+                    // return $deposit->amount;
                     $agent_interest_amount = ( $deposit->amount * ($agent_interest_percentage / 100));
+                    return $agent_interest_amount;
 
                     // $agent_interest = new AgentInterest();
                     AgentInterest::updateOrCreate(

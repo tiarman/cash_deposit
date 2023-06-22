@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helper\CustomHelper;
 use App\Helper\RedirectHelper;
 use App\Mail\WithdrawMyDemoMail;
+use App\Models\AgentInterest;
 use App\Models\Deposit;
 use App\Models\Marquee;
 use App\Models\Payment;
@@ -147,13 +148,40 @@ public function list(){
      */
     public function ajaxUpdateStatus(Request $request)
     {
+        // dd($request);
         if ($request->isMethod("POST")) {
             $id = $request->post('id');
+            $userId = $request->post('userId');
+            // return $userId;
             $postStatus = $request->post('status');
             $status = strtolower($postStatus);
-            $user = Withdraw::find($id);
-            if ($user->update(['status' => $status])) {
+            $withdraw = Withdraw::find($id);
+            if ($withdraw->update(['status' => $status])) {
+
+
+                $agentInfo = User::with('agent')->where('id', $userId)->first();
+                // return response()->json($agentInfo);
+                if ($agentInfo->agent) {
+                    $agent_id = $agentInfo?->agent?->id;
+                    // return response()->json($agent_id);
+                    $agent_interest_percentage = $agentInfo->agent->interest_percentage;
+                    // return $agent_interest_percentage;
+                    $agent_interest_amount = -( $withdraw->amount * ($agent_interest_percentage / 100));
+                    // return $agent_interest_amount;
+
+                    // $agent_interest = new AgentInterest();
+                    AgentInterest::updateOrCreate(
+                        ['withdraw_id' => $withdraw->id],
+                        ['agent_id' => $agent_id, 'interest_amount' => $agent_interest_amount, 'status' => $status ]
+                    );
+
+                    
+                }
                 return "success";
+
+
+
+
             }
         }
     }

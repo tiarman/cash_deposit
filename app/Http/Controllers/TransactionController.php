@@ -31,23 +31,7 @@ class TransactionController extends Controller
 
 
 
-//        $data = Withdraw::table('users')->join('state', 'state.country_id', '=', 'country.country_id')
-//            ->join('city', 'city.state_id', '=', 'state.state_id')
-//            ->get(['country.country_name', 'state.state_name', 'city.city_name']);
 
-
-
-//        return $datas;
-//        $datas = DB::table('withdraws')
-//
-//            ->select('withdraws.withdraw_id','withdraws.transaction_type','deposits.transaction_id')
-//
-//            ->join('deposits','deposits.id','=','withdraws.id')
-//
-////            ->where(['something' => 'something', 'otherThing' => 'otherThing'])
-//
-//            ->get();
-//        return $datas;
 
         return view('admin.cash.transaction', $data, $wid);
 

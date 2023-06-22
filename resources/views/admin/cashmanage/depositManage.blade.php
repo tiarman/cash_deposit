@@ -160,7 +160,7 @@
                 var status = 'pending';
                 var id = $(this).data('id')
                 var userId = $(this).attr('userId')
-                // console.log(id2)
+                 console.log('user_id',userId)
                 var isChecked = $(this).is(":checked");
                 if (isChecked) {
                     status = 'accepted';

@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('agent_interests', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('deposit_id');
+            $table->unsignedBigInteger('withdraw_id');
             $table->unsignedBigInteger('agent_id');
             $table->string('interest_amount');
             $table->string('status');

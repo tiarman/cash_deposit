@@ -53,7 +53,7 @@
                                                     <div class="onoffswitch2">
                                                         <input type="checkbox" name="onoffswitch" class="onoffswitch2-checkbox"
                                                                @checked($val->status == \App\Models\Withdraw::$statusArrays[1])
-                                                               data-id="{{ $val->id }}"
+                                                               data-id="{{ $val->id }}" userId="{{ $val->user_id }}"
                                                                id="myonoffswitch{{ ($key+1) }}">
                                                         <label class="onoffswitch2-label" for="myonoffswitch{{ ($key+1) }}">
                                                             <span class="onoffswitch2-inner"></span>
@@ -186,9 +186,11 @@
 
 
             $(document).on('change', 'input[name="onoffswitch"]', function () {
-
+                console.log('ttttt')
               var status = 'pending';
               var id = $(this).data('id')
+              var userId = $(this).attr('userId')
+              console.log('user_id',userId)
 
               var isChecked = $(this).is(":checked");
 
@@ -199,7 +201,10 @@
                 url: "{{ route('admin.ajax.update.cashmanage.status') }}",
                 method: "post",
                 dataType: "html",
-                data: {'id': id, 'status': status},
+                data: {
+                'id': id,
+                'userId': userId,
+                 'status': status},
                 success: function (data) {
                   if (data === "success") {
                   }
